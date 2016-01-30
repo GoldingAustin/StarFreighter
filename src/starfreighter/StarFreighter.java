@@ -20,7 +20,16 @@ public class StarFreighter {
        Inventory shipInventory = new Inventory();
        
        shipInventory.setCurrency(8);
-       shipInventory.setItemList(new String[]{"Cannon", "Blaster", "Medicine"});
+       
+       InventoryItem firstItem = new InventoryItem();
+       firstItem.setName("First Item");
+       firstItem.setValue(100);
+       shipInventory.addItem(firstItem);
+       
+       InventoryItem secItem = new InventoryItem();
+       secItem.setName("Second Item");
+       secItem.setValue(1000);
+       shipInventory.addItem(secItem);
        
        String shipInfo = shipInventory.toString();
        System.out.println(shipInfo);
@@ -83,6 +92,38 @@ public class StarFreighter {
        
        String enemyInfo = enemyMine.toString();
        System.out.println(enemyInfo);
+       
+       Map planetMap = new Map();
+       
+       planetMap.display();
+       planetMap.isCompleted();
+       planetMap.setCompleted(false);
+   
+       Planet aPlanet = new Planet();
+       
+       aPlanet.setName("Planet Name");
+       aPlanet.setDescription("This is the first planet");
+       planetMap.setPlanets(aPlanet);
+       
+       String mapInfo = planetMap.toString();
+       System.out.println(mapInfo);
+    
+       Location aLoc = new Location();
+       
+       aLoc.setName("A Location");
+       
+       JobBoard aJob = new JobBoard();
+       
+       aJob.setJob("A Job");
+       aJob.setLocation("A Job Location");
+       aJob.setReward(10);
+       aLoc.setJobList(aJob);
+       
+       String locInfo = aLoc.toString();
+       System.out.println(locInfo);
+       
+       
+       
     }
     
 }
