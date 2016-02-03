@@ -6,7 +6,7 @@
 package byui.cit260.starFreighter.model;
 
 import java.io.Serializable;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -14,11 +14,23 @@ import java.util.Objects;
  * @author austingolding
  */
 public class Inventory implements Serializable{
-    
+    private ArrayList<InventoryItem> itemList;
     private int currency;
-    private  String[] itemList;
+    
 
     public Inventory() {
+        itemList = new ArrayList<InventoryItem>();
+    }
+
+    public ArrayList<InventoryItem> getItemList() {
+        return itemList;
+    }
+    
+    public void addItem(InventoryItem item) {
+        itemList.add(item);
+    }  
+    public void removeItem(InventoryItem item) {
+        itemList.remove(item);
     }
 
     public int getCurrency() {
@@ -28,15 +40,7 @@ public class Inventory implements Serializable{
     public void setCurrency(int currency) {
         this.currency = currency;
     }
-
-    public String[] getItemList() {
-        return itemList;
-    }
-
-    public void setItemList(String[] itemList) {
-        this.itemList = itemList;
-    }
-
+    
     @Override
     public int hashCode() {
         int hash = 7;
@@ -68,17 +72,7 @@ public class Inventory implements Serializable{
 
     @Override
     public String toString() {
-        return "Inventory{" + "currency=" + currency + ", itemList=" + Arrays.toString(itemList) + '}';
+        return "Inventory{" + "currency=" + currency + ", itemList=" + itemList + '}';
     }
-
-    public void addItem(String item) {
-        
-    }
-    
-    public void removeItem(String item) {
-        
-    }
-    
-    
-    
+      
 }
