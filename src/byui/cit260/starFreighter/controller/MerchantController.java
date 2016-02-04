@@ -28,7 +28,7 @@ public class MerchantController {
     }
     
     public void displayCurrency() {
-        System.out.println(this.name + " currency: " + inventory.getCurrency());
+        System.out.println(this.name + " currency: " + inventory.getCurrency() + " credits");
     }
     
     public void displayStock() {

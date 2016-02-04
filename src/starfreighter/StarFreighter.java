@@ -34,18 +34,20 @@ public class StarFreighter {
        
        // Add the item to the player's playerInventory
        playerInventory.addItem(cheese);
+       shopInventory.addItem(cheese);
        
        // Display each inventory
        playerInventory.displayStock();
        shopInventory.displayStock();
        
+       
        // Have the shopInventory attempt to buy the item
        if (shopInventory.buyItem(cheese)) {
-           System.out.println("Shop has bought the amazing space cheese for " + cheese.getValue());
+           System.out.println("Shop has bought the " + cheese.getName() +  " for " + cheese.getValue() + " credits");
            
            // Have the playerInventory sell the item
            if (playerInventory.sellItem(cheese)) {
-               System.out.println("Player has sold the amazing space cheese for " + cheese.getValue());
+               System.out.println("Player has sold the " + cheese.getName() + " for " + cheese.getValue() + " credits");
            }
        }
        
