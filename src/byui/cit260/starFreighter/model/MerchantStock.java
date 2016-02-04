@@ -13,23 +13,29 @@ import java.util.Objects;
  *
  * @author austingolding
  */
-public class Inventory implements Serializable{
-    private ArrayList<InventoryItem> itemList;
+public class MerchantStock implements Serializable {
+    private final ArrayList<Item> itemList = new ArrayList<>();
     private int currency;
     
 
-    public Inventory() {
-        itemList = new ArrayList<InventoryItem>();
+    public MerchantStock() {
+
     }
 
-    public ArrayList<InventoryItem> getItemList() {
+    public ArrayList<Item> getItemList() {
         return itemList;
     }
     
-    public void addItem(InventoryItem item) {
+    public boolean hasItem(Item item) {
+        return itemList.contains(item);
+    }
+    public String getItems() {
+        return itemList.toString();
+    }
+    public void addItem(Item item) {
         itemList.add(item);
     }  
-    public void removeItem(InventoryItem item) {
+    public void removeItem(Item item) {
         itemList.remove(item);
     }
 
@@ -60,7 +66,7 @@ public class Inventory implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Inventory other = (Inventory) obj;
+        final MerchantStock other = (MerchantStock) obj;
         if (this.currency != other.currency) {
             return false;
         }

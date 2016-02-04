@@ -6,6 +6,7 @@
 package starfreighter;
 
 import byui.cit260.starFreighter.model.*;
+import byui.cit260.starFreighter.controller.*;
 
 /**
  *
@@ -13,27 +14,51 @@ import byui.cit260.starFreighter.model.*;
  */
 public class StarFreighter {
 
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       Inventory shipInventory = new Inventory();
+       // Create controller instances
+       MerchantController playerInventory = new MerchantController("player");
+       MerchantController shopInventory = new MerchantController("shop");
        
-       shipInventory.setCurrency(8);
+       // Display their currencies
+       playerInventory.displayCurrency();
+       shopInventory.displayCurrency();
        
-       InventoryItem firstItem = new InventoryItem();
-       firstItem.setName("First Item");
-       firstItem.setValue(100);
-       shipInventory.addItem(firstItem);
+       // Create a test item
+       Item cheese = new Item();
+       cheese.setName("Amazing Space Cheese");
+       cheese.setValue(5);
        
-       InventoryItem secItem = new InventoryItem();
-       secItem.setName("Second Item");
-       secItem.setValue(1000);
-       shipInventory.addItem(secItem);
+       // Add the item to the player's playerInventory
+       playerInventory.addItem(cheese);
        
-       String shipInfo = shipInventory.toString();
-       System.out.println(shipInfo);
+       // Display each inventory
+       playerInventory.displayStock();
+       shopInventory.displayStock();
        
+       // Have the shopInventory attempt to buy the item
+       if (shopInventory.buyItem(cheese)) {
+           System.out.println("Shop has bought the amazing space cheese for " + cheese.getValue());
+           
+           // Have the playerInventory sell the item
+           if (playerInventory.sellItem(cheese)) {
+               System.out.println("Player has sold the amazing space cheese for " + cheese.getValue());
+           }
+       }
+       
+       // Display their currencies again
+       playerInventory.displayCurrency();
+       shopInventory.displayCurrency();
+       
+       // Display each inventory again
+       playerInventory.displayStock();
+       shopInventory.displayStock();
+       
+       
+       /*
        // GameCharacter.java test
        GameCharacter player = new GameCharacter();
        
@@ -63,13 +88,13 @@ public class StarFreighter {
        Shop theShop = new Shop();
        theShop.setCurrency(100);
        
-       ShopItem anItem = new ShopItem();
+       Item anItem = new Item();
        anItem.setName("Item Name");
        anItem.setValue(100);
        theShop.addItem(anItem);
        
-       ShopItem anotherItem = new ShopItem();
-       anotherItem.setName("This item is not in the shop");
+       Item anotherItem = new Item();
+       anotherItem.setName("This item is not in the shopInventory");
        anotherItem.setValue(100000);
        theShop.addItem(anotherItem); // Add it...
        theShop.removeItem(anotherItem); // ... then remove it
@@ -80,8 +105,8 @@ public class StarFreighter {
        String anotherItemInfo = anotherItem.toString();
        System.out.println(anotherItemInfo);
        
-       String shopInfo = theShop.toString();
-       System.out.println(shopInfo);
+       String shopInventoryInfo = theShop.toString();
+       System.out.println(shopInventoryInfo);
        
        // CombatEncounter.java test
        CombatEncounter enemyMine = new CombatEncounter();
@@ -121,6 +146,7 @@ public class StarFreighter {
        
        String locInfo = aLoc.toString();
        System.out.println(locInfo);
+*/
        
        
        

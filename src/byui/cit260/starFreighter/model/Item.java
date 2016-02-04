@@ -12,11 +12,11 @@ import java.util.Objects;
  *
  * @author Connor
  */
-public class ShopItem implements Serializable {
+public class Item implements Serializable {
     private String name;
     private int value;
     
-    public ShopItem() {
+    public Item() {
         
     }
 
@@ -67,7 +67,7 @@ public class ShopItem implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final ShopItem other = (ShopItem) obj;
+        final Item other = (Item) obj;
         if (this.value != other.value) {
             return false;
         }
@@ -79,6 +79,6 @@ public class ShopItem implements Serializable {
 
     @Override
     public String toString() {
-        return "ShopItem{" + "name=" + name + ", value=" + value + '}';
+        return "Item{" + "name=" + name + ", value=" + value + '}';
     }
 }
