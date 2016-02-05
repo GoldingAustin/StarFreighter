@@ -12,32 +12,17 @@ import java.util.Objects;
  *
  * @author Connor
  */
-public class GameCharacter implements Serializable {
-    private String role;
+public class CrewMember implements Serializable {
     private String name;
     private int pilot;
     private int mechanic;
     private int fighter;
     private int doctor;
     private int trader;
-    private int hitPoints;
+    private int hitPoints = 10;
 
-    public GameCharacter() {
+    public CrewMember() {
         
-    }
-
-    /**
-     * @return the role
-     */
-    public String getRole() {
-        return role;
-    }
-
-    /**
-     * @param role the role to set
-     */
-    public void setRole(String role) {
-        this.role = role;
     }
 
     /**
@@ -141,7 +126,6 @@ public class GameCharacter implements Serializable {
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 97 * hash + Objects.hashCode(this.role);
         hash = 97 * hash + Objects.hashCode(this.name);
         hash = 97 * hash + this.pilot;
         hash = 97 * hash + this.mechanic;
@@ -163,7 +147,7 @@ public class GameCharacter implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final GameCharacter other = (GameCharacter) obj;
+        final CrewMember other = (CrewMember) obj;
         if (this.pilot != other.pilot) {
             return false;
         }
@@ -182,9 +166,6 @@ public class GameCharacter implements Serializable {
         if (this.hitPoints != other.hitPoints) {
             return false;
         }
-        if (!Objects.equals(this.role, other.role)) {
-            return false;
-        }
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }
@@ -193,6 +174,6 @@ public class GameCharacter implements Serializable {
 
     @Override
     public String toString() {
-        return "GameCharacter{" + "role=" + role + ", name=" + name + ", pilot=" + pilot + ", mechanic=" + mechanic + ", fighter=" + fighter + ", doctor=" + doctor + ", trader=" + trader + ", hitPoints=" + hitPoints + '}';
+        return "GameCharacter{" + "name=" + name + ", pilot=" + pilot + ", mechanic=" + mechanic + ", fighter=" + fighter + ", doctor=" + doctor + ", trader=" + trader + ", hitPoints=" + hitPoints + '}';
     }
 }

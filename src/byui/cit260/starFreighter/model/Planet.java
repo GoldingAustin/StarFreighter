@@ -15,6 +15,8 @@ import java.util.Objects;
 public class Planet implements Serializable{
     private String description;
     private String name;
+    private int coordX;
+    private int coordY;
 
     public Planet() {
         
@@ -34,6 +36,34 @@ public class Planet implements Serializable{
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    /**
+     * @return the coordX
+     */
+    public int getCoordX() {
+        return coordX;
+    }
+
+    /**
+     * @param coordX the coordX to set
+     */
+    public void setCoordX(int coordX) {
+        this.coordX = coordX;
+    }
+
+    /**
+     * @return the coordY
+     */
+    public int getCoordY() {
+        return coordY;
+    }
+
+    /**
+     * @param coordY the coordY to set
+     */
+    public void setCoordY(int coordY) {
+        this.coordY = coordY;
     }
 
     @Override
@@ -68,8 +98,5 @@ public class Planet implements Serializable{
     @Override
     public String toString() {
         return "Planet{" + "name= " + name  + ", description= " + description + '}';
-    }
-
-
-    
+    }    
 }

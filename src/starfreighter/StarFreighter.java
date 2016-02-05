@@ -19,6 +19,17 @@ public class StarFreighter {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        CrewController crewController = new CrewController();
+        CrewMember captain = new CrewMember();
+        crewController.name(captain, "Cap'n Steve");
+        crewController.setStat(captain, CrewController.Stats.MECHANIC, 5);
+        System.out.println(captain);
+        
+        ShipController shipController = new ShipController();
+        Ship playerShip = new Ship();
+        
+        shipController.assignPosition(playerShip, captain, ShipController.Positions.CAPTAIN);
+        System.out.println(playerShip);
        // Create controller instances
        MerchantController playerInventory = new MerchantController("player");
        MerchantController shopInventory = new MerchantController("shop");
