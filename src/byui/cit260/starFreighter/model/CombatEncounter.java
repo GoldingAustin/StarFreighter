@@ -6,8 +6,6 @@
 package byui.cit260.starFreighter.model;
 
 import java.io.Serializable;
-import java.util.Objects;
-
 /**
  *
  * @author Connor

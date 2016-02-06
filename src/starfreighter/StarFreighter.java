@@ -70,6 +70,10 @@ public class StarFreighter {
        playerInventory.displayStock();
        shopInventory.displayStock();
        
+       //Display Randomly Generated Enemies
+       EncounterController tester = new EncounterController();
+       System.out.println(tester);
+       
        
        /*
        // GameCharacter.java test
