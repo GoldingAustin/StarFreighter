@@ -16,25 +16,48 @@ import byui.cit260.starFreighter.model.Item;
  */
 public class MerchantController {
     private String name;
+
+    /**
+     *
+     */
     public final MerchantStock inventory = new MerchantStock();
     
+    /**
+     *
+     * @param name
+     */
     public MerchantController(String name) {
         inventory.setCurrency(10);
         this.name = name;
     }
     
+    /**
+     *
+     * @param item
+     */
     public void addItem(Item item) {
         inventory.addItem(item);
     }
     
+    /**
+     *
+     */
     public void displayCurrency() {
         System.out.println(this.name + " currency: " + inventory.getCurrency() + " credits");
     }
     
+    /**
+     *
+     */
     public void displayStock() {
         System.out.println(this.name + " stock: " + inventory.getItems());
     }
     
+    /**
+     *
+     * @param item
+     * @return
+     */
     public boolean sellItem(Item item) {
         if (inventory.hasItem(item)) {
             int itemValue = item.getValue();
@@ -45,6 +68,11 @@ public class MerchantController {
         return false;
     }
     
+    /**
+     *
+     * @param item
+     * @return
+     */
     public boolean buyItem(Item item) {
         if (inventory.getCurrency() >= item.getValue()) {
             inventory.setCurrency(inventory.getCurrency() - item.getValue());

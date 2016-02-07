@@ -14,8 +14,12 @@ public class CombatEncounter implements Serializable {
     private int hitPoints;
     private int damage;
     private int damageModifiers;
+    private int defenseModifiers;
     private boolean alive;
-
+    
+    public CombatEncounter() {
+        
+    }
     /**
      * @return the hitPoints
      */
@@ -58,6 +62,15 @@ public class CombatEncounter implements Serializable {
         this.damageModifiers = damageModifiers;
     }
 
+    public int getDefenseModifiers() {
+        return defenseModifiers;
+    }
+
+    public void setDefenseModifiers(int defenseModifiers) {
+        this.defenseModifiers = defenseModifiers;
+    }
+
+    
     /**
      * @return the alive
      */
