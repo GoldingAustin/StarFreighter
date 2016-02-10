@@ -15,20 +15,19 @@ import java.util.concurrent.ThreadLocalRandom;
  *
  * @author austingolding
  */
-public class EncounterController {
-
+public final class EncounterController {
+    
     Random rand = new Random();
     private ArrayList<CombatEncounter> enemies = new ArrayList<CombatEncounter>();
     CombatEncounter player = new CombatEncounter();
     CombatEncounter enemy = new CombatEncounter();
-
     /**
      * Generate and populate Enemy ArrayList with enemy stats
      */
     public EncounterController() {
         generateEncounter();
-        calculateDamage();
-        damageEnemy();
+ //       calculateDamage(attack, mod);
+ //      damageEnemy();
 
     }
 
@@ -43,23 +42,24 @@ public class EncounterController {
             enemy.setDefenseModifiers((int) ((ThreadLocalRandom.current().nextInt(0, 11) * .1) * enemy.getHitPoints()));
             enemy.setAlive(true);
             player.setAlive(true);
-            player.setDamageModifiers(5);
             enemies.add(enemy);
         }
     }
 
     /**
      *
+     * @param attack
+     * @param mod
+     * @return 
      */
-    public void calculateDamage() {
-        int attack;
+    public int calculateDamage(int attack, int mod) {
         int modified;
-        attack = (ThreadLocalRandom.current().nextInt(0, 11));
-        modified =  (int) (((attack * .1) * player.getDamageModifiers()));
+    //  attack = (ThreadLocalRandom.current().nextInt(0, 11));
+        modified =  (int) (((attack * .1) * mod));
         player.setDamage(attack + modified);
 
         enemies.add(player);
-        System.out.println("enemies=" + enemies + ", player=" + player);
+        return player.getDamage();
 
     }
 
