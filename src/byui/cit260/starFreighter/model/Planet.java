@@ -18,8 +18,9 @@ public class Planet implements Serializable{
     private int coordX;
     private int coordY;
 
-    public Planet() {
-        
+    public Planet(int x, int y) {
+        coordX = x;
+        coordY = y;
     }
 
     public String getName() {
