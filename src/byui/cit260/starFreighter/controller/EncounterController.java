@@ -16,18 +16,19 @@ import java.util.concurrent.ThreadLocalRandom;
  * @author austingolding
  */
 public final class EncounterController {
-    
+
     Random rand = new Random();
     private ArrayList<CombatEncounter> enemies = new ArrayList<CombatEncounter>();
     CombatEncounter player = new CombatEncounter();
     CombatEncounter enemy = new CombatEncounter();
+
     /**
      * Generate and populate Enemy ArrayList with enemy stats
      */
     public EncounterController() {
-        generateEncounter();
- //       calculateDamage(attack, mod);
- //      damageEnemy();
+        //      generateEncounter();
+        //     calculateDamage(attack, mod);
+        //    damageEnemy();
 
     }
 
@@ -50,38 +51,40 @@ public final class EncounterController {
      *
      * @param attack
      * @param mod
-     * @return 
+     * @return
      */
     public int calculateDamage(int attack, int mod) {
-        int modified;
-    //  attack = (ThreadLocalRandom.current().nextInt(0, 11));
-        modified =  (int) (((attack * .1) * mod));
-        player.setDamage(attack + modified);
+        //  attack = (ThreadLocalRandom.current().nextInt(0, 11));
+        player.setDamageModifiers((int) (((attack * .1) * mod)));
+        player.setDamage(attack + player.getDamageModifiers());
 
         enemies.add(player);
         return player.getDamage();
-
     }
 
     /**
      *
+     * @return
      */
-    public void damageEnemy() {
+    public int damageEnemy() {
         if (enemy.isAlive() == true && player.getDamage() > 0 && player.isAlive()) {
             enemy.setHitPoints(enemy.getHitPoints() - player.getDamage());
 
             if (enemy.getHitPoints() <= 0) {
                 enemy.setAlive(false);
+                return enemy.getHitPoints();
             }
-
-        } 
-        else if (enemy.isAlive() == false){
+            return enemy.getHitPoints();
+        }
+        if (enemy.isAlive() == false) {
             System.out.println("Your Enemy is Dead");
+            return enemy.getHitPoints();
         }
-        else if (player.getDamage() <= 0){
+        if (player.getDamage() <= 0) {
             System.out.println("You did 0 Damage");
+            return enemy.getHitPoints();
         }
-
+        return -1;
     }
 
     /**
