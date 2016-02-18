@@ -7,75 +7,77 @@ package starfreighter;
 
 import byui.cit260.starFreighter.model.*;
 import byui.cit260.starFreighter.controller.*;
+import byui.cit260.starFreighter.view.*;
 
 /**
  *
  * @author austingolding
  */
 public class StarFreighter {
-
-
+    private static Game currentGame = null;
+    private static CrewMember player = null;
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        CrewController crewController = new CrewController();
+        StartProgramView startProgram = new StartProgramView();
+        startProgram.displayStartProgramView();
+
+      /*  CrewController crewController = new CrewController();
         CrewMember captain = new CrewMember();
         crewController.name(captain, "Cap'n Steve");
         crewController.setStat(captain, CrewController.Stats.MECHANIC, 5);
         System.out.println(captain);
-        
+
         ShipController shipController = new ShipController();
         Ship playerShip = new Ship();
-        
+
         shipController.assignPosition(playerShip, captain, ShipController.Positions.CAPTAIN);
         System.out.println(playerShip);
-       // Create controller instances
-       MerchantController playerInventory = new MerchantController("player");
-       MerchantController shopInventory = new MerchantController("shop");
-       
-       // Display their currencies
-       playerInventory.displayCurrency();
-       shopInventory.displayCurrency();
-       
-       // Create a test item
-       Item cheese = new Item();
-       cheese.setName("Amazing Space Cheese");
-       cheese.setValue(5);
-       
-       // Add the item to the player's playerInventory
-       playerInventory.addItem(cheese);
-       shopInventory.addItem(cheese);
-       
-       // Display each inventory
-       playerInventory.displayStock();
-       shopInventory.displayStock();
-       
-       
-       // Have the shopInventory attempt to buy the item
-       if (shopInventory.buyItem(cheese)) {
-           System.out.println("Shop has bought the " + cheese.getName() +  " for " + cheese.getValue() + " credits");
-           
-           // Have the playerInventory sell the item
-           if (playerInventory.sellItem(cheese)) {
-               System.out.println("Player has sold the " + cheese.getName() + " for " + cheese.getValue() + " credits");
-           }
-       }
-       
-       // Display their currencies again
-       playerInventory.displayCurrency();
-       shopInventory.displayCurrency();
-       
-       // Display each inventory again
-       playerInventory.displayStock();
-       shopInventory.displayStock();
-       
-       //Display Randomly Generated Enemies
-       EncounterController tester = new EncounterController();
-       System.out.println(tester);
-       
-       
-       /*
+        // Create controller instances
+        MerchantController playerInventory = new MerchantController("player");
+        MerchantController shopInventory = new MerchantController("shop");
+
+        // Display their currencies
+        playerInventory.displayCurrency();
+        shopInventory.displayCurrency();
+
+        // Create a test item
+        Item cheese = new Item();
+        cheese.setName("Amazing Space Cheese");
+        cheese.setValue(5);
+
+        // Add the item to the player's playerInventory
+        playerInventory.addItem(cheese);
+        shopInventory.addItem(cheese);
+
+        // Display each inventory
+        playerInventory.displayStock();
+        shopInventory.displayStock();
+
+        // Have the shopInventory attempt to buy the item
+        if (shopInventory.buyItem(cheese)) {
+            System.out.println("Shop has bought the " + cheese.getName() + " for " + cheese.getValue() + " credits");
+
+            // Have the playerInventory sell the item
+            if (playerInventory.sellItem(cheese)) {
+                System.out.println("Player has sold the " + cheese.getName() + " for " + cheese.getValue() + " credits");
+            }
+        }
+
+        // Display their currencies again
+        playerInventory.displayCurrency();
+        shopInventory.displayCurrency();
+
+        // Display each inventory again
+        playerInventory.displayStock();
+        shopInventory.displayStock();
+
+        //Display Randomly Generated Enemies
+        EncounterController tester = new EncounterController();
+        System.out.println(tester);
+
+        /*
        // GameCharacter.java test
        GameCharacter player = new GameCharacter();
        
@@ -163,10 +165,29 @@ public class StarFreighter {
        
        String locInfo = aLoc.toString();
        System.out.println(locInfo);
-*/
-       
-       
-       
+         */
     }
+
+    public static Game getCurrentGame() {
+        return currentGame;
+    }
+
+    public static void setCurrentGame(Game currentGame) {
+        StarFreighter.currentGame = currentGame;
+    }
+
+    public static CrewMember getPlayer() {
+        return player;
+    }
+
+    public static void setPlayer(CrewMember player) {
+        StarFreighter.player = player;
+    }
+
+    public static void setPlayer(CrewController player) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
     
 }
