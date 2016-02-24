@@ -15,13 +15,13 @@ import byui.cit260.starFreighter.view.*;
  */
 public class StarFreighter {
     private static Game currentGame = null;
-    private static CrewController player = null;
+    private static CrewMember player = null;
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         MapMenuView test = new MapMenuView();
-        test.display();
+        test.displayMenu();
         //StartProgramView startProgram = new StartProgramView();
         //startProgram.displayStartProgramView();
     }
@@ -34,12 +34,15 @@ public class StarFreighter {
         StarFreighter.currentGame = currentGame;
     }
 
-    public static CrewController getPlayer() {
+    public static CrewMember getPlayer() {
         return player;
     }
 
-    public static void setPlayer(CrewController player) {
+    public static void setPlayer(CrewMember player) {
         StarFreighter.player = player;
     }
-   
+
+    public static void setPlayer(CrewController player) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

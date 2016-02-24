@@ -5,14 +5,15 @@
  */
 package byui.cit260.starFreighter.view;
 
+import java.util.Scanner;
+
 /**
  *
  * @author austingolding
  */
-class HelpMenuView extends View{
+class HelpMenuView {
 
-    public HelpMenuView() {
-        super("\n"
+    private final String MENU = "\n"
             + "\n--------------------------------"
             + "\n| Help Menu                     |"
             + "\n--------------------------------"
@@ -22,17 +23,44 @@ class HelpMenuView extends View{
             + "\nT – Ship details/launch and travel"
             + "\nR - Shops, Upgrades and Repairs"
             + "\nE – Exit to previous menu"
-            + "\n--------------------------------");
+            + "\n--------------------------------";
+
+    void displayMenu() {
+        char selection = ' ';
+        do {
+            System.out.println(MENU);
+
+            String input = this.getInput();
+            selection = input.charAt(0);
+
+            this.doAction(selection);
+
+        } while (selection != 'E');
     }
 
-    @Override
-    public boolean doAction(Object obj) {
-        
-        String value = (String) obj; 
-        value = value.toUpperCase();
-        char choice = value.charAt(0);
-        
-        switch (choice) {
+    private String getInput() {
+        Scanner keyboard = new Scanner(System.in);
+        String value = "";
+
+        boolean valid = false;
+        while (!valid) {
+
+            System.out.println("What do you want to do?");
+
+            value = keyboard.nextLine();
+            value = value.trim();
+
+            if (value.length() != 1) {
+                System.out.println("Invalid input - The value must be one letter");
+                continue;
+            }
+            valid = true;
+        }
+        return value;
+    }
+
+    private void doAction(char value) {
+        switch (value) {
             case 'G':
                 System.out.println("\nYou are a spaceship captain desiring to be "
                         + "\nThe best and wealthiest in the galaxy. A deep-space"
@@ -86,18 +114,18 @@ class HelpMenuView extends View{
                         + "\nin the game menu.");
                 break;
             case 'E':
-                this.display();
+                this.displayMainMenu();
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
                 break;
 
         }
-        return false;
+
     }
 
     private void displayMainMenu() {
         MainMenuView mainMenuView = new MainMenuView();
-        mainMenuView.display();
+        mainMenuView.displayMenu();
     }
 
 }

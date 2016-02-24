@@ -6,6 +6,7 @@
 package byui.cit260.starFreighter.controller;
 
 import byui.cit260.starFreighter.model.CrewMember;
+import byui.cit260.starFreighter.model.Player;
 import starfreighter.StarFreighter;
 
 /**
@@ -31,8 +32,8 @@ public class GameControl {
         return player;
     }
 
-    public static void createNewGame(CrewController player) {
-        
+    public static void createNewGame(CrewMember player) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 

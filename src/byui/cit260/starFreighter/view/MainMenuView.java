@@ -6,16 +6,16 @@
 package byui.cit260.starFreighter.view;
 
 import byui.cit260.starFreighter.controller.GameControl;
+import java.util.Scanner;
 import starfreighter.StarFreighter;
 
 /**
  *
  * @author austingolding
  */
-class MainMenuView extends View{
+class MainMenuView {
 
-    public MainMenuView() {
-        super("\n"
+    private final String MENU = "\n"
             + "\n--------------------------------"
             + "\n| Main Menu                    |"
             + "\n--------------------------------"
@@ -23,16 +23,46 @@ class MainMenuView extends View{
             + "\nH - Help Menu"
             + "\nL - Load Saved Game"
             + "\nE - Exit"
-            + "\n--------------------------------");
+            + "\n--------------------------------";
+
+    public void displayMenu() {
+
+        char selection = ' ';
+        do {
+            System.out.println(MENU);
+
+            String input = this.getInput();
+            selection = input.charAt(0);
+
+            this.doAction(selection);
+
+        } while (selection != 'E');
     }
-    
-    @Override
-    public boolean doAction(Object obj) {
-        
-        String value = (String) obj; 
-        char choice = value.charAt(0);
-        
-        switch (choice) {
+
+    private String getInput() {
+        Scanner keyboard = new Scanner(System.in);
+        String value = "";
+
+        boolean valid = false;
+        while (!valid) {
+
+            System.out.println("What do you want to do?");
+
+            value = keyboard.nextLine();
+            value = value.trim();
+
+            if (value.length() != 1) {
+                System.out.println("Invalid input - The value must be one letter");
+                continue;
+            }
+            valid = true;
+        }
+        return value;
+    }
+
+    private void doAction(char value) {
+
+        switch (value) {
             case 'G':
                 this.startNewGame();
                 break;
@@ -43,19 +73,19 @@ class MainMenuView extends View{
                 this.displayHelpMenu();
                 break;
             case 'E':
-                return true;
+                return;
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
                 break;
-       
+
         }
-        return false;
     }
 
     private void startNewGame() {
-     //   GameControl.createNewGame(StarFreighter.getPlayer());
+        GameControl.createNewGame(StarFreighter.getPlayer());
+
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.display();
+        gameMenu.displayMenu();
     }
 
     private void startExistingGame() {
@@ -64,7 +94,7 @@ class MainMenuView extends View{
 
     private void displayHelpMenu() {
         HelpMenuView helpMenu = new HelpMenuView();
-        helpMenu.display();
+        helpMenu.displayMenu();
     }
 
 }
