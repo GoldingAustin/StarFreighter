@@ -4,15 +4,124 @@
  * and open the template in the editor.
  */
 package byui.cit260.starFreighter.view;
-
 /**
  *
  * @author austingolding
  */
-class GameMenuView {
+class GameMenuView extends View{
 
-    void displayMenu() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public GameMenuView() {
+        super("\n"
+            + "\n--------------------------------"
+            + "\n| Help Menu                     |"
+            + "\n--------------------------------"
+            + "\nS – Ship Control"
+            + "\nC – Captain and Crew"
+            + "\nM – Map Menu"
+            + "\nX – Inventory and Merchant"
+            + "\nH - Help Menu"
+            + "\nZ – Save Game"
+            + "\nE - Exit to main menu"
+            + "\n--------------------------------");
     }
-    
+
+    @Override
+    public boolean doAction(Object obj) {
+        
+        String value = (String) obj; 
+        char choice = value.charAt(0);
+        
+        switch (choice) {
+            case 'G':
+                System.out.println("\nYou are a spaceship captain desiring to be "
+                        + "\nThe best and wealthiest in the galaxy. A deep-space"
+                        + "\nphenomena has occurred which could lead you to an "
+                        + "\nancient alien treasure. You need to earn money "
+                        + "\nby completing jobs and selling items to upgrade your"
+                        + "\nship.");
+                break;
+            case 'C':
+                System.out.println("\nThere are five roles on your ship"
+                        + "\n"
+                        + "\n*Pilot: The better they are the faster you travel"
+                        + "\nand the less fuel you use"
+                        + "\n"
+                        + "\n*Mechanic: Upgrades are cheaper and repairs are as "
+                        + "\nas well. They might even add some bonus upgrades."
+                        + "\n"
+                        + "\n*Fighter: Who needs brains when you can beat anyone"
+                        + "\nin a fight? The better the fighter the quicker you'll"
+                        + "\ndefeat your enemies"
+                        + "\n"
+                        + "\n*Doctor: When your ego is hurt or you're just injured,"
+                        + "\nthe doctor will have you up and going quicker than "
+                        + "\nWebMD."
+                        + "\n"
+                        + "\n*Trader: Who doesn't love some bartering? Sell for "
+                        + "\nmore and buy for less."
+                        + "\n");
+                        this.CrewMenuView();
+                break;
+            case 'I':
+                System.out.println("\nYou can access the jobs boards on any planet."
+                        + "\nYou'll be given a task to complete and rewarded on"
+                        + "\ncompletion. You may receive parts you need for your"
+                        + "\nship, money, or items you can sell. Merchants can be "
+                        + "\naccessed any time from the game menu.");
+                break;
+            case 'T':
+                System.out.println("\nYou can access the map anytime in the game"
+                        + "\nmenu. Each location has a specific distance and fuel"
+                        + "\ncost. You don't want to run out of fuel on your way"
+                        + "\nto a planet.");
+                break;
+            case 'R':
+                System.out.println("\nMerchants can be accessed in the game menu."
+                        + "\nYou can sell items you don't need or buy what you "
+                        + "\nneed. You need to upgrade your ship to be able to "
+                        + "\nmake it to the phenomena. You can earn parts from"
+                        + "\njobs or buy them from merchants. Your ship might get"
+                        + "\ndamaged in your travels, you can use parts to repair"
+                        + "\nyour ship as well. Repairs and Upgrades options are"
+                        + "\nin the game menu.");
+                break;
+            case 'E':
+                this.displayMainMenu();
+            default:
+                System.out.println("\n*** Invalid selection *** Try again");
+                break;
+
+        }
+        return false;
+    }
+
+    private void ShipMenuView() {
+        ShipMenuView shipMenu = new ShipMenuView();
+        shipMenu.displayMenu();
+    }
+
+    private void CrewMenuView() {
+        CrewMenuView crewMenu = new CrewMenuView();
+        crewMenu.display();
+    }
+
+    private void MapMenuView() {
+        MapMenuView mapMenu = new MapMenuView();
+        mapMenu.display();
+    }
+
+    private void InmeMenuView() {
+        InmeMenuView inmeMenu = new InmeMenuView();
+        inmeMenu.displayMenu();
+    }
+
+    private void displayHelpMenu() {
+        HelpMenuView helpMenu = new HelpMenuView();
+        helpMenu.display();
+    }
+
+    private void displayMainMenu() {
+        MainMenuView mainMenuView = new MainMenuView();
+        mainMenuView.display();
+    }
 }

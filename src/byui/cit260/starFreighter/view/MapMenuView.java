@@ -16,16 +16,8 @@ import java.util.Scanner;
  *
  * @author Connor
  */
-public class MapMenuView {
+public class MapMenuView extends View {
     // Class constants
-    private final String MENU = "\n"
-            + "\n--------------------------------"
-            + "\n| Map Menu                     |"
-            + "\n--------------------------------"
-            + "\nM - Display map"
-            + "\nT - Travel"
-            + "\nE - Exit"
-            + "\n--------------------------------";
     private final int ROWS = 6; // number of horizontal rows in the map
     private final int COLS = 11; // number of vertical columns in the map
     private final char SYMBOL_EMPTY = '.'; // used to display empty space
@@ -43,6 +35,15 @@ public class MapMenuView {
      * Initialize the controller and populate the map.
      */
     public MapMenuView() {
+        super ("\n"
+            + "\n--------------------------------"
+            + "\n| Map Menu                     |"
+            + "\n--------------------------------"
+            + "\nM - Display map"
+            + "\nT - Travel"
+            + "\nE - Exit"
+            + "\n--------------------------------");
+        
         mapController =  new MapController();
         displayMap = new char[ROWS][COLS];
 
@@ -66,54 +67,18 @@ public class MapMenuView {
         }
     }
 
-
-    /**
-     * Displays the map menu.
-     */
-    public void displayMenu() {
-        char selection;
-        // view #1, do/while loop
-        do {
-            System.out.println(MENU);
-            selection = this.getInput();
-            this.doAction(selection);
-        } while (selection != 'E');
-    }
-
-
-    /**
-     * Gets a single character, uppercase if applicable.
-     * @return {char} input - a single, uppercase character
-     */
-    private char getInput() {
-        Scanner keyboard = new Scanner(System.in);
-        char input = ' ';
-
-        boolean valid = false;
-        while (!valid) {
-            System.out.print("What do you want to do? ");
-            // view #1, two String functions
-            String value = keyboard.nextLine().trim();
-            
-            if (value.length() != 1) {
-                System.out.println("Invalid input - The value must be one letter");
-                continue;
-            }
-            
-            input = Character.toUpperCase(value.charAt(0));
-            valid = true;
-        }
-        return input;
-    }
-
-
     /**
      * Performs an action based on user input.
-     * @param value - the user input to switch on
+     * @param obj - the user input to switch on 
+     * @return 
      */
-    private void doAction(char value) {
+    @Override
+    public boolean doAction(Object obj) {
+        
+        String value = (String) obj; 
+        char choice = value.charAt(0);
         // view #1, switch statement
-        switch (value) {
+        switch (choice) {
             case 'M':
                 this.displayMap();
                 break;
@@ -121,11 +86,12 @@ public class MapMenuView {
                 this.travel();
                 break;
             case 'E':
-                return;
+                return true;
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
                 break;
         }
+        return false;
     }
 
 
