@@ -11,53 +11,12 @@ import java.util.Scanner;
  *
  * @author austingolding
  */
-class HelpMenuView {
+class HelpMenuView extends View{
 
-    private final String MENU = "\n"
-            + "\n--------------------------------"
-            + "\n| Help Menu                     |"
-            + "\n--------------------------------"
-            + "\nG – Information on the goal for the game"
-            + "\nC – Captain and Crew character classes/roles and combat"
-            + "\nI – How to make money/Jobs board"
-            + "\nT – Ship details/launch and travel"
-            + "\nR - Shops, Upgrades and Repairs"
-            + "\nE – Exit to previous menu"
-            + "\n--------------------------------";
-
-    void displayMenu() {
-        char selection = ' ';
-        do {
-            System.out.println(MENU);
-
-            String input = this.getInput();
-            selection = input.charAt(0);
-
-            this.doAction(selection);
-
-        } while (selection != 'E');
+    public HelpMenuView(String message) {
+        super(message);
     }
 
-    private String getInput() {
-        Scanner keyboard = new Scanner(System.in);
-        String value = "";
-
-        boolean valid = false;
-        while (!valid) {
-
-            System.out.println("What do you want to do?");
-
-            value = keyboard.nextLine();
-            value = value.trim();
-
-            if (value.length() != 1) {
-                System.out.println("Invalid input - The value must be one letter");
-                continue;
-            }
-            valid = true;
-        }
-        return value;
-    }
 
     private void doAction(char value) {
         switch (value) {
@@ -126,6 +85,11 @@ class HelpMenuView {
     private void displayMainMenu() {
         MainMenuView mainMenuView = new MainMenuView();
         mainMenuView.displayMenu();
+    }
+
+    @Override
+    public boolean doAction(Object obj) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
