@@ -11,13 +11,7 @@ import byui.cit260.starFreighter.model.CrewMember;
  *
  * @author Connor
  */
-public class CrewController {
-    public static CrewController crewController = new CrewController();
-    public static CrewMember captain = new CrewMember();
-    public static CrewMember crewOne = new CrewMember();
-    public static CrewMember crewTwo = new CrewMember();
-    public static CrewMember crewThr = new CrewMember();
-    public static CrewMember crewFou = new CrewMember();
+public class CrewController {   
     
     public static enum Stats {
         PILOT, MECHANIC, FIGHTER, DOCTOR, TRADER
@@ -60,6 +54,6 @@ public class CrewController {
     }
     
     public CrewController() {
-        
+
     }
 }

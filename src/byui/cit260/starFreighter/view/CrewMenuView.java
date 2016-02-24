@@ -5,12 +5,13 @@
  */
 package byui.cit260.starFreighter.view;
 
-import static byui.cit260.starFreighter.controller.CrewController.captain;
-import static byui.cit260.starFreighter.controller.CrewController.crewFou;
-import static byui.cit260.starFreighter.controller.CrewController.crewOne;
-import static byui.cit260.starFreighter.controller.CrewController.crewThr;
-import static byui.cit260.starFreighter.controller.CrewController.crewTwo;
+
 import byui.cit260.starFreighter.model.CrewMember;
+import static byui.cit260.starFreighter.model.CrewMember.captain;
+import static byui.cit260.starFreighter.model.CrewMember.crewFou;
+import static byui.cit260.starFreighter.model.CrewMember.crewOne;
+import static byui.cit260.starFreighter.model.CrewMember.crewThr;
+import static byui.cit260.starFreighter.model.CrewMember.crewTwo;
 
 
 /**
@@ -25,11 +26,11 @@ class CrewMenuView extends View {
                 + "\n--------------------------------"
                 + "\n| Crew Customizaion Menu        |"
                 + "\n--------------------------------"
-                + "\nC - Captain"
-                + "\n1 - Crew 1"
-                + "\n2 - Crew 2"
-                + "\n3 - Crew 3"
-                + "\n4 - Crew 4"
+                + "\nC - Captain: " + captain.getName()
+                + "\n1 - Crew 1: " + crewOne.getName()
+                + "\n2 - Crew 2: " + crewTwo.getName()
+                + "\n3 - Crew 3: " + crewThr.getName()
+                + "\n4 - Crew 4: " + crewFou.getName()
                 + "\nE - Exit"
                 + "\n--------------------------------");
     }

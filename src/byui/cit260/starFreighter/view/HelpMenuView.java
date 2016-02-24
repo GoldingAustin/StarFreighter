@@ -86,7 +86,7 @@ class HelpMenuView extends View{
                         + "\nin the game menu.");
                 break;
             case 'E':
-                this.display();
+                return true;
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
                 break;

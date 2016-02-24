@@ -16,6 +16,8 @@ import byui.cit260.starFreighter.view.*;
 public class StarFreighter {
     private static Game currentGame = null;
     private static CrewController player = null;
+    
+
     /**
      * @param args the command line arguments
      */

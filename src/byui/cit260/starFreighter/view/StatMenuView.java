@@ -20,7 +20,7 @@ class StatMenuView {
     public StatMenuView(CrewMember crew) {
         this.displayMessage = "\n"
                 + "\n--------------------------------"
-                + "\n| Crew Stat Customizaion Menu  |"
+                + "\n| Crew Stat Menu               |"
                 + "\n--------------------------------"
                 + "\nP - Pilot"
                 + "\nM - Mechanic"

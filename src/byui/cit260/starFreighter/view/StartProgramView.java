@@ -5,9 +5,14 @@
  */
 package byui.cit260.starFreighter.view;
 
-import static byui.cit260.starFreighter.controller.CrewController.captain;
-import static byui.cit260.starFreighter.controller.CrewController.crewController;
+
 import byui.cit260.starFreighter.model.CrewMember;
+import static byui.cit260.starFreighter.model.CrewMember.crewCon;
+import static byui.cit260.starFreighter.model.CrewMember.captain;
+import static byui.cit260.starFreighter.model.CrewMember.crewFou;
+import static byui.cit260.starFreighter.model.CrewMember.crewOne;
+import static byui.cit260.starFreighter.model.CrewMember.crewThr;
+import static byui.cit260.starFreighter.model.CrewMember.crewTwo;
 import java.util.Scanner;
 
 /**
@@ -97,7 +102,11 @@ public final class StartProgramView {
         }
         
 
-        crewController.name(captain, playersName);
+        crewCon.name(captain, playersName);
+        crewCon.name(crewOne, "Spock");
+        crewCon.name(crewTwo, "Kirk");
+        crewCon.name(crewThr, "Bones");
+        crewCon.name(crewFou, "McCoy");
         
         if (captain == null) {
             System.out.println("\nError creating the player.");
