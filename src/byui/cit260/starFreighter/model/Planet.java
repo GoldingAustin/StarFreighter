@@ -8,6 +8,7 @@ package byui.cit260.starFreighter.model;
 import java.io.Serializable;
 import java.util.Objects;
 
+
 /**
  *
  * @author austingolding
@@ -15,26 +16,45 @@ import java.util.Objects;
 public class Planet implements Serializable{
     private String description;
     private String name;
-    private int coordX;
-    private int coordY;
+    private final Coordinates coords;
 
+    /**
+     * Initializes a new planet with a pair of specified coordinates.
+     * @param x
+     * @param y 
+     */
     public Planet(int x, int y) {
-        coordX = x;
-        coordY = y;
+        coords = new Coordinates(x, y);
     }
 
+    /**
+     * Gets the planet's name.
+     * @return {String} the planet's name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Sets the planet's name.
+     * @param name - the name to set
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Gets the planet's description.
+     * @return {String} the planet's description
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Sets the planet's description.
+     * @param description - the description to set
+     */
     public void setDescription(String description) {
         this.description = description;
     }
@@ -43,28 +63,21 @@ public class Planet implements Serializable{
      * @return the coordX
      */
     public int getCoordX() {
-        return coordX;
-    }
-
-    /**
-     * @param coordX the coordX to set
-     */
-    public void setCoordX(int coordX) {
-        this.coordX = coordX;
+        return coords.getX();
     }
 
     /**
      * @return the coordY
      */
     public int getCoordY() {
-        return coordY;
+        return coords.getY();
     }
 
     /**
-     * @param coordY the coordY to set
+     * @return the coords
      */
-    public void setCoordY(int coordY) {
-        this.coordY = coordY;
+    public Coordinates getCoordinates() {
+        return coords;
     }
 
     @Override

@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package byui.cit260.starFreighter.model;
+package byui.cit260.starFreighter.view;
 
 /**
  *
  * @author austingolding
  */
-class PlanetList {
-    // What's this for? I'm lost, haha! - Connor
+public interface ViewInterface {
+    
+    public void display();
+    public String getInput();
+    public boolean doAction(Object obj);
+    
 }
