@@ -6,20 +6,21 @@
 package byui.cit260.starFreighter.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.Objects;
 
 /**
  *
  * @author austingolding
  */
-public class Map implements Serializable{
-    private ArrayList<Planet> planets;
+public class GameMap implements Serializable{
+    private final Map<Coordinates, Planet> planetMap;
     
     private boolean completed;
     
-    public Map() {
-        planets = new ArrayList<Planet>();
+    public GameMap() {
+        planetMap = new HashMap<>();
     }
     
     public void display() {
@@ -30,12 +31,13 @@ public class Map implements Serializable{
         
     }
     
-    public ArrayList<Planet> getPlanets() {
-        return planets;
+    public Map<Coordinates, Planet> getPlanets() {
+        return planetMap;
     }
 
     public void setPlanets(Planet oPlanet) {
-        planets.add(oPlanet);
+        Coordinates coords = new Coordinates(oPlanet.getCoordX(), oPlanet.getCoordY());
+        planetMap.put(coords, oPlanet);
     }
 
     public boolean isCompleted() {
@@ -49,7 +51,7 @@ public class Map implements Serializable{
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 19 * hash + Objects.hashCode(this.planets);
+        hash = 19 * hash + Objects.hashCode(this.planetMap);
         hash = 19 * hash + (this.completed ? 1 : 0);
         return hash;
     }
@@ -65,11 +67,11 @@ public class Map implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Map other = (Map) obj;
+        final GameMap other = (GameMap) obj;
         if (this.completed != other.completed) {
             return false;
         }
-        if (!Objects.equals(this.planets, other.planets)) {
+        if (!Objects.equals(this.planetMap, other.planetMap)) {
             return false;
         }
         return true;
@@ -77,8 +79,7 @@ public class Map implements Serializable{
 
     @Override
     public String toString() {
-        return "Map{" + "planets=" + planets + ", completed=" + completed + '}';
+        return "GameMap{" + "planets=" + planetMap + ", completed=" + completed + '}';
     }
-    
-    
-    }
+
+}
