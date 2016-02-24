@@ -20,10 +20,10 @@ public class StarFreighter {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        MapMenuView test = new MapMenuView();
-        test.display();
-        //StartProgramView startProgram = new StartProgramView();
-        //startProgram.displayStartProgramView();
+      //  MapMenuView test = new MapMenuView();
+      //  test.display();
+        StartProgramView startProgram = new StartProgramView();
+        startProgram.displayStartProgramView();
     }
 
     public static Game getCurrentGame() {

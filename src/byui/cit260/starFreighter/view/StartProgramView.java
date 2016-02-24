@@ -5,7 +5,8 @@
  */
 package byui.cit260.starFreighter.view;
 
-import byui.cit260.starFreighter.controller.CrewController;
+import static byui.cit260.starFreighter.controller.CrewController.captain;
+import static byui.cit260.starFreighter.controller.CrewController.crewController;
 import byui.cit260.starFreighter.model.CrewMember;
 import java.util.Scanner;
 
@@ -14,10 +15,12 @@ import java.util.Scanner;
  * @author austingolding
  */
 public final class StartProgramView {
-
+    
+    
     private final String promptMessage;
     private boolean doAction;
     private String playersName;
+    
 
     public StartProgramView() {
         this.promptMessage = "\nPlease enter your name: ";
@@ -93,8 +96,7 @@ public final class StartProgramView {
             return false;
         }
         
-        CrewController crewController = new CrewController();
-        CrewMember captain = new CrewMember();
+
         crewController.name(captain, playersName);
         
         if (captain == null) {

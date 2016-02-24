@@ -13,7 +13,7 @@ class GameMenuView extends View{
     public GameMenuView() {
         super("\n"
             + "\n--------------------------------"
-            + "\n| Help Menu                     |"
+            + "\n| Game Menu                     |"
             + "\n--------------------------------"
             + "\nS – Ship Control"
             + "\nC – Captain and Crew"

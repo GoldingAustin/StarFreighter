@@ -5,9 +5,6 @@
  */
 package byui.cit260.starFreighter.view;
 
-import byui.cit260.starFreighter.controller.GameControl;
-import starfreighter.StarFreighter;
-
 /**
  *
  * @author austingolding

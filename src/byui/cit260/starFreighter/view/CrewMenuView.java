@@ -5,7 +5,13 @@
  */
 package byui.cit260.starFreighter.view;
 
+import static byui.cit260.starFreighter.controller.CrewController.captain;
+import static byui.cit260.starFreighter.controller.CrewController.crewFou;
+import static byui.cit260.starFreighter.controller.CrewController.crewOne;
+import static byui.cit260.starFreighter.controller.CrewController.crewThr;
+import static byui.cit260.starFreighter.controller.CrewController.crewTwo;
 import byui.cit260.starFreighter.model.CrewMember;
+
 
 /**
  *
@@ -13,6 +19,7 @@ import byui.cit260.starFreighter.model.CrewMember;
  */
 class CrewMenuView extends View {
 
+    public CrewMember crew;
     public CrewMenuView() {
         super("\n"
                 + "\n--------------------------------"
@@ -35,21 +42,19 @@ class CrewMenuView extends View {
 
         switch (choice) {
             case 'C':
-                CrewMember captain = new CrewMember();
-                this.displayStatMenu(CrewMember captain);
+                this.displayStatMenu(captain);
                 break;
             case '1':
-                CrewMember captain = new CrewMember();
-                this.displayStatMenu(CrewMember crew1);
+                this.displayStatMenu(crewOne);
                 break;
             case '2':
-                this.displayStatMenu(CrewMember crew2);
+                this.displayStatMenu(crewTwo);
                 break;
             case '3':
-                this.displayStatMenu(CrewMember crew3);
+                this.displayStatMenu(crewThr);
                 break;
             case '4':
-                this.displayStatMenu(CrewMember crew4);
+                this.displayStatMenu(crewFou);
                 break;
             case 'E':
                 return true;
@@ -61,18 +66,28 @@ class CrewMenuView extends View {
         return false;
     }
 
+    
     private void startExistingGame() {
         System.out.println("\n*** startExistingGame() stub function called ***");
     }
 
-    private void displayStatMenu(Object crw) {
-        
-        StatMenuView statMenu = new StatMenuView(Object crw);
-        statMenu.display();
+    private void displayStatMenu(CrewMember crew) {
+        StatMenuView statMenu = new StatMenuView(crew);       
+        statMenu.display(crew);
     }
 
     void displayMenu() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    public CrewMember getCrew() {
+        return crew;
+    }
+
+    public void setCrew(CrewMember crew) {
+        this.crew = crew;
+    }
+    
+    
 
 }

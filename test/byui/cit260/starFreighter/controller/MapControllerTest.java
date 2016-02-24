@@ -5,6 +5,7 @@
  */
 package byui.cit260.starFreighter.controller;
 
+import byui.cit260.starFreighter.model.Coordinates;
 import byui.cit260.starFreighter.model.Planet;
 import org.junit.After;
 import org.junit.Before;
@@ -40,6 +41,7 @@ public class MapControllerTest {
         System.out.println("\tTest Case #1");
         Planet currentPlanet1 = new Planet(1, 1);
         Planet desiredPlanet1 = new Planet(-1, -1);
+        
         double expResult1 = 2.8284;
         double result1 = instance.calculateDistance(currentPlanet1, desiredPlanet1);
         assertEquals(expResult1, result1, 0.001);

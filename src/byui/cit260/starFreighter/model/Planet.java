@@ -16,7 +16,7 @@ import java.util.Objects;
 public class Planet implements Serializable{
     private String description;
     private String name;
-    private final Coordinates coords;
+    public final Coordinates coords;
 
     /**
      * Initializes a new planet with a pair of specified coordinates.
