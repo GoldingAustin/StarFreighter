@@ -116,6 +116,6 @@ public final class StartProgramView {
         
         MainMenuView mainMenuView = new MainMenuView();
         
-        mainMenuView.displayMenu();
+        mainMenuView.display();
     }
 }

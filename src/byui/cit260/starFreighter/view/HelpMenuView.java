@@ -5,21 +5,34 @@
  */
 package byui.cit260.starFreighter.view;
 
-import java.util.Scanner;
-
 /**
  *
  * @author austingolding
  */
 class HelpMenuView extends View{
 
-    public HelpMenuView(String message) {
-        super(message);
+    public HelpMenuView() {
+        super("\n"
+            + "\n--------------------------------"
+            + "\n| Help Menu                     |"
+            + "\n--------------------------------"
+            + "\nG – Information on the goal for the game"
+            + "\nC – Captain and Crew character classes/roles and combat"
+            + "\nI – How to make money/Jobs board"
+            + "\nT – Ship details/launch and travel"
+            + "\nR - Shops, Upgrades and Repairs"
+            + "\nE – Exit to previous menu"
+            + "\n--------------------------------");
     }
 
-
-    private void doAction(char value) {
-        switch (value) {
+    @Override
+    public boolean doAction(Object obj) {
+        
+        String value = (String) obj; 
+        value = value.toUpperCase();
+        char choice = value.charAt(0);
+        
+        switch (choice) {
             case 'G':
                 System.out.println("\nYou are a spaceship captain desiring to be "
                         + "\nThe best and wealthiest in the galaxy. A deep-space"
@@ -73,18 +86,18 @@ class HelpMenuView extends View{
                         + "\nin the game menu.");
                 break;
             case 'E':
-                this.displayMainMenu();
+                this.display();
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
                 break;
 
         }
-
+        return false;
     }
 
     private void displayMainMenu() {
         MainMenuView mainMenuView = new MainMenuView();
-        mainMenuView.displayMenu();
+        mainMenuView.display();
     }
 
     @Override
