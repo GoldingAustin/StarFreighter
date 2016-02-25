@@ -5,7 +5,6 @@
  */
 package byui.cit260.starFreighter.controller;
 
-import byui.cit260.starFreighter.model.Coordinates;
 import byui.cit260.starFreighter.model.Planet;
 import org.junit.After;
 import org.junit.Before;
@@ -41,9 +40,8 @@ public class MapControllerTest {
         System.out.println("\tTest Case #1");
         Planet currentPlanet1 = new Planet(1, 1);
         Planet desiredPlanet1 = new Planet(-1, -1);
-        
         double expResult1 = 2.8284;
-        double result1 = instance.calculateDistance(currentPlanet1, desiredPlanet1);
+        double result1 = instance.calculateDistance(currentPlanet1.getCoordinates(), desiredPlanet1.getCoordinates());
         assertEquals(expResult1, result1, 0.001);
         
         // Test case #2
@@ -51,7 +49,7 @@ public class MapControllerTest {
         Planet currentPlanet2 = new Planet(10, -10);
         Planet desiredPlanet2 = new Planet(-10, 10);
         double expResult2 = 28.2842;
-        double result2 = instance.calculateDistance(currentPlanet2, desiredPlanet2);
+        double result2 = instance.calculateDistance(currentPlanet2.getCoordinates(), desiredPlanet2.getCoordinates());
         assertEquals(expResult2, result2, 0.001);
         
         // Test case #3
@@ -59,7 +57,7 @@ public class MapControllerTest {
         Planet currentPlanet3 = new Planet(5, 5);
         Planet desiredPlanet3 = new Planet(5, 5);
         double expResult3 = 0.0;
-        double result3 = instance.calculateDistance(currentPlanet3, desiredPlanet3);
+        double result3 = instance.calculateDistance(currentPlanet3.getCoordinates(), desiredPlanet3.getCoordinates());
         assertEquals(expResult3, result3, 0.001);
         
         // Test case #4
@@ -67,7 +65,7 @@ public class MapControllerTest {
         Planet currentPlanet4 = new Planet(500, 500);
         Planet desiredPlanet4 = new Planet(0, 0);
         double expResult4 = 707.1068;
-        double result4 = instance.calculateDistance(currentPlanet4, desiredPlanet4);
+        double result4 = instance.calculateDistance(currentPlanet4.getCoordinates(), desiredPlanet4.getCoordinates());
         assertEquals(expResult4, result4, 0.001);
         
         // Test case #5
