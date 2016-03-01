@@ -6,10 +6,11 @@
 package byui.cit260.starFreighter.controller;
 
 import byui.cit260.starFreighter.model.CombatEncounter;
+import static java.lang.System.out;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
+import static java.util.concurrent.ThreadLocalRandom.current;
 
 /**
  *
@@ -18,7 +19,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public final class EncounterController {
 
     Random rand = new Random();
-    private ArrayList<CombatEncounter> enemies = new ArrayList<CombatEncounter>();
+    private ArrayList<CombatEncounter> enemies = new ArrayList<>();
     CombatEncounter player = new CombatEncounter();
     CombatEncounter enemy = new CombatEncounter();
 
@@ -36,11 +37,11 @@ public final class EncounterController {
      *
      */
     public void generateEncounter() {
-        for (int i = 0; i <= (ThreadLocalRandom.current().nextInt(0, 6)); i++) {
+        for (int i = 0; i <= (current().nextInt(0, 6)); i++) {
 
-            enemy.setHitPoints(ThreadLocalRandom.current().nextInt(1, 31));
-            enemy.setDamageModifiers(ThreadLocalRandom.current().nextInt(0, 11));
-            enemy.setDefenseModifiers((int) ((ThreadLocalRandom.current().nextInt(0, 11) * .1) * enemy.getHitPoints()));
+            enemy.setHitPoints(current().nextInt(1, 31));
+            enemy.setDamageModifiers(current().nextInt(0, 11));
+            enemy.setDefenseModifiers((int) ((current().nextInt(0, 11) * .1) * enemy.getHitPoints()));
             enemy.setAlive(true);
             player.setAlive(true);
             enemies.add(enemy);
@@ -54,8 +55,8 @@ public final class EncounterController {
      * @return
      */
     public int calculateDamage(int attack, int mod) {
-        //  attack = (ThreadLocalRandom.current().nextInt(0, 11));
-        player.setDamageModifiers((int) (((attack * .1) * mod)));
+        // attack = (ThreadLocalRandom.current().nextInt(0, 11));
+        player.setDamageModifiers((int) (((mod * .1) * attack)));
         player.setDamage(attack + player.getDamageModifiers());
 
         enemies.add(player);
@@ -74,14 +75,14 @@ public final class EncounterController {
                 enemy.setAlive(false);
                 return enemy.getHitPoints();
             }
-            return enemy.getHitPoints();
+           return enemy.getHitPoints();
         }
         if (enemy.isAlive() == false) {
-            System.out.println("Your Enemy is Dead");
+            out.println("Your Enemy is Dead");
             return enemy.getHitPoints();
         }
         if (player.getDamage() <= 0) {
-            System.out.println("You did 0 Damage");
+            out.println("You did 0 Damage");
             return enemy.getHitPoints();
         }
         return -1;

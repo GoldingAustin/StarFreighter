@@ -6,8 +6,9 @@
 package byui.cit260.starFreighter.controller;
 
 
-import byui.cit260.starFreighter.model.MerchantStock;
 import byui.cit260.starFreighter.model.Item;
+import byui.cit260.starFreighter.model.MerchantStock;
+import static java.lang.System.out;
 
 
 /**
@@ -43,14 +44,14 @@ public class MerchantController {
      *
      */
     public void displayCurrency() {
-        System.out.println(this.name + " currency: " + inventory.getCurrency() + " credits");
+        out.println(this.name + " currency: " + inventory.getCurrency() + " credits");
     }
     
     /**
      *
      */
     public void displayStock() {
-        System.out.println(this.name + " stock: " + inventory.getItems());
+        out.println(this.name + " stock: " + inventory.getItems());
     }
     
     /**

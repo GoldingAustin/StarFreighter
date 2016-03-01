@@ -5,6 +5,8 @@
  */
 package byui.cit260.starFreighter.view;
 
+import static java.lang.System.out;
+
 /**
  *
  * @author austingolding
@@ -34,7 +36,7 @@ class HelpMenuView extends View{
         
         switch (choice) {
             case 'G':
-                System.out.println("\nYou are a spaceship captain desiring to be "
+                out.println("\nYou are a spaceship captain desiring to be "
                         + "\nThe best and wealthiest in the galaxy. A deep-space"
                         + "\nphenomena has occurred which could lead you to an "
                         + "\nancient alien treasure. You need to earn money "
@@ -42,7 +44,7 @@ class HelpMenuView extends View{
                         + "\nship.");
                 break;
             case 'C':
-                System.out.println("\nThere are five roles on your ship"
+                out.println("\nThere are five roles on your ship"
                         + "\n"
                         + "\n*Pilot: The better they are the faster you travel"
                         + "\nand the less fuel you use"
@@ -63,20 +65,20 @@ class HelpMenuView extends View{
                         + "\n");
                 break;
             case 'I':
-                System.out.println("\nYou can access the jobs boards on any planet."
+                out.println("\nYou can access the jobs boards on any planet."
                         + "\nYou'll be given a task to complete and rewarded on"
                         + "\ncompletion. You may receive parts you need for your"
                         + "\nship, money, or items you can sell. Merchants can be "
                         + "\naccessed any time from the game menu.");
                 break;
             case 'T':
-                System.out.println("\nYou can access the map anytime in the game"
+                out.println("\nYou can access the map anytime in the game"
                         + "\nmenu. Each location has a specific distance and fuel"
                         + "\ncost. You don't want to run out of fuel on your way"
                         + "\nto a planet.");
                 break;
             case 'R':
-                System.out.println("\nMerchants can be accessed in the game menu."
+                out.println("\nMerchants can be accessed in the game menu."
                         + "\nYou can sell items you don't need or buy what you "
                         + "\nneed. You need to upgrade your ship to be able to "
                         + "\nmake it to the phenomena. You can earn parts from"
@@ -88,7 +90,7 @@ class HelpMenuView extends View{
             case 'E':
                 return true;
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                out.println("\n*** Invalid selection *** Try again");
                 break;
 
         }

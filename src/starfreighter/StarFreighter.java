@@ -5,8 +5,8 @@
  */
 package starfreighter;
 
-import byui.cit260.starFreighter.model.*;
 import byui.cit260.starFreighter.controller.*;
+import byui.cit260.starFreighter.model.*;
 import byui.cit260.starFreighter.view.*;
 
 /**
@@ -14,16 +14,16 @@ import byui.cit260.starFreighter.view.*;
  * @author austingolding
  */
 public class StarFreighter {
-    private static Game currentGame = null;
-    private static CrewController player = null;
+    private static final Game currentGame = null;
+    private static final CrewController player = null;
     
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        MapMenuView test = new MapMenuView();
-        test.display();
+      //  MapMenuView test = new MapMenuView();
+      //  test.display();
         StartProgramView startProgram = new StartProgramView();
         startProgram.displayStartProgramView();
     }
@@ -33,7 +33,7 @@ public class StarFreighter {
     }
 
     public static void setCurrentGame(Game currentGame) {
-        StarFreighter.currentGame = currentGame;
+        currentGame = currentGame;
     }
 
     public static CrewController getPlayer() {
@@ -41,7 +41,7 @@ public class StarFreighter {
     }
 
     public static void setPlayer(CrewController player) {
-        StarFreighter.player = player;
+        player = player;
     }
    
 }

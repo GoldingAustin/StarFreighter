@@ -3,12 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package byui.cit260.starFreighter.model;
+package byui.cit260.starFreighter.exceptions;
 
 /**
  *
  * @author austingolding
  */
-public class Player {
-    
+public class GameControlExceptions extends Exception{
+
+    public GameControlExceptions() {
+    }
+
+    public GameControlExceptions(String string) {
+        super(string);
+    }
 }

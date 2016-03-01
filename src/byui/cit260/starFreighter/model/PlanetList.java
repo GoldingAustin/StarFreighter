@@ -7,7 +7,7 @@ package byui.cit260.starFreighter.model;
 
 /**
  *
- * @author austingolding
+ * @author Connor
  */
 class PlanetList {
     // What's this for? I'm lost, haha! - Connor

@@ -8,6 +8,10 @@ package byui.cit260.starFreighter.view;
 import byui.cit260.starFreighter.controller.MapController;
 import byui.cit260.starFreighter.model.Coordinates;
 import byui.cit260.starFreighter.model.Planet;
+import static java.lang.Character.toChars;
+import static java.lang.Character.toUpperCase;
+import static java.lang.System.in;
+import static java.lang.System.out;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -88,7 +92,7 @@ public class MapMenuView extends View {
             case 'E':
                 return true;
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                out.println("\n*** Invalid selection *** Try again");
                 break;
         }
         return false;
@@ -109,7 +113,7 @@ public class MapMenuView extends View {
      */
     private void displayHorizontalSpace() {
         for (int i = 0; i < MAP_HSPACE; i++) {
-            System.out.print(' ');
+            out.print(' ');
         }
     }
 
@@ -118,9 +122,9 @@ public class MapMenuView extends View {
      * Displays vertical spacing using '\n'
      */
     private void displayVerticalSpace() {
-        System.out.print('\n');
+        out.print('\n');
         for (int i = 0; i < MAP_VSPACE; i++) {
-            System.out.print('\n');
+            out.print('\n');
         }
     }
 
@@ -131,7 +135,7 @@ public class MapMenuView extends View {
      */
     private void displayTopLegend() {
         // print a single empty space to offset the legend
-        System.out.print(' ');
+        out.print(' ');
         
         this.displayHorizontalSpace();
         
@@ -139,13 +143,13 @@ public class MapMenuView extends View {
             /* Using characters instead of digits, because double-digit numbers
                make the map really ugly when it's large */
             // offset character by 65, the ASCII value of 'A'
-            char colIdentifier = Character.toChars(65 + col)[0];
-            System.out.print(colIdentifier);
+            char colIdentifier = toChars(65 + col)[0];
+            out.print(colIdentifier);
             this.displayHorizontalSpace();
         }
         
         // print a single newline to end the legend
-        System.out.print('\n');
+        out.print('\n');
     }
 
 
@@ -158,8 +162,8 @@ public class MapMenuView extends View {
             /* Using characters instead of digits, because double-digit numbers
                make the map really ugly when it's large */
             // offset character by 65, the ASCII value of 'A'
-            char rowIdentifier = Character.toChars(65 + row)[0];
-            System.out.print(rowIdentifier);
+            char rowIdentifier = toChars(65 + row)[0];
+            out.print(rowIdentifier);
             
             this.displayHorizontalSpace();
             this.displayCells(row);
@@ -175,7 +179,7 @@ public class MapMenuView extends View {
      */
     private void displayCells(int row) {
         for (int col = 0; col < COLS; col++) {
-            System.out.print(displayMap[row][col]);
+            out.print(displayMap[row][col]);
             this.displayHorizontalSpace();
         }
     }
@@ -190,8 +194,8 @@ public class MapMenuView extends View {
         Coordinates current = new Coordinates(0, 0);
         // todo: get the player's current location on the map instead
         double distance = mapController.calculateDistance(current, destination.getCoordinates());
-        System.out.println(destination.getName() + ": " + destination.getDescription());
-        System.out.println("Your destination is " + distance + " light years away.");
+        out.println(destination.getName() + ": " + destination.getDescription());
+        out.println("Your destination is " + distance + " light years away.");
         // do something to calculate fuel cost, then update the player's position
         // let's not forget random encounters, either...
         
@@ -211,7 +215,7 @@ public class MapMenuView extends View {
             Coordinates coords = this.promptForCoordinates();
             destination = mapController.getPlanetByCoords(coords);
             if (destination == null) {
-                System.out.println("There's no planet at the specified coordinates!");
+                out.println("There's no planet at the specified coordinates!");
             }
         }
 
@@ -230,21 +234,21 @@ public class MapMenuView extends View {
     private int promptSingleCoordinate(String desc, int upperLimit) {
         char coordinate = ' ';
         boolean finished = false;
-        Scanner keyboard = new Scanner(System.in);
+        Scanner keyboard = new Scanner(in);
         
         // view #2, while loop
         while (!finished) {
-            System.out.print("Select " + desc + " coordinate: ");
+            out.print("Select " + desc + " coordinate: ");
             // view #2, two String functions
             String value = keyboard.nextLine().trim();
 
             if (value.length() != 1) {
-                System.out.println("Invalid input - The coordinate must be one letter");
+                out.println("Invalid input - The coordinate must be one letter");
                 continue;
             }
 
             // Switch to uppercase
-            coordinate = Character.toUpperCase(value.charAt(0));
+            coordinate = toUpperCase(value.charAt(0));
 
             // Ensure the character returned is a valid uppercase letter
             // view #2, if/else statement
@@ -254,7 +258,7 @@ public class MapMenuView extends View {
                 finished = true;
             }
             else {
-                System.out.println("Invalid " + desc + " coordinate.");
+                out.println("Invalid " + desc + " coordinate.");
             }
         }
         

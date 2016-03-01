@@ -18,7 +18,7 @@ public class Location implements Serializable{
     private ArrayList<JobBoard> jobList;
     
     public Location() {
-        jobList = new ArrayList<JobBoard>();
+        jobList = new ArrayList<>();
     }
 
     public ArrayList<JobBoard> getJobList() {

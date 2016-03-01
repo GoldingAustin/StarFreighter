@@ -5,6 +5,8 @@
  */
 package byui.cit260.starFreighter.view;
 
+import static java.lang.System.out;
+
 /**
  *
  * @author austingolding
@@ -21,7 +23,6 @@ class GameMenuView extends View {
                 + "\nM – Map Menu"
                 + "\nX – Inventory and Merchant"
                 + "\nH - Help Menu"
-                + "\nZ – Save Game"
                 + "\nE - Exit to main menu"
                 + "\n--------------------------------");
     }
@@ -54,7 +55,7 @@ class GameMenuView extends View {
             case 'E':
                 return true;
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                out.println("\n*** Invalid selection *** Try again");
                 break;
 
         }

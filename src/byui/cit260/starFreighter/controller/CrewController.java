@@ -13,8 +13,8 @@ import byui.cit260.starFreighter.model.CrewMember;
  */
 public class CrewController {   
     
-    public static enum Stats {
-        PILOT, MECHANIC, FIGHTER, DOCTOR, TRADER
+    public CrewController() {
+        
     }
 
     public void name(CrewMember crew, String name) {
@@ -53,7 +53,7 @@ public class CrewController {
         }
     }
     
-    public CrewController() {
-
+    public static enum Stats {
+        PILOT, MECHANIC, FIGHTER, DOCTOR, TRADER
     }
 }

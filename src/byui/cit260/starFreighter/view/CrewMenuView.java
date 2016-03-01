@@ -12,6 +12,7 @@ import static byui.cit260.starFreighter.model.CrewMember.crewFou;
 import static byui.cit260.starFreighter.model.CrewMember.crewOne;
 import static byui.cit260.starFreighter.model.CrewMember.crewThr;
 import static byui.cit260.starFreighter.model.CrewMember.crewTwo;
+import static java.lang.System.out;
 
 
 /**
@@ -20,7 +21,7 @@ import static byui.cit260.starFreighter.model.CrewMember.crewTwo;
  */
 class CrewMenuView extends View {
 
-    public CrewMember crew;
+    CrewMember crew = new CrewMember();
     public CrewMenuView() {
         super("\n"
                 + "\n--------------------------------"
@@ -60,7 +61,7 @@ class CrewMenuView extends View {
             case 'E':
                 return true;
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                out.println("\n*** Invalid selection *** Try again");
                 break;
 
         }
@@ -69,7 +70,7 @@ class CrewMenuView extends View {
 
     
     private void startExistingGame() {
-        System.out.println("\n*** startExistingGame() stub function called ***");
+        out.println("\n*** startExistingGame() stub function called ***");
     }
 
     private void displayStatMenu(CrewMember crew) {

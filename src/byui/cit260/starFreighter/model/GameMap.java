@@ -6,13 +6,13 @@
 package byui.cit260.starFreighter.model;
 
 import java.io.Serializable;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 /**
  *
- * @author austingolding
+ * @author Connor
  */
 public class GameMap implements Serializable{
     private final Map<Coordinates, Planet> planetMap;

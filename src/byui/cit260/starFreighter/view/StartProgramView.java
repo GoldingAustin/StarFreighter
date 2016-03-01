@@ -7,12 +7,14 @@ package byui.cit260.starFreighter.view;
 
 
 import byui.cit260.starFreighter.model.CrewMember;
-import static byui.cit260.starFreighter.model.CrewMember.crewCon;
 import static byui.cit260.starFreighter.model.CrewMember.captain;
+import static byui.cit260.starFreighter.model.CrewMember.crewCon;
 import static byui.cit260.starFreighter.model.CrewMember.crewFou;
 import static byui.cit260.starFreighter.model.CrewMember.crewOne;
 import static byui.cit260.starFreighter.model.CrewMember.crewThr;
 import static byui.cit260.starFreighter.model.CrewMember.crewTwo;
+import static java.lang.System.in;
+import static java.lang.System.out;
 import java.util.Scanner;
 
 /**
@@ -35,7 +37,7 @@ public final class StartProgramView {
     }
     
     public void displayBanner() {
-        System.out.println(
+        out.println(
              "\n***************************************************************"
            + "\n*                                                             *"
            + "\n* You are a newly dubbed captain.                             *"
@@ -73,19 +75,19 @@ public final class StartProgramView {
 
     public String getPlayersName() {
             
-        Scanner keyboard = new  Scanner(System.in);
+        Scanner keyboard = new  Scanner(in);
         String value = "";
         
         boolean valid = false;
         while(!valid) {
             
-            System.out.println(this.promptMessage);
+            out.println(this.promptMessage);
             
             value = keyboard.nextLine();
             value = value.trim();
             
             if (value.length() < 1) {
-                System.out.println("Invalid value - the value can not be blank");
+                out.println("Invalid value - the value can not be blank");
                 continue;
             }
             valid = true;
@@ -96,7 +98,7 @@ public final class StartProgramView {
     private boolean doAction(String playersName) {
         
         if (playersName.length() < 2) {
-            System.out.println("\nInvalid players name: "
+            out.println("\nInvalid players name: "
                     + "The name must be greater than one character in length");
             return false;
         }
@@ -109,7 +111,7 @@ public final class StartProgramView {
         crewCon.name(crewFou, "McCoy");
         
         if (captain == null) {
-            System.out.println("\nError creating the player.");
+            out.println("\nError creating the player.");
             return false;
         }
         
@@ -119,7 +121,7 @@ public final class StartProgramView {
     }
 
     private void displayNextView(CrewMember captain) {
-        System.out.println("\n================================="
+        out.println("\n================================="
                           +"\n Welcome to the game, " + captain.getName() + "!"
                           +"\n Good luck in your adventures!"
                           +"\n================================="

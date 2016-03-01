@@ -5,9 +5,11 @@
  */
 package byui.cit260.starFreighter.controller;
 
+import byui.cit260.starFreighter.model.Coordinates;
 import byui.cit260.starFreighter.model.GameMap;
 import byui.cit260.starFreighter.model.Planet;
-import byui.cit260.starFreighter.model.Coordinates;
+import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
 import java.util.Map;
 
 /**
@@ -16,6 +18,22 @@ import java.util.Map;
  */
 public class MapController {
     private final GameMap map;
+    /**
+     * Initializes the list of planets; adds a few planets to the list
+     */
+    public MapController() {
+        map = new GameMap();
+        
+        Planet earth = new Planet(1, 1);
+        earth.setName("Earth");
+        earth.setDescription("Third rock from the sun.");
+        map.setPlanets(earth);
+        
+        Planet mars = new Planet(2, 4);
+        mars.setName("Mars");
+        mars.setDescription("The red planet.");
+        map.setPlanets(mars);
+    }
 
     /**
      * Returns the list of planets in the game's map.
@@ -49,32 +67,16 @@ public class MapController {
         int coordY = (desired.getY() - current.getY());
 
         // Square the result
-        double coordXSquared = Math.pow(coordX, 2);
-        double coordYSquared = Math.pow(coordY, 2);
+        double coordXSquared = pow(coordX, 2);
+        double coordYSquared = pow(coordY, 2);
 
         // Add the squares
         double coordSum = coordXSquared + coordYSquared;
 
         // Return the square root of the summed squares
-        return Math.sqrt(coordSum);
+        return sqrt(coordSum);
     }
     
-    /**
-     * Initializes the list of planets; adds a few planets to the list
-     */
-    public MapController() {
-        map = new GameMap();
-        
-        Planet earth = new Planet(1, 1);
-        earth.setName("Earth");
-        earth.setDescription("Third rock from the sun.");
-        map.setPlanets(earth);
-
-        Planet mars = new Planet(2, 4);
-        mars.setName("Mars");
-        mars.setDescription("The red planet.");
-        map.setPlanets(mars);
-    }
 
 
 }

@@ -5,6 +5,8 @@
  */
 package byui.cit260.starFreighter.view;
 
+import static java.lang.System.out;
+
 /**
  *
  * @author austingolding
@@ -17,8 +19,9 @@ class MainMenuView extends View{
             + "\n| Main Menu                    |"
             + "\n--------------------------------"
             + "\nG - Start Game"
-            + "\nH - Help Menu"
             + "\nL - Load Saved Game"
+            + "\nZ – Save Game"
+            + "\nH - Help Menu"
             + "\nE - Exit"
             + "\n--------------------------------");
     }
@@ -39,10 +42,13 @@ class MainMenuView extends View{
             case 'H':
                 this.displayHelpMenu();
                 break;
+            case 'Z':
+                this.saveGame();
+                break;
             case 'E':
                 return true;
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                out.println("\n*** Invalid selection *** Try again");
                 break;
        
         }
@@ -56,12 +62,22 @@ class MainMenuView extends View{
     }
 
     private void startExistingGame() {
-        System.out.println("\n*** startExistingGame() stub function called ***");
+        out.println("\nPlease enter the file path in which you'd like to save your game");
+    String file = this.getInput();
+    
+    GameMenuView gameMenu = new GameMenuView();
+    gameMenu.display();   
     }
 
     private void displayHelpMenu() {
         HelpMenuView helpMenu = new HelpMenuView();
         helpMenu.display();
+    }
+
+    private void saveGame() {
+        out.println("\nPlease enter the file path in which you'd like to save your game");
+    String file = this.getInput();
+    
     }
 
 }

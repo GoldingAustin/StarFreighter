@@ -5,8 +5,9 @@
  */
 package byui.cit260.starFreighter.controller;
 
-import org.junit.Test;
+import static java.lang.System.out;
 import static org.junit.Assert.*;
+import org.junit.Test;
 
 /**
  *
@@ -28,14 +29,14 @@ public class EncounterControllerTest {
      */
     @Test
     public void testCalculateDamage() {
-        System.out.println("calculateDamage");
+        out.println("calculateDamage");
 
         /**
          * ***************************
          * Test case #1
          ***************************
          */
-        System.out.println("\tTest case #1");
+        out.println("\tTest case #1");
 
         //New Instance for EncounterController
         EncounterController instance = new EncounterController();
@@ -57,7 +58,7 @@ public class EncounterControllerTest {
          * Test case #2
          ***************************
          */
-        System.out.println("\tTest case #2");
+        out.println("\tTest case #2");
 
         //Sets attack and DamageModifier
         attack = 10;
@@ -76,15 +77,15 @@ public class EncounterControllerTest {
          * Test case #3
          ***************************
          */
-        System.out.println("\tTest case #3");
+        out.println("\tTest case #3");
 
         //New Instance for EncounterController
         //Sets attack and DamageModifier
-        attack = 1;
+        attack = 10;
         mod = 10;
 
         //Sets expected result
-        expResult = 2;
+        expResult = 20;
 
         //Runs calculateDamage and is contained in result
         result = instance.calculateDamage(attack, mod);
@@ -96,7 +97,7 @@ public class EncounterControllerTest {
          * Test case #4
          ***************************
          */
-        System.out.println("\tTest case #4");
+        out.println("\tTest case #4");
 
         //New Instance for EncounterController
         //Sets attack and DamageModifier
@@ -118,14 +119,14 @@ public class EncounterControllerTest {
      */
     @Test
     public void testdamageEnemy() {
-        System.out.println("damageEnemy");
+        out.println("damageEnemy");
 
         /**
          * ***************************
          * Test case #1
          ***************************
          */
-        System.out.println("\tTest case #1");
+        out.println("\tTest case #1");
         //Sets new values for player and enemy
 
         //New Instance for EncounterController
@@ -148,7 +149,7 @@ public class EncounterControllerTest {
          * Test case #2
          ***************************
          */
-        System.out.println("\tTest case #2");
+        out.println("\tTest case #2");
 
         //Test sets setDamage and set Alive for player and setHitPoints and
         //isAlive for Enemy
@@ -167,7 +168,7 @@ public class EncounterControllerTest {
          * Test case #3
          ***************************
          */
-        System.out.println("\tTest case #3");
+        out.println("\tTest case #3");
 
         //Test sets setDamage and set Alive for player and setHitPoints and
         //isAlive for Enemy
@@ -186,7 +187,7 @@ public class EncounterControllerTest {
          * Test case #4
          ***************************
          */
-        System.out.println("\tTest case #4");
+        out.println("\tTest case #4");
 
         //Test sets setDamage and set Alive for player and setHitPoints and
         //isAlive for Enemy
@@ -205,7 +206,7 @@ public class EncounterControllerTest {
          * Test case #5
          ***************************
          */
-        System.out.println("\tTest case #5");
+        out.println("\tTest case #5");
 
         //Test sets setDamage and set Alive for player and setHitPoints and
         //isAlive for Enemy

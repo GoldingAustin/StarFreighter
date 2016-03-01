@@ -11,7 +11,7 @@ import java.util.Objects;
 
 /**
  *
- * @author austingolding
+ * @author Connor
  */
 public class Planet implements Serializable{
     private String description;

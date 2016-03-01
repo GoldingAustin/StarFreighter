@@ -13,8 +13,8 @@ import byui.cit260.starFreighter.model.Ship;
  * @author Connor
  */
 public class ShipController {
-    public static enum Positions {
-        CAPTAIN, ENGINEER, GUNNER, DOCTOR, COMMS
+    public ShipController() {
+        
     }
     
     /**
@@ -90,7 +90,7 @@ public class ShipController {
         }
     }
     
-    public ShipController() {
-        
+    public static enum Positions {
+        CAPTAIN, ENGINEER, GUNNER, DOCTOR, COMMS
     }
 }

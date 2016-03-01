@@ -6,6 +6,8 @@
 package byui.cit260.starFreighter.view;
 
 import byui.cit260.starFreighter.model.CrewMember;
+import static java.lang.System.in;
+import static java.lang.System.out;
 import java.util.Scanner;
 
 /**
@@ -14,7 +16,7 @@ import java.util.Scanner;
  */
 class StatMenuView {
 
-    Scanner keyboard = new Scanner(System.in);
+    Scanner keyboard = new Scanner(in);
     protected String displayMessage;
 
     public StatMenuView(CrewMember crew) {
@@ -36,7 +38,7 @@ class StatMenuView {
         boolean done = false;
 
         do {
-            System.out.println(this.displayMessage);
+            out.println(this.displayMessage);
             value = this.getInput();
             done = this.doAction(value, crew);
 
@@ -53,7 +55,7 @@ class StatMenuView {
             value = value.trim();
 
             if (value.length() != 1) {
-                System.out.println("Invalid input - The value must be one letter");
+                out.println("Invalid input - The value must be one letter");
                 continue;
             }
             break;
@@ -87,15 +89,15 @@ class StatMenuView {
             case 'E':
                 return true;
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                out.println("\n*** Invalid selection *** Try again");
                 break;
         }
         return false;
     }
 
     private void displayStats(CrewMember crew) {
-              System.out.println(crew.getName() + ":");
-              System.out.println("\nPilot: " + crew.getPilot()
+              out.println(crew.getName() + ":");
+              out.println("\nPilot: " + crew.getPilot()
                + "\nMechanic:" + crew.getMechanic()
                + "\nFighter:" + crew.getFighter()
                + "\nDoctor:" + crew.getDoctor()

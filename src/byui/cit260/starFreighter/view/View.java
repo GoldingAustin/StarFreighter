@@ -5,6 +5,8 @@
  */
 package byui.cit260.starFreighter.view;
 
+import static java.lang.System.in;
+import static java.lang.System.out;
 import java.util.Scanner;
 
 /**
@@ -13,7 +15,7 @@ import java.util.Scanner;
  */
 public abstract class View implements ViewInterface {
 
-    Scanner keyboard = new Scanner(System.in);
+    Scanner keyboard = new Scanner(in);
     protected String displayMessage;
 
     public View(String message) {
@@ -26,7 +28,7 @@ public abstract class View implements ViewInterface {
         boolean done = false;
 
         do {
-            System.out.println(this.displayMessage);
+            out.println(this.displayMessage);
             value = this.getInput();
             done = this.doAction(value);
 
@@ -43,8 +45,8 @@ public abstract class View implements ViewInterface {
             value = keyboard.nextLine();
             value = value.trim();
 
-            if (value.length() != 1) {
-                System.out.println("Invalid input - The value must be one letter");
+            if (value.length() < 1) {
+                out.println("Invalid input - The value must be one letter");
                 continue;
             }
             break;
