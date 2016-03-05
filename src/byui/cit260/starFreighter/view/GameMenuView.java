@@ -64,7 +64,7 @@ class GameMenuView extends View {
 
     private void ShipMenuView() {
         ShipMenuView shipMenu = new ShipMenuView();
-        shipMenu.displayMenu();
+        shipMenu.display();
     }
 
     private void CrewMenuView() {
@@ -78,7 +78,7 @@ class GameMenuView extends View {
     }
 
     private void InmeMenuView() {
-        InmeMenuView inmeMenu = new InmeMenuView();
+        InventoryMerchant inmeMenu = new InventoryMerchant();
         inmeMenu.displayMenu();
     }
 

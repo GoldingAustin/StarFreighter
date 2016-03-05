@@ -77,10 +77,6 @@ class CrewMenuView extends View {
         StatMenuView statMenu = new StatMenuView(crew);       
         statMenu.display(crew);
     }
-
-    void displayMenu() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
     public CrewMember getCrew() {
         return crew;
