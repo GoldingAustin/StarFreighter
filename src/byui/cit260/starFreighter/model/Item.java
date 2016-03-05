@@ -40,6 +40,10 @@ public class Item implements Serializable {
     public int getValue() {
         return value;
     }
+    
+    public int getResaleValue() {
+        return (int) ((int) value * 0.75);
+    }
 
     /**
      * @param value the value to set

@@ -9,6 +9,7 @@ package byui.cit260.starFreighter.controller;
 import byui.cit260.starFreighter.model.Item;
 import byui.cit260.starFreighter.model.MerchantStock;
 import static java.lang.System.out;
+import java.util.ArrayList;
 
 
 /**
@@ -16,8 +17,8 @@ import static java.lang.System.out;
  * @author Connor
  */
 public class MerchantController {
-    private String name;
-
+    private final String CURRENCY = "credits";
+    
     /**
      *
      */
@@ -25,11 +26,9 @@ public class MerchantController {
     
     /**
      *
-     * @param name
      */
-    public MerchantController(String name) {
-        inventory.setCurrency(10);
-        this.name = name;
+    public MerchantController() {
+        inventory.setCurrency(100);
     }
     
     /**
@@ -44,14 +43,19 @@ public class MerchantController {
      *
      */
     public void displayCurrency() {
-        out.println(this.name + " currency: " + inventory.getCurrency() + " credits");
+        out.println("Currency: " + inventory.getCurrency() + " " + this.CURRENCY);
     }
     
-    /**
-     *
-     */
-    public void displayStock() {
-        out.println(this.name + " stock: " + inventory.getItems());
+    public int currency() {
+        return inventory.getCurrency();
+    }
+    
+    public String currencyUnit(){
+        return this.CURRENCY;
+    }
+    
+    public ArrayList<Item> itemList() {
+        return inventory.getItemList();
     }
     
     /**
@@ -61,7 +65,7 @@ public class MerchantController {
      */
     public boolean sellItem(Item item) {
         if (inventory.hasItem(item)) {
-            int itemValue = item.getValue();
+            int itemValue = item.getResaleValue();
             inventory.setCurrency(inventory.getCurrency() + itemValue);
             inventory.removeItem(item);
             return true;

@@ -30,7 +30,7 @@ class MainMenuView extends View{
     public boolean doAction(Object obj) {
         
         String value = (String) obj; 
-        char choice = value.charAt(0);
+        char choice = Character.toUpperCase(value.charAt(0));
         
         switch (choice) {
             case 'G':
