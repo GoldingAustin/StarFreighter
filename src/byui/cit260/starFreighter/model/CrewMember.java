@@ -14,19 +14,15 @@ import java.util.Objects;
  * @author Connor
  */
 public class CrewMember implements Serializable {
-    public static CrewController crewCon = new CrewController();
-    public static CrewMember captain = new CrewMember();
-    public static CrewMember crewOne = new CrewMember();
-    public static CrewMember crewTwo = new CrewMember();
-    public static CrewMember crewThr = new CrewMember();
-    public static CrewMember crewFou = new CrewMember();
+
+
     private String name;
     private int pilot;
     private int mechanic;
     private int fighter;
     private int doctor;
     private int trader;
-    private int hitPoints = 10;
+    private int hitPoints;
 
     public CrewMember() {
 

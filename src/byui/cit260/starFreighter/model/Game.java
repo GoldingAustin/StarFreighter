@@ -13,24 +13,24 @@ import java.io.Serializable;
  */
 public class Game implements Serializable{
 
-    private CombatEncounter[] combat;
+    private CombatEncounter combat;
     private Coordinates coorD;
     private CrewMember crew;
-    private GameMap[] gamem;
+    private GameMap gamem;
     private Item[] item;
-    private JobBoard[] jobs;
+    private JobBoard jobs;
     private Location[] location;
-    private MerchantStock[] merch;
+    private MerchantStock merch;
     private Planet[] planet;
     private Ship ship;
     public Game() {
     }
 
-    public CombatEncounter[] getCombat() {
+    public CombatEncounter getCombat() {
         return combat;
     }
 
-    public void setCombat(CombatEncounter[] combat) {
+    public void setCombat(CombatEncounter combat) {
         this.combat = combat;
     }
 
@@ -50,11 +50,11 @@ public class Game implements Serializable{
         this.crew = crew;
     }
 
-    public GameMap[] getGamem() {
+    public GameMap getGamem() {
         return gamem;
     }
 
-    public void setGamem(GameMap[] gamem) {
+    public void setGamem(GameMap gamem) {
         this.gamem = gamem;
     }
 
@@ -66,11 +66,11 @@ public class Game implements Serializable{
         this.item = item;
     }
 
-    public JobBoard[] getJobs() {
+    public JobBoard getJobs() {
         return jobs;
     }
 
-    public void setJobs(JobBoard[] jobs) {
+    public void setJobs(JobBoard jobs) {
         this.jobs = jobs;
     }
 
@@ -82,11 +82,11 @@ public class Game implements Serializable{
         this.location = location;
     }
 
-    public MerchantStock[] getMerch() {
+    public MerchantStock getMerch() {
         return merch;
     }
 
-    public void setMerch(MerchantStock[] merch) {
+    public void setMerch(MerchantStock merch) {
         this.merch = merch;
     }
 

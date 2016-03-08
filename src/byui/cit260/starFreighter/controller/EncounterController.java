@@ -18,7 +18,7 @@ import static java.util.concurrent.ThreadLocalRandom.current;
  */
 public final class EncounterController {
 
-    Random rand = new Random();
+    Random rand;
     private ArrayList<CombatEncounter> enemies = new ArrayList<>();
     CombatEncounter player = new CombatEncounter();
     CombatEncounter enemy = new CombatEncounter();
@@ -27,6 +27,7 @@ public final class EncounterController {
      * Generate and populate Enemy ArrayList with enemy stats
      */
     public EncounterController() {
+        this.rand = new Random();
         //      generateEncounter();
         //     calculateDamage(attack, mod);
         //    damageEnemy();

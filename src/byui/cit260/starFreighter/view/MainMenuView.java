@@ -5,7 +5,12 @@
  */
 package byui.cit260.starFreighter.view;
 
+import byui.cit260.starFreighter.controller.GameControl;
+import byui.cit260.starFreighter.exceptions.GameControlExceptions;
 import static java.lang.System.out;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import starfreighter.StarFreighter;
 
 /**
  *
@@ -56,15 +61,15 @@ class MainMenuView extends View{
     }
 
     private void startNewGame() {
-     //   GameControl.createNewGame(StarFreighter.getPlayer());
+        GameControl.createNewGame(StarFreighter.getPlayer());
         GameMenuView gameMenu = new GameMenuView();
         gameMenu.display();
     }
 
     private void startExistingGame() {
-        out.println("\nPlease enter the file path in which you'd like to save your game");
+        out.println("\nPlease enter the file path in which you'd like to load your game");
     String file = this.getInput();
-    
+    GameControl.loadGame(file);
     GameMenuView gameMenu = new GameMenuView();
     gameMenu.display();   
     }
@@ -77,6 +82,9 @@ class MainMenuView extends View{
     private void saveGame() {
         out.println("\nPlease enter the file path in which you'd like to save your game");
     String file = this.getInput();
+    
+    GameControl.saveGame(StarFreighter.getCurrentGame(), file);
+    out.println("File saved successfully at: " + file + "/StarFreighterSave.data");
     
     }
 

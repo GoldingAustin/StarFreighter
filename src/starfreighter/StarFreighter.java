@@ -14,8 +14,8 @@ import byui.cit260.starFreighter.view.*;
  * @author austingolding
  */
 public class StarFreighter {
-    private static final Game currentGame = null;
-    private static final CrewController player = null;
+    private static Game currentGame = null;
+    private static CrewMember player = null;
     
 
     /**
@@ -33,15 +33,16 @@ public class StarFreighter {
     }
 
     public static void setCurrentGame(Game currentGame) {
-        currentGame = currentGame;
+        StarFreighter.currentGame = currentGame;
     }
 
-    public static CrewController getPlayer() {
+    public static CrewMember getPlayer() {
         return player;
     }
 
-    public static void setPlayer(CrewController player) {
-        player = player;
+    public static void setPlayer(CrewMember player) {
+        StarFreighter.player = player;
     }
+
    
 }
