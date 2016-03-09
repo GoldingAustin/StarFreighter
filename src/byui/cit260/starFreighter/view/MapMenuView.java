@@ -7,12 +7,12 @@ package byui.cit260.starFreighter.view;
 
 import byui.cit260.starFreighter.controller.MapController;
 import byui.cit260.starFreighter.model.Coordinates;
+import byui.cit260.starFreighter.model.GameMap;
 import byui.cit260.starFreighter.model.Planet;
 import static java.lang.Character.toChars;
 import static java.lang.Character.toUpperCase;
 import static java.lang.System.in;
 import static java.lang.System.out;
-import java.util.Map;
 import java.util.Scanner;
 
 
@@ -21,19 +21,9 @@ import java.util.Scanner;
  * @author Connor
  */
 public class MapMenuView extends View {
-    // Class constants
-    private final int ROWS = 6; // number of horizontal rows in the map
-    private final int COLS = 11; // number of vertical columns in the map
-    private final char SYMBOL_EMPTY = '.'; // used to display empty space
-    private final char SYMBOL_PLANET = 'O'; // used to indicate a planet
-    private final int MAP_HSPACE = 1; // how much horizontal space in the grid
-    private final int MAP_VSPACE = 0; // how much vertical space in the grid
-
-
     // Class members
     private final MapController mapController;
-    private final char[][] displayMap;
-
+    private final GameMap map;
 
     /**
      * Initialize the controller and populate the map.
@@ -49,26 +39,8 @@ public class MapMenuView extends View {
             + "\n--------------------------------");
         
         mapController =  new MapController();
-        displayMap = new char[ROWS][COLS];
-
-
-        // fill the map with a bunch of initial values
-        for (int row = 0; row < ROWS; row++) {
-            for (int col = 0; col < COLS; col++) {
-                displayMap[row][col] = SYMBOL_EMPTY;
-            }
-        }
-        // next, fill in the planets
-        /* todo: "can use functional operations"? I don't get it,
-           sticking with syntax I understand */
-        for (Map.Entry<Coordinates, Planet> entry : mapController.getPlanets().entrySet()) {
-            Coordinates coords = entry.getKey();
-            /* If we wanted the planet too, it would be
-               Planet planet = entry.getValue(); */
-            int x = coords.getX();
-            int y = coords.getY();
-            displayMap[y][x] = SYMBOL_PLANET;
-        }
+        // For local testing.
+        map = new GameMap(11, 11);
     }
 
     /**
@@ -112,7 +84,7 @@ public class MapMenuView extends View {
      * Displays horizontal spacing using ' '
      */
     private void displayHorizontalSpace() {
-        for (int i = 0; i < MAP_HSPACE; i++) {
+        for (int i = 0; i < map.getHorizontalSpace(); i++) {
             out.print(' ');
         }
     }
@@ -123,7 +95,7 @@ public class MapMenuView extends View {
      */
     private void displayVerticalSpace() {
         out.print('\n');
-        for (int i = 0; i < MAP_VSPACE; i++) {
+        for (int i = 0; i < map.getVerticalSpace(); i++) {
             out.print('\n');
         }
     }
@@ -139,7 +111,7 @@ public class MapMenuView extends View {
         
         this.displayHorizontalSpace();
         
-        for (int col = 0; col < COLS; col++) {
+        for (int col = 0; col < map.getColumns(); col++) {
             /* Using characters instead of digits, because double-digit numbers
                make the map really ugly when it's large */
             // offset character by 65, the ASCII value of 'A'
@@ -158,7 +130,7 @@ public class MapMenuView extends View {
      * Called in displayMap.
      */
     private void displayRows() {
-        for (int row = 0; row < ROWS; row++) {
+        for (int row = 0; row < map.getRows(); row++) {
             /* Using characters instead of digits, because double-digit numbers
                make the map really ugly when it's large */
             // offset character by 65, the ASCII value of 'A'
@@ -178,8 +150,8 @@ public class MapMenuView extends View {
      * @param row 
      */
     private void displayCells(int row) {
-        for (int col = 0; col < COLS; col++) {
-            out.print(displayMap[row][col]);
+        for (int col = 0; col < map.getColumns(); col++) {
+            out.print(map.getContents()[row][col]);
             this.displayHorizontalSpace();
         }
     }
@@ -191,10 +163,10 @@ public class MapMenuView extends View {
     private void travel() {
         Planet destination = this.selectDestination();
         // for testing only:
-        Coordinates current = new Coordinates(0, 0);
+        Planet current = Planet.Redecent;
         // todo: get the player's current location on the map instead
-        double distance = mapController.calculateDistance(current, destination.getCoordinates());
-        out.println(destination.getName() + ": " + destination.getDescription());
+        double distance = mapController.calculateDistance(current, destination);
+        out.println(destination.name() + ": " + destination.getDescription());
         out.println("Your destination is " + distance + " light years away.");
         // do something to calculate fuel cost, then update the player's position
         // let's not forget random encounters, either...
@@ -213,7 +185,7 @@ public class MapMenuView extends View {
         // view #2, while loop
         while (destination == null) {
             Coordinates coords = this.promptForCoordinates();
-            destination = mapController.getPlanetByCoords(coords);
+            destination = Planet.atCoordinates(coords);
             if (destination == null) {
                 out.println("There's no planet at the specified coordinates!");
             }
@@ -283,8 +255,8 @@ public class MapMenuView extends View {
      */
     private Coordinates promptForCoordinates() {
         // Get each individual coordinate
-        int x = this.promptSingleCoordinate("X", COLS);
-        int y = this.promptSingleCoordinate("Y", ROWS);
+        int x = this.promptSingleCoordinate("X", map.getColumns());
+        int y = this.promptSingleCoordinate("Y", map.getRows());
         
         // Return a coordinates object
         Coordinates selection = new Coordinates(x, y);

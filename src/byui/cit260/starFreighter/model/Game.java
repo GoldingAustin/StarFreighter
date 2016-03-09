@@ -16,12 +16,11 @@ public class Game implements Serializable{
     private CombatEncounter combat;
     private Coordinates coorD;
     private CrewMember crew;
-    private GameMap gamem;
     private Item[] item;
     private JobBoard jobs;
     private Location[] location;
     private MerchantStock merch;
-    private Planet[] planet;
+    private GameMap gameMap;
     private Ship ship;
     public Game() {
     }
@@ -48,14 +47,6 @@ public class Game implements Serializable{
 
     public void setCrewM(CrewMember crew) {
         this.crew = crew;
-    }
-
-    public GameMap getGamem() {
-        return gamem;
-    }
-
-    public void setGamem(GameMap gamem) {
-        this.gamem = gamem;
     }
 
     public Item[] getItem() {
@@ -90,12 +81,12 @@ public class Game implements Serializable{
         this.merch = merch;
     }
 
-    public Planet[] getPlanet() {
-        return planet;
+    public GameMap getMap() {
+        return this.gameMap;
     }
 
-    public void setPlanet(Planet[] planet) {
-        this.planet = planet;
+    public void setGameMap(GameMap newMap) {
+        this.gameMap = newMap;
     }
 
     public Ship getShip() {

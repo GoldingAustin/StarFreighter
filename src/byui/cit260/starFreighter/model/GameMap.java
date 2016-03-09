@@ -5,81 +5,66 @@
  */
 package byui.cit260.starFreighter.model;
 
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-
 /**
  *
  * @author Connor
  */
-public class GameMap implements Serializable{
-    private final Map<Coordinates, Planet> planetMap;
-    
-    private boolean completed;
-    
-    public GameMap() {
-        planetMap = new HashMap<>();
+public class GameMap {
+    // Class constants
+    private final int ROWS; // number of horizontal rows in the map
+    private final int COLS; // number of vertical columns in the map
+    private final char SYMBOL_EMPTY = '.'; // used to display empty space
+    private final char SYMBOL_PLANET = 'O'; // used to indicate a planet
+    private final int MAP_HSPACE = 1; // how much horizontal space in the grid
+    private final int MAP_VSPACE = 0; // how much vertical space in the grid
+
+    private final char[][] displayMap;
+
+    public int getRows() {
+        return this.ROWS;
     }
     
-    public void display() {
-    
+    public int getColumns() {
+        return this.COLS;
     }
     
-    public void selectDestination(){
-        
-    }
-    
-    public Map<Coordinates, Planet> getPlanets() {
-        return planetMap;
+    public int getHorizontalSpace() {
+        return this.MAP_HSPACE;
     }
 
-    public void setPlanets(Planet oPlanet) {
-        Coordinates coords = new Coordinates(oPlanet.getCoordX(), oPlanet.getCoordY());
-        planetMap.put(coords, oPlanet);
+    public int getVerticalSpace() {
+        return this.MAP_VSPACE;
     }
-
-    public boolean isCompleted() {
-        return completed;
+    
+    public char[][] getContents() {
+        return this.displayMap;
     }
+    
+    /**
+     * Populates the map array with character data.
+     * @param rows
+     * @param cols
+     */
+    public GameMap(int rows, int cols) {
+        this.ROWS = rows;
+        this.COLS = cols;
 
-    public void setCompleted(boolean completed) {
-        this.completed = completed;
-    }
+        displayMap = new char[ROWS][COLS];
 
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 19 * hash + Objects.hashCode(this.planetMap);
-        hash = 19 * hash + (this.completed ? 1 : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
+        // fill the map with a bunch of initial values
+        for (int row = 0; row < ROWS; row++) {
+            for (int col = 0; col < COLS; col++) {
+                displayMap[row][col] = SYMBOL_EMPTY;
+            }
         }
-        if (obj == null) {
-            return false;
+        // next, fill in the planets
+        /* todo: "can use functional operations"? I don't get it,
+           sticking with syntax I understand */
+        for (Planet current : Planet.values()) {
+            Coordinates coords = current.getCoordinates();
+            int x = coords.getX();
+            int y = coords.getY();
+            displayMap[y][x] = SYMBOL_PLANET;
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final GameMap other = (GameMap) obj;
-        if (this.completed != other.completed) {
-            return false;
-        }
-        if (!Objects.equals(this.planetMap, other.planetMap)) {
-            return false;
-        }
-        return true;
     }
-
-    @Override
-    public String toString() {
-        return "GameMap{" + "planets=" + planetMap + ", completed=" + completed + '}';
-    }
-
 }

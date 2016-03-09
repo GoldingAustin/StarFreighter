@@ -6,111 +6,56 @@
 package byui.cit260.starFreighter.model;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 
 /**
  *
  * @author Connor
  */
-public class Planet implements Serializable{
-    private String description;
-    private String name;
-    public final Coordinates coords;
 
-    /**
-     * Initializes a new planet with a pair of specified coordinates.
-     * @param x
-     * @param y 
+public enum Planet implements Serializable {
+    /* The size of the map is defined in GameMap on a per-instance basis. If you
+    receive an array out of bounds error, it's because one of the planets
+    defined below falls outside the bounds of the map size.
+    
+    With the current setup, coordinates must also be positive. Sorry!
+    Still working on figuring out that four-quadrant plane.
      */
-    public Planet(int x, int y) {
+    Kryta("A barren desert planet with a few secrets", 1, 1),
+    Qualufe("Oceans as far as the eye can see", 3, 4),
+    Mezopan("Green forests and tall trees", 5, 4),
+    Redecent("Galaxy capital", 7, 8);
+
+    private final String description;
+    private final Coordinates coords;
+
+    Planet(String description, int x, int y) {
+        this.description = description;
         coords = new Coordinates(x, y);
     }
-
-    /**
-     * Gets the planet's name.
-     * @return {String} the planet's name
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Sets the planet's name.
-     * @param name - the name to set
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * Gets the planet's description.
-     * @return {String} the planet's description
-     */
+    
     public String getDescription() {
         return description;
     }
-
-    /**
-     * Sets the planet's description.
-     * @param description - the description to set
-     */
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    /**
-     * @return the coordX
-     */
-    public int getCoordX() {
-        return coords.getX();
-    }
-
-    /**
-     * @return the coordY
-     */
-    public int getCoordY() {
-        return coords.getY();
-    }
-
-    /**
-     * @return the coords
-     */
+    
     public Coordinates getCoordinates() {
         return coords;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 17 * hash + Objects.hashCode(this.description);
-        hash = 17 * hash + Objects.hashCode(this.name);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
+    public static Planet atCoordinates(Coordinates coords) {
+        for (Planet planet : values()) {
+            /* Comparing objects was being wonky here- comparing values instead,
+               for now. */
+            if (planet.getCoordinates().getX() == coords.getX() &&
+                planet.getCoordinates().getY() == coords.getY()) {
+                return planet;
+            }
         }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Planet other = (Planet) obj;
-        if (!Objects.equals(this.description, other.description)) {
-            return false;
-        }
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        return true;
+        return null;
     }
 
     @Override
     public String toString() {
-        return "Planet{" + "name= " + name  + ", description= " + description + '}';
+        return "Planet{" + "name= " + name() + ", description= " + description + '}';
     }    
 }

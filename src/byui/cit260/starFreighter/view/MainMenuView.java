@@ -7,6 +7,7 @@ package byui.cit260.starFreighter.view;
 
 import byui.cit260.starFreighter.controller.GameControl;
 import byui.cit260.starFreighter.exceptions.GameControlExceptions;
+import java.io.IOException;
 import static java.lang.System.out;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,7 +43,13 @@ class MainMenuView extends View{
                 this.startNewGame();
                 break;
             case 'L':
+        {
+            try {
                 this.startExistingGame();
+            } catch (IOException ex) {
+                Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
                 break;
             case 'H':
                 this.displayHelpMenu();
@@ -66,7 +73,7 @@ class MainMenuView extends View{
         gameMenu.display();
     }
 
-    private void startExistingGame() {
+    private void startExistingGame() throws IOException {
         out.println("\nPlease enter the file path in which you'd like to load your game");
     String file = this.getInput();
     GameControl.loadGame(file);

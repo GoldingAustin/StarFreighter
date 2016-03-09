@@ -39,46 +39,26 @@ public class MapControllerTest {
         
         // Test case #1
         out.println("\tTest Case #1");
-        Planet currentPlanet1 = new Planet(1, 1);
-        Planet desiredPlanet1 = new Planet(-1, -1);
-        double expResult1 = 2.8284;
-        double result1 = instance.calculateDistance(currentPlanet1.getCoordinates(), desiredPlanet1.getCoordinates());
+        double expResult1 = 5.0;
+        double result1 = instance.calculateDistance(Planet.Kryta, Planet.Mezopan);
         assertEquals(expResult1, result1, 0.001);
         
         // Test case #2
         out.println("\tTest Case #2");
-        Planet currentPlanet2 = new Planet(10, -10);
-        Planet desiredPlanet2 = new Planet(-10, 10);
-        double expResult2 = 28.2842;
-        double result2 = instance.calculateDistance(currentPlanet2.getCoordinates(), desiredPlanet2.getCoordinates());
+        double expResult2 = 3.6055;
+        double result2 = instance.calculateDistance(Planet.Kryta, Planet.Qualufe);
         assertEquals(expResult2, result2, 0.001);
         
         // Test case #3
         out.println("\tTest Case #3");
-        Planet currentPlanet3 = new Planet(5, 5);
-        Planet desiredPlanet3 = new Planet(5, 5);
         double expResult3 = 0.0;
-        double result3 = instance.calculateDistance(currentPlanet3.getCoordinates(), desiredPlanet3.getCoordinates());
+        double result3 = instance.calculateDistance(Planet.Kryta, Planet.Kryta);
         assertEquals(expResult3, result3, 0.001);
         
         // Test case #4
         out.println("\tTest Case #4");
-        Planet currentPlanet4 = new Planet(500, 500);
-        Planet desiredPlanet4 = new Planet(0, 0);
-        double expResult4 = 707.1068;
-        double result4 = instance.calculateDistance(currentPlanet4.getCoordinates(), desiredPlanet4.getCoordinates());
+        double expResult4 = 4.472;
+        double result4 = instance.calculateDistance(Planet.Redecent, Planet.Mezopan);
         assertEquals(expResult4, result4, 0.001);
-        
-        // Test case #5
-        /*
-        Test case won't run; integer types are required by planet class
-        System.out.println("\tTest Case #5");
-        Planet currentPlanet5 = new Planet(0.1, 0);
-        Planet desiredPlanet5 = new Planet(0, 0);
-        double expResult5 = 0; // NaN?
-        double result5 = instance.calculateDistance(currentPlanet5, desiredPlanet5);
-        assertEquals(expResult5, result5, 0.001);
-        */
     }
-    
 }
