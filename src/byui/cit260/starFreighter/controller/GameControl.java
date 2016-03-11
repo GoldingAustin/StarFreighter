@@ -19,6 +19,7 @@ import byui.cit260.starFreighter.model.JobBoard;
 import byui.cit260.starFreighter.model.Location;
 import byui.cit260.starFreighter.model.MerchantStock;
 import byui.cit260.starFreighter.model.Ship;
+import enums.InventoryItem;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -33,8 +34,7 @@ import static starfreighter.StarFreighter.setPlayer;
  *
  * @author austingolding
  */
-public class GameControl { 
-
+public class GameControl {
 
     public static Game game;
 
@@ -56,21 +56,21 @@ public class GameControl {
     public static void createNewGame(CrewMember captain) {
         game = new Game();
         StarFreighter.setCurrentGame(game);
-        
+
         CombatEncounter combat = new CombatEncounter();
-        
+
         crewCon = GameControl.createCrewMemberList(crewCon);
         game.setCrewCon(crewCon);
-        
+
         Item[] item = GameControl.createItemList();
         game.setItem(item);
-        
+
         JobBoard jobs = new JobBoard();
         game.setJobs(jobs);
-        
+
         Location[] location = GameControl.createLocationList();
         game.setLocation(location);
-        
+
         MerchantStock merch = new MerchantStock();
         game.setMerch(merch);
 
@@ -78,8 +78,27 @@ public class GameControl {
         game.setShip(ship);
     }
 
+    public static class Constant {
+
+        public final static int NUMBER_OF_ITEMS_INVENTORY = 11;
+
+        public enum Item {
+            cheese,
+            bandages,
+            oldparts,
+            newparts,
+            junk,
+            powerbar,
+            ore,
+            weaponparts,
+            weapon,
+            armor,
+            coins;
+        }
+    }
+
     public static void saveGame(Game game, String file) {
-        try (FileOutputStream fop = new FileOutputStream(file + "/StarFreighterSave.data")) { 
+        try (FileOutputStream fop = new FileOutputStream(file + "/StarFreighterSave.data")) {
             ObjectOutputStream output = new ObjectOutputStream(fop);
 
             output.writeObject(game);
@@ -90,17 +109,16 @@ public class GameControl {
 
     public static void loadGame(String file) {
         Game load = new Game();
-        try (FileInputStream fip = new FileInputStream(file + "/StarFreighterSave.data")){
+        try (FileInputStream fip = new FileInputStream(file + "/StarFreighterSave.data")) {
             ObjectInputStream output = new ObjectInputStream(fip);
 
-           load = (Game) output.readObject();
+            load = (Game) output.readObject();
         } catch (IOException | ClassNotFoundException ex) {
             Logger.getLogger(GameControl.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         StarFreighter.setCurrentGame(load);
-    }  
-    
+    }
 
     private static CrewController createCrewMemberList(CrewController crewCon) {
 
@@ -121,13 +139,69 @@ public class GameControl {
         crewCon.name(crewThr, "Bones");
         crewCon.name(crewFou, "McCoy");
         crewCon.name(crewFiv, "Sulu");
-        
-        
+
         return crewCon;
     }
 
     private static Item[] createItemList() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Item[] item = new Item[Constant.NUMBER_OF_ITEMS_INVENTORY];
+
+        Item cheese = new Item();
+        cheese.setName("Amazing Space Cheese");
+        cheese.setValue(5);
+        item[InventoryItem.cheese.ordinal()] = cheese;
+
+        Item bandages = new Item();
+        bandages.setName("Super Bandages");
+        bandages.setValue(10);
+        item[InventoryItem.bandages.ordinal()] = bandages;
+
+        Item oldparts = new Item();
+        oldparts.setName("Old Parts");
+        oldparts.setValue(3);
+        item[InventoryItem.oldparts.ordinal()] = oldparts;
+
+        Item newparts = new Item();
+        newparts.setName("New Parts");
+        newparts.setValue(15);
+        item[InventoryItem.newparts.ordinal()] = newparts;
+
+        Item junk = new Item();
+        junk.setName("Junk");
+        junk.setValue(1);
+        item[InventoryItem.junk.ordinal()] = junk;
+
+        Item powerbar = new Item();
+        powerbar.setName("Powerbar");
+        powerbar.setValue(10);
+        item[InventoryItem.powerbar.ordinal()] = powerbar;
+
+        Item ore = new Item();
+        ore.setName("Space Ore");
+        ore.setValue(20);
+        item[InventoryItem.ore.ordinal()] = ore;
+
+        Item weaponparts = new Item();
+        weaponparts.setName("Weapon Parts");
+        weaponparts.setValue(10);
+        item[InventoryItem.weaponparts.ordinal()] = weaponparts;
+
+        Item weapon = new Item();
+        weapon.setName("Laser Rifle");
+        weapon.setValue(50);
+        item[InventoryItem.weapon.ordinal()] = weapon;
+
+        Item armor = new Item();
+        armor.setName("Body Armor");
+        armor.setValue(50);
+        item[InventoryItem.armor.ordinal()] = armor;
+
+        Item coins = new Item();
+        coins.setName("Mysterious Coin");
+        coins.setValue(100);
+        item[InventoryItem.coins.ordinal()] = coins;
+
+        return item;
     }
 
     private static Location[] createLocationList() {

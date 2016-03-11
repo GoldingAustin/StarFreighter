@@ -6,28 +6,21 @@
 package byui.cit260.starFreighter.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  *
  * @author Connor
  */
-public enum Item implements Serializable {
-    cheese,
-    bandages,
-    oldparts,
-    newparts,
-    junk,
-    powerbar,
-    ore,
-    weaponparts,
-    weapon,
-    armor,
-    coins,
-    map;
+public class Item implements Serializable {
+
 
     private String name;
     private int value;
-
+    
+    public Item() {
+        
+    }
     /**
      * @return the name
      */
@@ -59,6 +52,37 @@ public enum Item implements Serializable {
     public void setValue(int value) {
         this.value = value;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 17 * hash + Objects.hashCode(this.name);
+        hash = 17 * hash + this.value;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Item other = (Item) obj;
+        if (this.value != other.value) {
+            return false;
+        }
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 
     @Override
     public String toString() {
