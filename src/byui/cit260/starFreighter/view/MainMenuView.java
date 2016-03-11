@@ -6,7 +6,6 @@
 package byui.cit260.starFreighter.view;
 
 import byui.cit260.starFreighter.controller.GameControl;
-import byui.cit260.starFreighter.exceptions.GameControlExceptions;
 import java.io.IOException;
 import static java.lang.System.out;
 import java.util.logging.Level;

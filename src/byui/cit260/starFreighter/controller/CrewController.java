@@ -6,12 +6,13 @@
 package byui.cit260.starFreighter.controller;
 
 import byui.cit260.starFreighter.model.CrewMember;
+import java.io.Serializable;
 
 /**
  *
  * @author Connor
  */
-public class CrewController {   
+public class CrewController implements Serializable {   
     
     public CrewController() {
         

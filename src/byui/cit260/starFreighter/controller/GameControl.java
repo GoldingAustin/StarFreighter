@@ -6,14 +6,18 @@
 package byui.cit260.starFreighter.controller;
 
 import byui.cit260.starFreighter.model.CombatEncounter;
-import byui.cit260.starFreighter.model.Coordinates;
 import byui.cit260.starFreighter.model.CrewMember;
+import static byui.cit260.starFreighter.model.CrewMember.crewCon;
+import static byui.cit260.starFreighter.model.CrewMember.crewFiv;
+import static byui.cit260.starFreighter.model.CrewMember.crewFou;
+import static byui.cit260.starFreighter.model.CrewMember.crewOne;
+import static byui.cit260.starFreighter.model.CrewMember.crewThr;
+import static byui.cit260.starFreighter.model.CrewMember.crewTwo;
 import byui.cit260.starFreighter.model.Game;
 import byui.cit260.starFreighter.model.Item;
 import byui.cit260.starFreighter.model.JobBoard;
 import byui.cit260.starFreighter.model.Location;
 import byui.cit260.starFreighter.model.MerchantStock;
-import byui.cit260.starFreighter.model.Planet;
 import byui.cit260.starFreighter.model.Ship;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -29,14 +33,8 @@ import static starfreighter.StarFreighter.setPlayer;
  *
  * @author austingolding
  */
-public class GameControl {
-        public static CrewController crewCon = new CrewController();
-    public static CrewMember crewOne = new CrewMember();
-    public static CrewMember crewTwo = new CrewMember();
-    public static CrewMember crewThr = new CrewMember();
-    public static CrewMember crewFou = new CrewMember();
-    public static CrewMember crewFiv = new CrewMember();
-    public static CrewMember captain = new CrewMember();
+public class GameControl { 
+
 
     public static Game game;
 
@@ -46,28 +44,38 @@ public class GameControl {
             return null;
         }
 
-        CrewController player = new CrewController();
+        CrewController crewCon = new CrewController();
         CrewMember captain = new CrewMember();
-        player.name(captain, playersName);
+        crewCon.name(captain, playersName);
 
         setPlayer(captain);
 
-        return player;
+        return crewCon;
     }
 
     public static void createNewGame(CrewMember captain) {
-
+        game = new Game();
         StarFreighter.setCurrentGame(game);
-
+        
         CombatEncounter combat = new CombatEncounter();
-        Coordinates coorD = new Coordinates(0, 0);
-        crewCon = GameControl.createCrewMemberList();
-       // Item[] item = GameControl.createItemList();
+        
+        crewCon = GameControl.createCrewMemberList(crewCon);
+        game.setCrewCon(crewCon);
+        
+        Item[] item = GameControl.createItemList();
+        game.setItem(item);
+        
         JobBoard jobs = new JobBoard();
-      //  Location[] location = GameControl.createLocationList();
-        MerchantStock merch;
+        game.setJobs(jobs);
+        
+        Location[] location = GameControl.createLocationList();
+        game.setLocation(location);
+        
+        MerchantStock merch = new MerchantStock();
+        game.setMerch(merch);
 
-        Ship ship;
+        Ship ship = new Ship();
+        game.setShip(ship);
     }
 
     public static void saveGame(Game game, String file) {
@@ -80,21 +88,21 @@ public class GameControl {
         }
     }
 
-    public static void loadGame(String file) throws IOException {
-        Game game = null;
+    public static void loadGame(String file) {
+        Game load = new Game();
         try (FileInputStream fip = new FileInputStream(file + "/StarFreighterSave.data")){
             ObjectInputStream output = new ObjectInputStream(fip);
 
-           game = (Game) output.readObject();
+           load = (Game) output.readObject();
+        } catch (IOException | ClassNotFoundException ex) {
+            Logger.getLogger(GameControl.class.getName()).log(Level.SEVERE, null, ex);
         }
-         catch (IOException | ClassNotFoundException ex) {
-                Logger.getLogger(GameControl.class.getName()).log(Level.SEVERE, null, ex);
-            }
-             StarFreighter.setCurrentGame(game);
+
+        StarFreighter.setCurrentGame(load);
     }  
     
 
-    private static CrewController createCrewMemberList() {
+    private static CrewController createCrewMemberList(CrewController crewCon) {
 
         crewOne.setTrader(4);
         crewTwo.setFighter(4);

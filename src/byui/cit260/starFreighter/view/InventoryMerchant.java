@@ -33,15 +33,7 @@ class InventoryMerchant extends View {
         
         // Testing stuff
         
-        Item testing = new Item();
-        testing.setName("Testing!");
-        testing.setValue(100);
-        playerInventory.addItem(testing);
-        
-        Item testing2 = new Item();
-        testing2.setName("Space cheese");
-        testing2.setValue(50);
-        playerInventory.addItem(testing2);
+
     }
 
     public void setOtherInventory(MerchantController other) {

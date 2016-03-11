@@ -5,13 +5,13 @@
  */
 package byui.cit260.starFreighter.view;
 
-import static byui.cit260.starFreighter.controller.GameControl.captain;
-import static byui.cit260.starFreighter.controller.GameControl.crewFiv;
-import static byui.cit260.starFreighter.controller.GameControl.crewFou;
-import static byui.cit260.starFreighter.controller.GameControl.crewOne;
-import static byui.cit260.starFreighter.controller.GameControl.crewThr;
-import static byui.cit260.starFreighter.controller.GameControl.crewTwo;
 import byui.cit260.starFreighter.model.CrewMember;
+import static byui.cit260.starFreighter.model.CrewMember.captain;
+import static byui.cit260.starFreighter.model.CrewMember.crewFiv;
+import static byui.cit260.starFreighter.model.CrewMember.crewFou;
+import static byui.cit260.starFreighter.model.CrewMember.crewOne;
+import static byui.cit260.starFreighter.model.CrewMember.crewThr;
+import static byui.cit260.starFreighter.model.CrewMember.crewTwo;
 import static java.lang.System.out;
 
 

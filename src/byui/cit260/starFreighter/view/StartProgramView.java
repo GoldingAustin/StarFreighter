@@ -6,9 +6,9 @@
 package byui.cit260.starFreighter.view;
 
 
-import static byui.cit260.starFreighter.controller.GameControl.captain;
-import static byui.cit260.starFreighter.controller.GameControl.crewCon;
+import byui.cit260.starFreighter.controller.CrewController;
 import byui.cit260.starFreighter.model.CrewMember;
+import static byui.cit260.starFreighter.model.CrewMember.captain;
 import static java.lang.System.in;
 import static java.lang.System.out;
 import java.util.Scanner;
@@ -99,7 +99,7 @@ public final class StartProgramView {
             return false;
         }
         
-
+        CrewController crewCon = new CrewController();
         crewCon.name(captain, playersName);
 
         if (captain == null) {
