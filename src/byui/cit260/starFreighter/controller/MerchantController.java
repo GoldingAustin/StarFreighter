@@ -59,6 +59,54 @@ public class MerchantController {
     }
     
     /**
+     * Calculates the total value of the inventory.
+     * @return totalValue
+     */
+    public int calculateTotalValue() {
+        int totalValue = 0;
+        for (Item current : inventory.getItemList()) {
+            totalValue += current.getValue();
+        }
+        return totalValue;
+    }
+
+    /**
+     * Calculates total resale value of the inventory.
+     * @return totalResaleValue
+     */
+    public int calculateTotalResaleValue() {
+        int totalResaleValue= 0;
+        for (Item current : inventory.getItemList()) {
+            totalResaleValue += current.getResaleValue();
+        }
+        return totalResaleValue;
+    }
+
+    /**
+     * I don't even know where I'm going with this. Putting it on the back
+     * burner for now, I don't have time to figure it out
+     * @param original
+     * @return 
+     */
+    public ArrayList<Item> sortByValue(ArrayList<Item> original) {
+        ArrayList<Item> sorted = new ArrayList<>();
+        for (Item current : original) {
+            if (sorted.size() == 0) {
+                sorted.add(current);
+            }
+            
+            // probably not correct, but whatever
+            if (current.getValue() > sorted.get(sorted.size()).getValue()) {
+                sorted.add(current);
+            }
+            else {
+                sorted.add(0, current);
+            }
+        }
+        return sorted;
+    }
+    
+    /**
      *
      * @param item
      * @return

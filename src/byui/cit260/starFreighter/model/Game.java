@@ -99,12 +99,5 @@ public class Game implements Serializable{
     public void setShip(Ship ship) {
         this.ship = ship;
     }
-
-
-
-    
-    
-    
-    
     
 }

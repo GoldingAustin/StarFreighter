@@ -15,12 +15,12 @@ import java.util.Scanner;
  *
  * @author austingolding
  */
-class InventoryMerchant extends View {
+class InventoryMenuView extends View {
     private final String CURRENCY = "credits";
     private final MerchantController playerInventory = new MerchantController();
     private MerchantController otherInventory;
 
-    public InventoryMerchant() {
+    public InventoryMenuView() {
         super("\n"
                 + "\n--------------------------------"
                 + "\n| Inventory                     |"
@@ -28,6 +28,7 @@ class InventoryMerchant extends View {
                 + "\nC - Contents"
                 + "\nB - Buy"
                 + "\nS - Sell"
+                + "\nT - Total Value"
                 + "\nE - Exit"
                 + "\n--------------------------------");
         
@@ -55,6 +56,9 @@ class InventoryMerchant extends View {
                 break;
             case 'S':
                 this.sellItem();
+                break;
+            case 'T':
+                this.totalValue();
                 break;
             case 'E':
                 return true;
@@ -126,5 +130,17 @@ class InventoryMerchant extends View {
         out.print(item.getName());
         out.print("\t");
         out.print(item.getResaleValue() + " " + playerInventory.currencyUnit() + "\n");
+    }
+
+    private void totalValue() {
+        int totalValue = playerInventory.calculateTotalValue();
+        int resaleValue = playerInventory.calculateTotalResaleValue();
+        
+        out.println("The items in your inventory are worth " +
+                totalValue + " " +
+                playerInventory.currencyUnit() +
+                ".");
+        out.println("You can resell them for " + resaleValue +
+                " " + playerInventory.currencyUnit() + ".");
     }
 }

@@ -78,7 +78,7 @@ class GameMenuView extends View {
     }
 
     private void InmeMenuView() {
-        InventoryMerchant inmeMenu = new InventoryMerchant();
+        InventoryMenuView inmeMenu = new InventoryMenuView();
         inmeMenu.display();
     }
 
