@@ -205,7 +205,9 @@ public class GameControl {
     }
 
     private static Location[] createLocationList() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // stub so this will run!
+        return new Location[1];
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public boolean gameControl() {

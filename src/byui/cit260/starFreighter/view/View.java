@@ -51,6 +51,6 @@ public abstract class View implements ViewInterface {
             }
             break;
         }
-        return value;
+        return value.toUpperCase();
     }
 }
