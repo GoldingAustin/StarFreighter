@@ -40,6 +40,8 @@ public class MapMenuView extends View {
         
         mapController =  new MapController();
         // For local testing.
+        // I assume there's a way to access the game object's map instance, but
+        // I won't have time to figure it out tonight! Sorry!
         map = new GameMap(11, 11);
     }
 

@@ -16,7 +16,7 @@ import starfreighter.StarFreighter;
  *
  * @author austingolding
  */
-class MainMenuView extends View{
+class MainMenuView extends View {
 
     public MainMenuView() {
         super("\n"
@@ -35,7 +35,7 @@ class MainMenuView extends View{
     public boolean doAction(Object obj) {
         
         String value = (String) obj; 
-        char choice = Character.toUpperCase(value.charAt(0));
+        char choice = value.charAt(0);
         
         switch (choice) {
             case 'G':

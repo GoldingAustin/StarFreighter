@@ -14,7 +14,6 @@ public class GameMap {
     private final int ROWS; // number of horizontal rows in the map
     private final int COLS; // number of vertical columns in the map
     private final char SYMBOL_EMPTY = '.'; // used to display empty space
-    private final char SYMBOL_PLANET = 'O'; // used to indicate a planet
     private final int MAP_HSPACE = 1; // how much horizontal space in the grid
     private final int MAP_VSPACE = 0; // how much vertical space in the grid
 
@@ -64,7 +63,7 @@ public class GameMap {
             Coordinates coords = current.getCoordinates();
             int x = coords.getX();
             int y = coords.getY();
-            displayMap[y][x] = SYMBOL_PLANET;
+            displayMap[y][x] = current.getSymbol();
         }
     }
 }

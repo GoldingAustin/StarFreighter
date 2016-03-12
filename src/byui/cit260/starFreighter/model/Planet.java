@@ -21,17 +21,19 @@ public enum Planet implements Serializable {
     With the current setup, coordinates must also be positive. Sorry!
     Still working on figuring out that four-quadrant plane.
      */
-    Kryta("A barren desert planet with a few secrets", 1, 1),
-    Qualufe("Oceans as far as the eye can see", 3, 4),
-    Mezopan("Green forests and tall trees", 5, 4),
-    Redecent("Galaxy capital", 7, 8);
+    Kryta("A barren desert planet with a few secrets", 1, 1, 'K'),
+    Qualufe("Oceans as far as the eye can see", 3, 4, 'Q'),
+    Mezopan("Green forests and tall trees", 5, 4, 'M'),
+    Redecent("Galaxy capital", 7, 8, 'R');
 
     private final String description;
     private final Coordinates coords;
+    private final char symbol;
 
-    Planet(String description, int x, int y) {
+    Planet(String description, int x, int y, char symbol) {
         this.description = description;
-        coords = new Coordinates(x, y);
+        this.coords = new Coordinates(x, y);
+        this.symbol = symbol;
     }
     
     public String getDescription() {
@@ -40,6 +42,10 @@ public enum Planet implements Serializable {
     
     public Coordinates getCoordinates() {
         return coords;
+    }
+    
+    public char getSymbol() {
+        return symbol;
     }
 
     public static Planet atCoordinates(Coordinates coords) {

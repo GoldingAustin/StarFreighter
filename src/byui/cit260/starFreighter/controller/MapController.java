@@ -5,6 +5,7 @@
  */
 package byui.cit260.starFreighter.controller;
 
+import byui.cit260.starFreighter.model.GameMap;
 import byui.cit260.starFreighter.model.Planet;
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
@@ -14,10 +15,25 @@ import static java.lang.Math.sqrt;
  * @author Connor
  */
 public class MapController {
+
+    static GameMap createGameMap(int i, int i0) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     /**
      * Does nothin' much, really.
      */
     public MapController() {
+    }
+    
+    
+    /**
+     * Creates and returns a new game map object.
+     * @param x
+     * @param y
+     * @return 
+     */
+    public static GameMap createMap(int x, int y) {
+        return new GameMap(x, y);
     }
     
 

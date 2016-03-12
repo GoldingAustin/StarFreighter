@@ -44,7 +44,7 @@ class InventoryMerchant extends View {
     public boolean doAction(Object obj) {
 
         String value = (String) obj;
-        char choice = Character.toUpperCase(value.charAt(0));
+        char choice = value.charAt(0);
 
         switch (choice) {
             case 'C':

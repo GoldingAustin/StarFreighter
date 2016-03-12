@@ -11,7 +11,7 @@ import static java.lang.System.out;
  *
  * @author austingolding
  */
-class HelpMenuView extends View{
+class HelpMenuView extends View {
 
     public HelpMenuView() {
         super("\n"
@@ -30,8 +30,7 @@ class HelpMenuView extends View{
     @Override
     public boolean doAction(Object obj) {
         
-        String value = (String) obj; 
-        value = value.toUpperCase();
+        String value = (String) obj;
         char choice = value.charAt(0);
         
         switch (choice) {

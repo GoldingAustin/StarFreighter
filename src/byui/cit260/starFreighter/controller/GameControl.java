@@ -14,6 +14,7 @@ import static byui.cit260.starFreighter.model.CrewMember.crewOne;
 import static byui.cit260.starFreighter.model.CrewMember.crewThr;
 import static byui.cit260.starFreighter.model.CrewMember.crewTwo;
 import byui.cit260.starFreighter.model.Game;
+import byui.cit260.starFreighter.model.GameMap;
 import byui.cit260.starFreighter.model.Item;
 import byui.cit260.starFreighter.model.JobBoard;
 import byui.cit260.starFreighter.model.Location;
@@ -58,6 +59,9 @@ public class GameControl {
         StarFreighter.setCurrentGame(game);
 
         CombatEncounter combat = new CombatEncounter();
+        
+        GameMap map = MapController.createMap(11, 11);
+        game.setGameMap(map);
 
         crewCon = GameControl.createCrewMemberList(crewCon);
         game.setCrewCon(crewCon);

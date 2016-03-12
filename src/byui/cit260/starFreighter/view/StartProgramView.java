@@ -71,7 +71,7 @@ public final class StartProgramView {
 
     public String getPlayersName() {
             
-        Scanner keyboard = new  Scanner(in);
+        Scanner keyboard = new Scanner(in);
         String value = "";
         
         boolean valid = false;
