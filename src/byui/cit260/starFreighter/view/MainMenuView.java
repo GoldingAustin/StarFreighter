@@ -11,6 +11,7 @@ import static java.lang.System.out;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import starfreighter.StarFreighter;
+import static starfreighter.StarFreighter.getPlayer;
 
 /**
  *
@@ -67,7 +68,7 @@ class MainMenuView extends View {
     }
 
     private void startNewGame() {
-        GameControl.createNewGame(StarFreighter.getPlayer());
+        GameControl.createNewGame(getPlayer());
         GameMenuView gameMenu = new GameMenuView();
         gameMenu.display();
     }

@@ -5,11 +5,13 @@
  */
 package byui.cit260.starFreighter.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Connor
  */
-public class GameMap {
+public class GameMap implements Serializable {
     // Class constants
     private final int ROWS; // number of horizontal rows in the map
     private final int COLS; // number of vertical columns in the map

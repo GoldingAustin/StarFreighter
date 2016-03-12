@@ -5,8 +5,8 @@
  */
 package byui.cit260.starFreighter.model;
 
-import byui.cit260.starFreighter.controller.CrewController;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,8 +16,8 @@ public class Game implements Serializable{
 
     private CombatEncounter combat;
     private Coordinates coorD;
-    private CrewController crew;
     private Item[] item;
+    private ArrayList<CrewMember> crewC;
     private JobBoard jobs;
     private Location[] location;
     private Planet[] planet;
@@ -44,12 +44,12 @@ public class Game implements Serializable{
         this.coorD = coorD;
     }
 
-    public CrewController getCrewCon() {
-        return crew;
+    public ArrayList<CrewMember> getCrewCon() {
+        return crewC;
     }
 
-    public void setCrewCon(CrewController crew) {
-        this.crew = crew;
+    public void setCrewCon(ArrayList<CrewMember> crewC) {
+        this.crewC = crewC;
     }
 
     public Item[] getItem() {
@@ -99,5 +99,6 @@ public class Game implements Serializable{
     public void setShip(Ship ship) {
         this.ship = ship;
     }
+ 
     
 }

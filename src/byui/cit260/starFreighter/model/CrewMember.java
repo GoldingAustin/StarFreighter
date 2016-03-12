@@ -5,8 +5,8 @@
  */
 package byui.cit260.starFreighter.model;
 
-import byui.cit260.starFreighter.controller.CrewController;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -14,13 +14,7 @@ import java.util.Objects;
  * @author Connor
  */
 public class CrewMember implements Serializable {
-    public static CrewMember crewOne = new CrewMember();
-    public static CrewMember crewTwo = new CrewMember();
-    public static CrewMember crewThr = new CrewMember();
-    public static CrewMember crewFou = new CrewMember();
-    public static CrewMember crewFiv = new CrewMember();
-    public static CrewMember captain = new CrewMember();
-    public static CrewController crewCon = new CrewController();
+    ArrayList<CrewMember> crew = new ArrayList<>();
 
     private String name;
     private int pilot;
@@ -35,7 +29,18 @@ public class CrewMember implements Serializable {
     public CrewMember()  {
 
     }
-
+    public ArrayList<CrewMember> getCrewList() {
+        return crew;
+    }
+    
+    public void addCrew(CrewMember crewM, String name) {
+        crew.add(crewM);
+    }
+    
+    public void removeCrew(CrewMember crewM) {
+        crew.remove(crewM);
+    }
+    
     /**
      * @return the name
      */

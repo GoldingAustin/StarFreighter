@@ -8,6 +8,7 @@ package byui.cit260.starFreighter.view;
 import static java.lang.System.in;
 import static java.lang.System.out;
 import java.util.Scanner;
+import static jdk.nashorn.internal.objects.NativeString.toUpperCase;
 
 /**
  *
@@ -43,14 +44,15 @@ public abstract class View implements ViewInterface {
         while (!valid) {
 
             value = keyboard.nextLine();
+            value = toUpperCase(value);
             value = value.trim();
 
             if (value.length() < 1) {
-                out.println("Invalid input - The value must be one letter");
+                out.println("Invalid input - Please select an option from the menu");
                 continue;
             }
             break;
         }
-        return value.toUpperCase();
+        return value;
     }
 }

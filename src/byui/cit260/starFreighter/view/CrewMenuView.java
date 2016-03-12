@@ -6,33 +6,29 @@
 package byui.cit260.starFreighter.view;
 
 import byui.cit260.starFreighter.model.CrewMember;
-import static byui.cit260.starFreighter.model.CrewMember.captain;
-import static byui.cit260.starFreighter.model.CrewMember.crewFiv;
-import static byui.cit260.starFreighter.model.CrewMember.crewFou;
-import static byui.cit260.starFreighter.model.CrewMember.crewOne;
-import static byui.cit260.starFreighter.model.CrewMember.crewThr;
-import static byui.cit260.starFreighter.model.CrewMember.crewTwo;
-import static java.lang.System.out;
 
+import static java.lang.System.out;
+import java.util.ArrayList;
+import starfreighter.StarFreighter;
 
 /**
  *
  * @author austingolding
  */
 class CrewMenuView extends View {
-
-    CrewMember crew = new CrewMember();
+    private static final ArrayList<CrewMember> crew = StarFreighter.getCurrentGame().getCrewCon();
     public CrewMenuView() {
+        
         super("\n"
                 + "\n--------------------------------"
                 + "\n| Crew Customizaion Menu        |"
                 + "\n--------------------------------"
-                + "\nC - Captain: " + captain.getName()
-                + "\n1 - Crew 1: " + crewOne.getName()
-                + "\n2 - Crew 2: " + crewTwo.getName()
-                + "\n3 - Crew 3: " + crewThr.getName()
-                + "\n4 - Crew 4: " + crewFou.getName()
-                + "\n4 - Crew 4: " + crewFiv.getName()
+                + "\nC - Captain: " + crew.get(0).getName()
+                + "\n1 - Crew 1: " + crew.get(1).getName()
+                + "\n2 - Crew 2: " + crew.get(2).getName()
+                + "\n3 - Crew 3: " + crew.get(3).getName()
+                + "\n4 - Crew 4: " + crew.get(4).getName()
+                + "\n4 - Crew 4: " + crew.get(5).getName()
                 + "\nE - Exit"
                 + "\n--------------------------------");
     }
@@ -45,19 +41,19 @@ class CrewMenuView extends View {
 
         switch (choice) {
             case 'C':
-                this.displayStatMenu(captain);
+                this.displayStatMenu(crew.get(0));
                 break;
             case '1':
-                this.displayStatMenu(crewOne);
+                this.displayStatMenu(crew.get(1));
                 break;
             case '2':
-                this.displayStatMenu(crewTwo);
+                this.displayStatMenu(crew.get(2));
                 break;
             case '3':
-                this.displayStatMenu(crewThr);
+                this.displayStatMenu(crew.get(3));
                 break;
             case '4':
-                this.displayStatMenu(crewFou);
+                this.displayStatMenu(crew.get(4));
                 break;
             case 'E':
                 return true;
@@ -69,24 +65,13 @@ class CrewMenuView extends View {
         return false;
     }
 
-    
     private void startExistingGame() {
         out.println("\n*** startExistingGame() stub function called ***");
     }
 
     private void displayStatMenu(CrewMember crew) {
-        StatMenuView statMenu = new StatMenuView(crew);       
+        StatMenuView statMenu = new StatMenuView(crew);
         statMenu.display(crew);
     }
-    
-    public CrewMember getCrew() {
-        return crew;
-    }
-
-    public void setCrew(CrewMember crew) {
-        this.crew = crew;
-    }
-    
-    
 
 }

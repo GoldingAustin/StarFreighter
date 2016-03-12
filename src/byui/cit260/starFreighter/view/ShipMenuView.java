@@ -6,12 +6,9 @@
 package byui.cit260.starFreighter.view;
 
 import byui.cit260.starFreighter.model.CrewMember;
-import static byui.cit260.starFreighter.model.CrewMember.captain;
-import static byui.cit260.starFreighter.model.CrewMember.crewFou;
-import static byui.cit260.starFreighter.model.CrewMember.crewOne;
-import static byui.cit260.starFreighter.model.CrewMember.crewThr;
-import static byui.cit260.starFreighter.model.CrewMember.crewTwo;
 import byui.cit260.starFreighter.model.Ship;
+import java.util.ArrayList;
+import starfreighter.StarFreighter;
 
 
 
@@ -20,6 +17,7 @@ import byui.cit260.starFreighter.model.Ship;
  * @author austingolding
  */
 class ShipMenuView extends View {
+    static ArrayList<CrewMember> crew = StarFreighter.getCurrentGame().getCrewCon();
     Ship ship = new Ship();
     public ShipMenuView() {
        super("\n"
@@ -27,11 +25,11 @@ class ShipMenuView extends View {
                 + "\n| Ship Menu                    |"
                 + "\n--------------------------------"
                 + "\nS - Display Ship Overview" 
-                + "\nC - Assign " + captain.getName() + "'s Position " 
-                + "\nN - Assign " + crewOne.getName() + "'s Position " 
-                + "\nG - Assign " + crewTwo.getName() + "'s Position " 
-                + "\nD - Assign " + crewThr.getName() + "'s Position " 
-                + "\nM - Assign " + crewFou.getName() + "'s Position " 
+                + "\nC - Assign " + crew.get(0).getName() + "'s Position " 
+                + "\nN - Assign " + crew.get(1).getName() + "'s Position " 
+                + "\nG - Assign " + crew.get(2).getName() + "'s Position " 
+                + "\nD - Assign " + crew.get(3).getName() + "'s Position " 
+                + "\nM - Assign " + crew.get(4).getName() + "'s Position " 
                 + "\nF - Refuel Ship " 
                 + "\nR - Repair Ship"
                 + "\nE - Exit"
@@ -57,19 +55,19 @@ class ShipMenuView extends View {
                      + "Fuel" + ship.getFuel());
                 break;
             case 'C':
-                this.assignPos(captain);
+                this.assignPos(crew.get(0));
                 break;
             case 'N':
-                this.assignPos(crewOne);
+                this.assignPos(crew.get(1));
                 break;
             case 'G':
-                this.assignPos(crewTwo);
+                this.assignPos(crew.get(2));
                 break;
             case 'D':
-                this.assignPos(crewThr);
+                this.assignPos(crew.get(3));
                 break;
             case 'M':
-                this.assignPos(crewFou);
+                this.assignPos(crew.get(4));
                 break;
             case 'F':
                 ship.setFuel(100);
