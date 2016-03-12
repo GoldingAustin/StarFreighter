@@ -150,59 +150,37 @@ public class GameControl {
     private static Item[] createItemList() {
         Item[] item = new Item[Constant.NUMBER_OF_ITEMS_INVENTORY];
 
-        Item cheese = new Item();
-        cheese.setName("Amazing Space Cheese");
-        cheese.setValue(5);
+        Item cheese = new Item("Amazing Space Cheese", 5);
         item[InventoryItem.cheese.ordinal()] = cheese;
 
-        Item bandages = new Item();
-        bandages.setName("Super Bandages");
-        bandages.setValue(10);
+        Item bandages = new Item("Super Bandages", 10);
         item[InventoryItem.bandages.ordinal()] = bandages;
 
-        Item oldparts = new Item();
-        oldparts.setName("Old Parts");
-        oldparts.setValue(3);
+        Item oldparts = new Item("Old Parts", 3);
         item[InventoryItem.oldparts.ordinal()] = oldparts;
 
-        Item newparts = new Item();
-        newparts.setName("New Parts");
-        newparts.setValue(15);
+        Item newparts = new Item("New Parts", 15);
         item[InventoryItem.newparts.ordinal()] = newparts;
 
-        Item junk = new Item();
-        junk.setName("Junk");
-        junk.setValue(1);
+        Item junk = new Item("Junk", 1);
         item[InventoryItem.junk.ordinal()] = junk;
 
-        Item powerbar = new Item();
-        powerbar.setName("Powerbar");
-        powerbar.setValue(10);
+        Item powerbar = new Item("Powerbar", 10);
         item[InventoryItem.powerbar.ordinal()] = powerbar;
 
-        Item ore = new Item();
-        ore.setName("Space Ore");
-        ore.setValue(20);
+        Item ore = new Item("Space Ore", 20);
         item[InventoryItem.ore.ordinal()] = ore;
 
-        Item weaponparts = new Item();
-        weaponparts.setName("Weapon Parts");
-        weaponparts.setValue(10);
+        Item weaponparts = new Item("Weapon Parts", 10);
         item[InventoryItem.weaponparts.ordinal()] = weaponparts;
 
-        Item weapon = new Item();
-        weapon.setName("Laser Rifle");
-        weapon.setValue(50);
+        Item weapon = new Item("Laser Rifle", 50);
         item[InventoryItem.weapon.ordinal()] = weapon;
 
-        Item armor = new Item();
-        armor.setName("Body Armor");
-        armor.setValue(50);
+        Item armor = new Item("Body Armor", 50);
         item[InventoryItem.armor.ordinal()] = armor;
 
-        Item coins = new Item();
-        coins.setName("Mysterious Coin");
-        coins.setValue(100);
+        Item coins = new Item("Mysterious Coin", 100);
         item[InventoryItem.coins.ordinal()] = coins;
 
         return item;
