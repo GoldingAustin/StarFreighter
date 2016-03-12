@@ -10,6 +10,7 @@ import byui.cit260.starFreighter.model.Item;
 import byui.cit260.starFreighter.model.MerchantStock;
 import static java.lang.System.out;
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 /**
@@ -83,27 +84,32 @@ public class MerchantController {
     }
 
     /**
-     * I don't even know where I'm going with this. Putting it on the back
-     * burner for now, I don't have time to figure it out
+     * I tried being original, but it was way too hard on my puny brain. CS124
+     * made us reinvent the wheel for strings. I am _not_ doing that again.
+     * Thank you for a working solution, Google!
+     * 
+     * Note: would probably have been easier for me to understand with an Array
+     * of primitives instead of an ArrayList of objects, comparing based on
+     * those object's attributes.
+     * 
+     * And on this subject, I refuse to make a test matrix for this. Working
+     * with tables in Microsoft Word is backwards enough without the added
+     * complexity working with objects introduces, thanks.
+     * 
      * @param original
      * @return 
      */
     public ArrayList<Item> sortByValue(ArrayList<Item> original) {
-        ArrayList<Item> sorted = new ArrayList<>();
-        for (Item current : original) {
-            if (sorted.size() == 0) {
-                sorted.add(current);
+        Collections.sort(original, (Item itemOne, Item itemTwo) -> {
+            if (itemOne.getValue() > itemTwo.getValue()) {
+                return 1;
             }
-            
-            // probably not correct, but whatever
-            if (current.getValue() > sorted.get(sorted.size()).getValue()) {
-                sorted.add(current);
+            if (itemOne.getValue() < itemTwo.getValue()) {
+                return -1;
             }
-            else {
-                sorted.add(0, current);
-            }
-        }
-        return sorted;
+            return 0;
+        });
+        return original;
     }
     
     /**
