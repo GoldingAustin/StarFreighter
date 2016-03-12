@@ -11,6 +11,7 @@ import byui.cit260.starFreighter.model.MerchantStock;
 import static java.lang.System.out;
 import java.util.ArrayList;
 import java.util.Collections;
+import starfreighter.StarFreighter;
 
 
 /**
@@ -23,13 +24,12 @@ public class MerchantController {
     /**
      *
      */
-    public final MerchantStock inventory = new MerchantStock();
+    public final MerchantStock inventory = StarFreighter.getCurrentGame().getMerch();
     
     /**
      *
      */
     public MerchantController() {
-        inventory.setCurrency(100);
     }
     
     /**

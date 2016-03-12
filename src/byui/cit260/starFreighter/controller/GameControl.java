@@ -5,6 +5,7 @@
  */
 package byui.cit260.starFreighter.controller;
 
+import static byui.cit260.starFreighter.controller.GameControl.Constant.NUMBER_OF_ITEMS_INVENTORY;
 import byui.cit260.starFreighter.model.CombatEncounter;
 import byui.cit260.starFreighter.model.CrewMember;
 import byui.cit260.starFreighter.model.Game;
@@ -70,12 +71,22 @@ public class GameControl {
         Location[] location = GameControl.createLocationList();
         game.setLocation(location);
 
-        MerchantStock merch = new MerchantStock();
+        MerchantStock merch = GameControl.createMerchantStock();
         game.setMerch(merch);
 
         Ship ship = new Ship();
         game.setShip(ship);
     }
+
+    private static MerchantStock createMerchantStock() {
+       MerchantStock merch = new MerchantStock();
+       for (int i = 0; i < NUMBER_OF_ITEMS_INVENTORY; i++) {
+           merch.addItem(GameControl.createItemList()[i]);         
+       }
+       merch.setCurrency(100);
+       return merch;
+    }
+
 
     public static class Constant {
 

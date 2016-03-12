@@ -14,14 +14,13 @@ import java.util.Objects;
  * @author austingolding
  */
 public class MerchantStock implements Serializable {
-    private final ArrayList<Item> itemList = new ArrayList<>();
+    Game game = new Game();
+    ArrayList<Item> itemList = new ArrayList<>();
     private int currency;
     
-
     public MerchantStock() {
 
     }
-
     public ArrayList<Item> getItemList() {
         return itemList;
     }
@@ -29,8 +28,8 @@ public class MerchantStock implements Serializable {
     public boolean hasItem(Item item) {
         return itemList.contains(item);
     }
-    public String getItems() {
-        return itemList.toString();
+    public ArrayList<Item> getItems() {
+        return itemList;
     }
     public void addItem(Item item) {
         itemList.add(item);
@@ -80,5 +79,30 @@ public class MerchantStock implements Serializable {
     public String toString() {
         return "Inventory{" + "currency=" + currency + ", itemList=" + itemList + '}';
     }
+
+    public String getName() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public int getResaleValue() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public boolean hasItem(MerchantStock item) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void removeItem(MerchantStock item) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public int getValue() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void addItem(MerchantStock item) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
       
 }
