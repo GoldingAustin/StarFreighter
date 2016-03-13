@@ -5,6 +5,11 @@
  */
 package byui.cit260.starFreighter.controller;
 
+import static byui.cit260.starFreighter.controller.CrewController.Stats.DOCTOR;
+import static byui.cit260.starFreighter.controller.CrewController.Stats.FIGHTER;
+import static byui.cit260.starFreighter.controller.CrewController.Stats.MECHANIC;
+import static byui.cit260.starFreighter.controller.CrewController.Stats.PILOT;
+import static byui.cit260.starFreighter.controller.CrewController.Stats.TRADER;
 import static byui.cit260.starFreighter.controller.GameControl.Constant.NUMBER_OF_ITEMS_INVENTORY;
 import byui.cit260.starFreighter.model.CombatEncounter;
 import byui.cit260.starFreighter.model.CrewMember;
@@ -133,6 +138,8 @@ public class GameControl {
     private static ArrayList<CrewMember> createCrewMemberList(String playersName) {
         ArrayList<CrewMember> crew = new ArrayList<>();
         
+        CrewController crewCon =  new CrewController();
+        
         CrewMember crewOne = new CrewMember();
         CrewMember crewTwo = new CrewMember();
         CrewMember crewThr = new CrewMember();
@@ -140,25 +147,25 @@ public class GameControl {
         CrewMember crewFiv = new CrewMember();
         CrewMember captain = new CrewMember();
         
-        crewOne.setTrader(4);
-        crewTwo.setFighter(4);
-        crewThr.setDoctor(4);
-        crewFou.setMechanic(4);
-        crewFiv.setPilot(4);
+        crewCon.setStat(crewOne, TRADER, 4);
+        crewCon.setStat(crewTwo, FIGHTER, 4);
+        crewCon.setStat(crewThr, DOCTOR, 4);
+        crewCon.setStat(crewFou, MECHANIC, 4);
+        crewCon.setStat(crewFiv, PILOT, 4);
         
-        captain.setName(playersName);
-        crewOne.setName("Spock");
-        crewTwo.setName("Kirk");
-        crewThr.setName("Bones");
-        crewFou.setName("McCoy");
-        crewFiv.setName("Sulu");
+        crewCon.name(captain, playersName);
+        crewCon.name(crewOne, "Spock");
+        crewCon.name(crewTwo, "Kirk");
+        crewCon.name(crewThr, "Bones");
+        crewCon.name(crewFou,"McCoy");
+        crewCon.name(crewFiv, "Sulu");
         
-        captain.setHitPoints(30);
-        crewOne.setHitPoints(30);
-        crewTwo.setHitPoints(30);
-        crewThr.setHitPoints(30);
-        crewFou.setHitPoints(30);
-        crewFiv.setHitPoints(30);
+        crewCon.heal(captain, 30);
+        crewCon.heal(crewOne, 30);
+        crewCon.heal(crewTwo, 30);
+        crewCon.heal(crewThr, 30);
+        crewCon.heal(crewFou, 30);
+        crewCon.heal(crewFiv, 30);
 
         crew.add(0, captain);
         crew.add(1, crewOne);
