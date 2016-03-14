@@ -24,8 +24,8 @@ public class MerchantController {
     /**
      *
      */
-    public final MerchantStock inventory = StarFreighter.getCurrentGame().getMerch();
-    
+ //   public final MerchantStock inventory = StarFreighter.getCurrentGame().getMerch();
+    public final MerchantStock inventory = new MerchantStock();
     /**
      *
      */
