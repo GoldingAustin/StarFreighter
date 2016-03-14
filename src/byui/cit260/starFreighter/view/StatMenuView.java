@@ -5,6 +5,12 @@
  */
 package byui.cit260.starFreighter.view;
 
+import byui.cit260.starFreighter.controller.CrewController;
+import static byui.cit260.starFreighter.controller.CrewController.Stats.DOCTOR;
+import static byui.cit260.starFreighter.controller.CrewController.Stats.FIGHTER;
+import static byui.cit260.starFreighter.controller.CrewController.Stats.MECHANIC;
+import static byui.cit260.starFreighter.controller.CrewController.Stats.PILOT;
+import static byui.cit260.starFreighter.controller.CrewController.Stats.TRADER;
 import byui.cit260.starFreighter.model.CrewMember;
 import static java.lang.System.in;
 import static java.lang.System.out;
@@ -18,6 +24,7 @@ class StatMenuView {
 
     Scanner keyboard = new Scanner(in);
     protected String displayMessage;
+    CrewController crewCon = new CrewController();
 
     public StatMenuView(CrewMember crew) {
         this.displayMessage = "\n"
@@ -67,23 +74,23 @@ class StatMenuView {
         char choice = value.charAt(0);
         switch (choice) {
             case 'P':
-                crew.setPilot(crew.getPilot() + 1);
+                crewCon.setStat(crew, PILOT, crew.getPilot() + 1);
                 displayStats(crew);
                 break;
             case 'M':
-                crew.setMechanic(crew.getMechanic() + 1);
+                crewCon.setStat(crew, MECHANIC, crew.getMechanic() + 1);
                 displayStats(crew);
                 break;
             case 'F':
-                crew.setFighter(crew.getFighter() + 1);
+                crewCon.setStat(crew, FIGHTER, crew.getFighter() + 1);
                 displayStats(crew);
                 break;
             case 'D':
-                crew.setDoctor(crew.getDoctor() + 1);
+                crewCon.setStat(crew, DOCTOR, crew.getDoctor() + 1);
                 displayStats(crew);
                 break;
             case 'T':
-                crew.setTrader(crew.getTrader() + 1);
+                crewCon.setStat(crew, TRADER, crew.getTrader() + 1);
                 displayStats(crew);
                 break;
             case 'E':
@@ -96,13 +103,12 @@ class StatMenuView {
     }
 
     private void displayStats(CrewMember crew) {
-              out.println(crew.getName() + ":");
-              out.println("\nPilot: " + crew.getPilot()
-               + "\nMechanic:" + crew.getMechanic()
-               + "\nFighter:" + crew.getFighter()
-               + "\nDoctor:" + crew.getDoctor()
-               + "\nTrader:" + crew.getTrader());
+        out.println(crew.getName() + ":");
+        out.println("\nPilot: " + crew.getPilot()
+                + "\nMechanic:" + crew.getMechanic()
+                + "\nFighter:" + crew.getFighter()
+                + "\nDoctor:" + crew.getDoctor()
+                + "\nTrader:" + crew.getTrader());
     }
-
 
 }

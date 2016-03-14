@@ -5,6 +5,7 @@
  */
 package byui.cit260.starFreighter.model;
 
+import byui.cit260.starFreighter.controller.CrewController;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -192,4 +193,5 @@ public class CrewMember implements Serializable {
     public String toString() {
         return "GameCharacter{" + "name=" + name + ", pilot=" + pilot + ", mechanic=" + mechanic + ", fighter=" + fighter + ", doctor=" + doctor + ", trader=" + trader + ", hitPoints=" + hitPoints + '}';
     }
+
 }

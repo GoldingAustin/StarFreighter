@@ -16,9 +16,11 @@ import starfreighter.StarFreighter;
  * @author austingolding
  */
 class CrewMenuView extends View {
+
     private static final ArrayList<CrewMember> crew = StarFreighter.getCurrentGame().getCrewCon();
+
     public CrewMenuView() {
-        
+
         super("\n"
                 + "\n--------------------------------"
                 + "\n| Crew Customizaion Menu        |"
@@ -28,7 +30,7 @@ class CrewMenuView extends View {
                 + "\n2 - Crew 2: " + crew.get(2).getName()
                 + "\n3 - Crew 3: " + crew.get(3).getName()
                 + "\n4 - Crew 4: " + crew.get(4).getName()
-                + "\n4 - Crew 4: " + crew.get(5).getName()
+                + "\n4 - Crew 5: " + crew.get(5).getName()
                 + "\nE - Exit"
                 + "\n--------------------------------");
     }
@@ -54,6 +56,9 @@ class CrewMenuView extends View {
                 break;
             case '4':
                 this.displayStatMenu(crew.get(4));
+                break;
+            case '5':
+                this.displayStatMenu(crew.get(5));
                 break;
             case 'E':
                 return true;
