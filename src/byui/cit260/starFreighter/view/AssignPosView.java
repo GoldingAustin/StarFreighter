@@ -10,6 +10,7 @@ import byui.cit260.starFreighter.model.Ship;
 import static java.lang.System.in;
 import static java.lang.System.out;
 import java.util.Scanner;
+import static jdk.nashorn.internal.objects.NativeString.toUpperCase;
 
 /**
  *
@@ -54,6 +55,7 @@ class AssignPosView {
         while (!valid) {
 
             value = keyboard.nextLine();
+            value = toUpperCase(value);
             value = value.trim();
 
             if (value.length() != 1) {

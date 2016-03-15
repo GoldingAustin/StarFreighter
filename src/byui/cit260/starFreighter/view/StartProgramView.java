@@ -10,6 +10,7 @@ import byui.cit260.starFreighter.model.Player;
 import static java.lang.System.in;
 import static java.lang.System.out;
 import java.util.Scanner;
+import static jdk.nashorn.internal.objects.NativeString.toUpperCase;
 
 /**
  *
@@ -61,6 +62,7 @@ public final class StartProgramView {
             System.out.println("\nPlease enter your name: ");
 
             value = keyboard.nextLine();
+            value = toUpperCase(value);
             value = value.trim();
 
             if (value.length() < 2) {

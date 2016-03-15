@@ -5,7 +5,6 @@
  */
 package byui.cit260.starFreighter.model;
 
-import byui.cit260.starFreighter.controller.CrewController;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;

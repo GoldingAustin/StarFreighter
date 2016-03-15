@@ -24,7 +24,11 @@ public class StarFreighter {
       //  MapMenuView test = new MapMenuView();
       //  test.display();
         StartProgramView startProgram = new StartProgramView();
-        startProgram.StartProgramView();
+        try {
+            startProgram.StartProgramView();
+        } catch (Throwable start) {
+        System.out.println(start.getMessage());
+        }
     }
 
     public static Game getCurrentGame() {

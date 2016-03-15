@@ -76,7 +76,7 @@ public final class EncounterController {
                 enemy.setAlive(false);
                 return enemy.getHitPoints();
             }
-           return enemy.getHitPoints();
+            return enemy.getHitPoints();
         }
         if (enemy.isAlive() == false) {
             out.println("Your Enemy is Dead");
@@ -86,6 +86,7 @@ public final class EncounterController {
             out.println("You did 0 Damage");
             return enemy.getHitPoints();
         }
+
         return -1;
     }
 

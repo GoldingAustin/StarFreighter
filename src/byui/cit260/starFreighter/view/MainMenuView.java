@@ -6,10 +6,9 @@
 package byui.cit260.starFreighter.view;
 
 import byui.cit260.starFreighter.controller.GameControl;
+import byui.cit260.starFreighter.exceptions.GameControlExceptions;
 import java.io.IOException;
 import static java.lang.System.out;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import starfreighter.StarFreighter;
 import static starfreighter.StarFreighter.getPlayer;
 
@@ -17,39 +16,33 @@ import static starfreighter.StarFreighter.getPlayer;
  *
  * @author austingolding
  */
-class MainMenuView extends View {
+public class MainMenuView extends View {
 
     public MainMenuView() {
         super("\n"
-            + "\n--------------------------------"
-            + "\n| Main Menu                    |"
-            + "\n--------------------------------"
-            + "\nG - Start Game"
-            + "\nL - Load Saved Game"
-            + "\nZ – Save Game"
-            + "\nH - Help Menu"
-            + "\nE - Exit"
-            + "\n--------------------------------");
+                + "\n--------------------------------"
+                + "\n| Main Menu                    |"
+                + "\n--------------------------------"
+                + "\nG - Start Game"
+                + "\nL - Load Saved Game"
+                + "\nZ – Save Game"
+                + "\nH - Help Menu"
+                + "\nE - Exit"
+                + "\n--------------------------------");
     }
-    
+
     @Override
     public boolean doAction(Object obj) {
-        
-        String value = (String) obj; 
+
+        String value = (String) obj;
         char choice = value.charAt(0);
-        
+
         switch (choice) {
             case 'G':
                 this.startNewGame();
                 break;
             case 'L':
-        {
-            try {
                 this.startExistingGame();
-            } catch (IOException ex) {
-                Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
                 break;
             case 'H':
                 this.displayHelpMenu();
@@ -62,7 +55,7 @@ class MainMenuView extends View {
             default:
                 out.println("\n*** Invalid selection *** Try again");
                 break;
-       
+
         }
         return false;
     }
@@ -73,12 +66,19 @@ class MainMenuView extends View {
         gameMenu.display();
     }
 
-    private void startExistingGame() throws IOException {
+    private void startExistingGame() {
         out.println("\nPlease enter the file path in which you'd like to load your game");
-    String file = this.getInput();
-    GameControl.loadGame(file);
-    GameMenuView gameMenu = new GameMenuView();
-    gameMenu.display();   
+        String file = this.getInput();
+
+        try {
+            GameControl.loadGame(file);
+            GameMenuView gameMenu = new GameMenuView();
+            gameMenu.display();
+        } catch (GameControlExceptions | IOException | ClassNotFoundException ex) {
+            System.out.println(ex.getMessage());
+            MainMenuView mainMenu = new MainMenuView();
+            mainMenu.display();
+        }
     }
 
     private void displayHelpMenu() {
@@ -88,11 +88,18 @@ class MainMenuView extends View {
 
     private void saveGame() {
         out.println("\nPlease enter the file path in which you'd like to save your game");
-    String file = this.getInput();
-    
-    GameControl.saveGame(StarFreighter.getCurrentGame(), file);
-    out.println("File saved successfully at: " + file + "/StarFreighterSave.data");
-    
+        String file = this.getInput();
+
+        try {
+            GameControl.saveGame(StarFreighter.getCurrentGame(), file);
+            out.println("File saved successfully at: " + file + "/StarFreighterSave.data");
+            GameMenuView gameMenu = new GameMenuView();
+            gameMenu.display();
+        } catch (GameControlExceptions ex) {
+            out.println(ex.getMessage());
+        }
+        out.println("File saved successfully at: " + file + "/StarFreighterSave.data");
+
     }
 
 }

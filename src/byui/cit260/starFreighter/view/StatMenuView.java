@@ -15,6 +15,7 @@ import byui.cit260.starFreighter.model.CrewMember;
 import static java.lang.System.in;
 import static java.lang.System.out;
 import java.util.Scanner;
+import static jdk.nashorn.internal.objects.NativeString.toUpperCase;
 
 /**
  *
@@ -59,6 +60,7 @@ class StatMenuView {
         while (!valid) {
 
             value = keyboard.nextLine();
+            value = toUpperCase(value);
             value = value.trim();
 
             if (value.length() != 1) {

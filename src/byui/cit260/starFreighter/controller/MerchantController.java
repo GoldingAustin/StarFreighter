@@ -11,7 +11,6 @@ import byui.cit260.starFreighter.model.MerchantStock;
 import static java.lang.System.out;
 import java.util.ArrayList;
 import java.util.Collections;
-import starfreighter.StarFreighter;
 
 
 /**

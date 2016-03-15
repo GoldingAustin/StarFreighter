@@ -11,6 +11,7 @@ import static byui.cit260.starFreighter.controller.CrewController.Stats.MECHANIC
 import static byui.cit260.starFreighter.controller.CrewController.Stats.PILOT;
 import static byui.cit260.starFreighter.controller.CrewController.Stats.TRADER;
 import static byui.cit260.starFreighter.controller.GameControl.Constant.NUMBER_OF_ITEMS_INVENTORY;
+import byui.cit260.starFreighter.exceptions.GameControlExceptions;
 import byui.cit260.starFreighter.model.CombatEncounter;
 import byui.cit260.starFreighter.model.CrewMember;
 import byui.cit260.starFreighter.model.Game;
@@ -23,13 +24,12 @@ import byui.cit260.starFreighter.model.Player;
 import byui.cit260.starFreighter.model.Ship;
 import enums.InventoryItem;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import starfreighter.StarFreighter;
 
 /**
@@ -39,7 +39,7 @@ import starfreighter.StarFreighter;
 public class GameControl {
 
     public static Game game;
-    
+
     public static Player createPlayer(String playersName) {
 
         if (playersName == null) {
@@ -48,7 +48,7 @@ public class GameControl {
 
         Player player = new Player();
         player.setName(playersName);
-        
+
         StarFreighter.setPlayer(player);
 
         return player;
@@ -62,9 +62,8 @@ public class GameControl {
 
         GameMap map = MapController.createMap(11, 11);
         game.setGameMap(map);
-        
-        
-        ArrayList<CrewMember>crew = GameControl.createCrewMemberList(player.getName());
+
+        ArrayList<CrewMember> crew = GameControl.createCrewMemberList(player.getName());
         game.setCrewCon(crew);
 
         Item[] item = GameControl.createItemList();
@@ -84,14 +83,13 @@ public class GameControl {
     }
 
     private static MerchantStock createMerchantStock() {
-       MerchantStock merch = new MerchantStock();
-       for (int i = 0; i < NUMBER_OF_ITEMS_INVENTORY; i++) {
-           merch.addItem(GameControl.createItemList()[i]);         
-       }
-       merch.setCurrency(100);
-       return merch;
+        MerchantStock merch = new MerchantStock();
+        for (int i = 0; i < NUMBER_OF_ITEMS_INVENTORY; i++) {
+            merch.addItem(GameControl.createItemList()[i]);
+        }
+        merch.setCurrency(100);
+        return merch;
     }
-
 
     public static class Constant {
 
@@ -112,24 +110,24 @@ public class GameControl {
         }
     }
 
-    public static void saveGame(Game game, String file) {
+    public static void saveGame(Game game, String file) throws GameControlExceptions {
         try (FileOutputStream fop = new FileOutputStream(file + "/StarFreighterSave.data")) {
             ObjectOutputStream output = new ObjectOutputStream(fop);
 
             output.writeObject(game);
         } catch (IOException ex) {
-            Logger.getLogger(GameControl.class.getName()).log(Level.SEVERE, null, ex);
+            throw new GameControlExceptions(ex.getMessage());
         }
     }
 
-    public static void loadGame(String file) {
+    public static void loadGame(String file) throws GameControlExceptions, ClassNotFoundException, IOException {
         Game load = new Game();
         try (FileInputStream fip = new FileInputStream(file + "/StarFreighterSave.data")) {
             ObjectInputStream output = new ObjectInputStream(fip);
 
             load = (Game) output.readObject();
-        } catch (IOException | ClassNotFoundException ex) {
-            Logger.getLogger(GameControl.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (FileNotFoundException ex) {
+            throw new GameControlExceptions(ex.getMessage());
         }
 
         StarFreighter.setCurrentGame(load);
@@ -137,29 +135,29 @@ public class GameControl {
 
     private static ArrayList<CrewMember> createCrewMemberList(String playersName) {
         ArrayList<CrewMember> crew = new ArrayList<>();
-        
-        CrewController crewCon =  new CrewController();
-        
+
+        CrewController crewCon = new CrewController();
+
         CrewMember crewOne = new CrewMember();
         CrewMember crewTwo = new CrewMember();
         CrewMember crewThr = new CrewMember();
         CrewMember crewFou = new CrewMember();
         CrewMember crewFiv = new CrewMember();
         CrewMember captain = new CrewMember();
-        
+
         crewCon.setStat(crewOne, TRADER, 4);
         crewCon.setStat(crewTwo, FIGHTER, 4);
         crewCon.setStat(crewThr, DOCTOR, 4);
         crewCon.setStat(crewFou, MECHANIC, 4);
         crewCon.setStat(crewFiv, PILOT, 4);
-        
+
         crewCon.name(captain, playersName);
         crewCon.name(crewOne, "Spock");
         crewCon.name(crewTwo, "Kirk");
         crewCon.name(crewThr, "Bones");
-        crewCon.name(crewFou,"McCoy");
+        crewCon.name(crewFou, "McCoy");
         crewCon.name(crewFiv, "Sulu");
-        
+
         crewCon.heal(captain, 30);
         crewCon.heal(crewOne, 30);
         crewCon.heal(crewTwo, 30);
