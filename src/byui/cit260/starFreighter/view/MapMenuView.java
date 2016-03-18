@@ -194,19 +194,19 @@ public class MapMenuView extends View {
             }
         }
         EncounterChance();
-        out.println("Test");
         return destination;
     }
     
     public void EncounterChance() {
         EncounterController encounter = new EncounterController();
-        double chance = ThreadLocalRandom.current().nextInt(1, 101);
+        int chance = (int) (Math.random() * 100);
         
-//      
+        if (chance >= 50) {     
 
         encounter.run();
 
-//        }
+        }
+
     }
     
     /**

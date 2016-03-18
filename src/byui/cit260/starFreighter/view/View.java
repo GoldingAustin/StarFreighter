@@ -44,7 +44,6 @@ public abstract class View implements ViewInterface {
         while (!valid) {
 
             value = keyboard.nextLine();
-            value = toUpperCase(value);
             value = value.trim();
 
             if (value.length() < 1) {
@@ -53,6 +52,6 @@ public abstract class View implements ViewInterface {
             }
             break;
         }
-        return value;
+        return value.toUpperCase();
     }
 }
