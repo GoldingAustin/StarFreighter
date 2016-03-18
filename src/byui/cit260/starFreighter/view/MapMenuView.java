@@ -5,6 +5,7 @@
  */
 package byui.cit260.starFreighter.view;
 
+import byui.cit260.starFreighter.controller.EncounterController;
 import byui.cit260.starFreighter.controller.MapController;
 import byui.cit260.starFreighter.model.Coordinates;
 import byui.cit260.starFreighter.model.GameMap;
@@ -14,6 +15,7 @@ import static java.lang.Character.toUpperCase;
 import static java.lang.System.in;
 import static java.lang.System.out;
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
 
 
 /**
@@ -172,7 +174,6 @@ public class MapMenuView extends View {
         out.println("Your destination is " + distance + " light years away.");
         // do something to calculate fuel cost, then update the player's position
         // let's not forget random encounters, either...
-        
         // this is as far as I got on my work on the views
     }
 
@@ -192,10 +193,21 @@ public class MapMenuView extends View {
                 out.println("There's no planet at the specified coordinates!");
             }
         }
-
+        EncounterChance();
+        out.println("Test");
         return destination;
     }
+    
+    public void EncounterChance() {
+        EncounterController encounter = new EncounterController();
+        double chance = ThreadLocalRandom.current().nextInt(1, 101);
+        
+//      
 
+        encounter.run();
+
+//        }
+    }
     
     /**
      * Prompts the user for a single uppercase letter. Uses the character's ASCII

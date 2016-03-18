@@ -6,6 +6,7 @@
 package byui.cit260.starFreighter.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 /**
  *
  * @author Connor
@@ -16,6 +17,7 @@ public class CombatEncounter implements Serializable {
     private int damageModifiers;
     private int defenseModifiers;
     private boolean alive;
+    private String name;
     
     public CombatEncounter() {
         
@@ -70,6 +72,14 @@ public class CombatEncounter implements Serializable {
         this.defenseModifiers = defenseModifiers;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     
     /**
      * @return the alive
@@ -87,11 +97,13 @@ public class CombatEncounter implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 13 * hash + this.hitPoints;
-        hash = 13 * hash + this.damage;
-        hash = 13 * hash + this.damageModifiers;
-        hash = 13 * hash + (this.alive ? 1 : 0);
+        int hash = 7;
+        hash = 41 * hash + this.hitPoints;
+        hash = 41 * hash + this.damage;
+        hash = 41 * hash + this.damageModifiers;
+        hash = 41 * hash + this.defenseModifiers;
+        hash = 41 * hash + (this.alive ? 1 : 0);
+        hash = 41 * hash + Objects.hashCode(this.name);
         return hash;
     }
 
@@ -116,7 +128,13 @@ public class CombatEncounter implements Serializable {
         if (this.damageModifiers != other.damageModifiers) {
             return false;
         }
+        if (this.defenseModifiers != other.defenseModifiers) {
+            return false;
+        }
         if (this.alive != other.alive) {
+            return false;
+        }
+        if (!Objects.equals(this.name, other.name)) {
             return false;
         }
         return true;
@@ -124,6 +142,10 @@ public class CombatEncounter implements Serializable {
 
     @Override
     public String toString() {
-        return "CombatEncounter{" + "hitPoints=" + hitPoints + ", damage=" + damage + ", damageModifiers=" + damageModifiers + ", alive=" + alive + '}';
+        return "CombatEncounter{" + "hitPoints=" + hitPoints + ", damage=" + damage + ", damageModifiers=" + damageModifiers + ", defenseModifiers=" + defenseModifiers + ", alive=" + alive + ", name=" + name + '}';
     }
+
+   
+
+
 }
