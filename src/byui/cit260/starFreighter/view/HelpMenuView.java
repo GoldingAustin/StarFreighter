@@ -15,24 +15,24 @@ class HelpMenuView extends View {
 
     public HelpMenuView() {
         super("\n"
-            + "\n--------------------------------"
-            + "\n| Help Menu                     |"
-            + "\n--------------------------------"
-            + "\nG – Information on the goal for the game"
-            + "\nC – Captain and Crew character classes/roles and combat"
-            + "\nI – How to make money/Jobs board"
-            + "\nT – Ship details/launch and travel"
-            + "\nR - Shops, Upgrades and Repairs"
-            + "\nE – Exit to previous menu"
-            + "\n--------------------------------");
+                + "\n--------------------------------"
+                + "\n| Help Menu                     |"
+                + "\n--------------------------------"
+                + "\nG – Information on the goal for the game"
+                + "\nC – Captain and Crew character classes/roles and combat"
+                + "\nI – How to make money/Jobs board"
+                + "\nT – Ship details/launch and travel"
+                + "\nR - Shops, Upgrades and Repairs"
+                + "\nE – Exit to previous menu"
+                + "\n--------------------------------");
     }
 
     @Override
     public boolean doAction(Object obj) {
-        
+
         String value = (String) obj;
         char choice = value.charAt(0);
-        
+
         switch (choice) {
             case 'G':
                 out.println("\nYou are a spaceship captain desiring to be "

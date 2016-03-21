@@ -13,6 +13,7 @@ import java.util.Objects;
  * @author Connor
  */
 public class Ship implements Serializable {
+
     private String name;
     private int upgrade;
     private int repair;
@@ -23,9 +24,8 @@ public class Ship implements Serializable {
     private CrewMember doctor;
     private CrewMember comms;
 
-
     public Ship() {
-        
+
     }
 
     /**
@@ -83,7 +83,7 @@ public class Ship implements Serializable {
     public void setFuel(int fuel) {
         this.fuel = fuel;
     }
-    
+
     /**
      * @return the captain
      */
@@ -216,5 +216,4 @@ public class Ship implements Serializable {
         return "Ship{" + "name=" + name + ", upgrade=" + upgrade + ", repair=" + repair + ", fuel=" + fuel + ", captain=" + captain + ", engineer=" + engineer + ", gunner=" + gunner + ", doctor=" + doctor + ", comms=" + comms + '}';
     }
 
-    
 }

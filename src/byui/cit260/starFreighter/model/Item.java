@@ -14,14 +14,14 @@ import java.util.Objects;
  */
 public class Item implements Serializable {
 
-
     private String name;
     private int value;
-    
+
     public Item(String name, int value) {
         this.name = name;
         this.value = value;
     }
+
     /**
      * @return the name
      */
@@ -82,8 +82,6 @@ public class Item implements Serializable {
         }
         return true;
     }
-    
-    
 
     @Override
     public String toString() {

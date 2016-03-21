@@ -9,7 +9,7 @@ package byui.cit260.starFreighter.exceptions;
  *
  * @author austingolding
  */
-public class GameControlExceptions extends Exception{
+public class GameControlExceptions extends Exception {
 
     public GameControlExceptions() {
     }
@@ -29,6 +29,5 @@ public class GameControlExceptions extends Exception{
     public GameControlExceptions(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
-
 
 }

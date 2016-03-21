@@ -12,7 +12,7 @@ import java.util.ArrayList;
  *
  * @author austingolding
  */
-public class Game implements Serializable{
+public class Game implements Serializable {
 
     private CombatEncounter combat;
     private Coordinates coorD;
@@ -24,7 +24,7 @@ public class Game implements Serializable{
     private MerchantStock merch;
     private GameMap gameMap;
     private Ship ship;
-    
+
     public Game() {
     }
 
@@ -99,6 +99,5 @@ public class Game implements Serializable{
     public void setShip(Ship ship) {
         this.ship = ship;
     }
- 
-    
+
 }

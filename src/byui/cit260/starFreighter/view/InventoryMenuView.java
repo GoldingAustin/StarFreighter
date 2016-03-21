@@ -16,6 +16,7 @@ import java.util.Scanner;
  * @author austingolding
  */
 class InventoryMenuView extends View {
+
     private final String CURRENCY = "credits";
     private final MerchantController playerInventory = new MerchantController();
     private MerchantController otherInventory;
@@ -31,10 +32,8 @@ class InventoryMenuView extends View {
                 + "\nT - Total Value"
                 + "\nE - Exit"
                 + "\n--------------------------------");
-        
-        // Testing stuff
-        
 
+        // Testing stuff
     }
 
     public void setOtherInventory(MerchantController other) {
@@ -70,18 +69,18 @@ class InventoryMenuView extends View {
     }
 
     private void displayContents() {
-        out.println("You have " + playerInventory.currency() +  " " + this.CURRENCY);
+        out.println("You have " + playerInventory.currency() + " " + this.CURRENCY);
         out.println("[Item name]\t[Value]");
         for (Item current : playerInventory.itemList()) {
             this.printItem(current);
         }
     }
-    
+
     // From who?
     private void buyItem() {
         // not done at all. sorry...
     }
-    
+
     // To who?
     // Is the "to" even necessary?
     // Maybe if a player wants to buy back something they sold...
@@ -102,7 +101,7 @@ class InventoryMenuView extends View {
         out.println("You had " + previousCurrency + " " + this.CURRENCY + ".");
         out.println("You now have " + playerInventory.currency() + " " + this.CURRENCY);
     }
-    
+
     private int promptInteger() {
         // Additional scanner is necessary to avoid collisions with the default one
         // Dunno how to work around that to get pure integers, but hey.
@@ -113,10 +112,10 @@ class InventoryMenuView extends View {
                 out.println("Please enter a number.");
             }
             number = intPrompt.nextInt();
-        } while(number <= 0);
+        } while (number <= 0);
         return number;
     }
-    
+
     private void printItemNumber(Item item) {
         int index = playerInventory.itemList().indexOf(item) + 1;
         out.print("[");
@@ -125,7 +124,7 @@ class InventoryMenuView extends View {
         }
         out.print(index + "] ");
     }
-    
+
     private void printItem(Item item) {
         out.print(item.getName());
         out.print("\t");
@@ -135,12 +134,12 @@ class InventoryMenuView extends View {
     private void totalValue() {
         int totalValue = playerInventory.calculateTotalValue();
         int resaleValue = playerInventory.calculateTotalResaleValue();
-        
-        out.println("The items in your inventory are worth " +
-                totalValue + " " +
-                playerInventory.currencyUnit() +
-                ".");
-        out.println("You can resell them for " + resaleValue +
-                " " + playerInventory.currencyUnit() + ".");
+
+        out.println("The items in your inventory are worth "
+                + totalValue + " "
+                + playerInventory.currencyUnit()
+                + ".");
+        out.println("You can resell them for " + resaleValue
+                + " " + playerInventory.currencyUnit() + ".");
     }
 }

@@ -13,10 +13,11 @@ import java.util.Objects;
  *
  * @author austingolding
  */
-public class Location implements Serializable{
+public class Location implements Serializable {
+
     private String name;
     private ArrayList<JobBoard> jobList;
-    
+
     public Location() {
         jobList = new ArrayList<>();
     }
@@ -33,7 +34,6 @@ public class Location implements Serializable{
         this.name = name;
     }
 
-    
     public void setJobList(JobBoard job) {
         jobList.add(job);
     }
@@ -71,6 +71,5 @@ public class Location implements Serializable{
     public String toString() {
         return "Location{" + "name=" + name + ", jobList=" + jobList + '}';
     }
-   
-    
+
 }

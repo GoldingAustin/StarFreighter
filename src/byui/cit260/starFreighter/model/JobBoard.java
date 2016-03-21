@@ -13,12 +13,13 @@ import java.util.Objects;
  * @author austingolding
  */
 public class JobBoard implements Serializable {
+
     private String job;
     private String location;
     private int reward;
-    
+
     public JobBoard() {
-        
+
     }
 
     public String getJob() {
@@ -82,6 +83,5 @@ public class JobBoard implements Serializable {
     public String toString() {
         return "JobBoard{" + "job=" + job + ", location=" + location + ", reward=" + reward + '}';
     }
-    
-    
+
 }

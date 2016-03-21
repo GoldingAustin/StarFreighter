@@ -14,6 +14,7 @@ import java.util.Objects;
  * @author Connor
  */
 public class CrewMember implements Serializable {
+
     ArrayList<CrewMember> crew = new ArrayList<>();
 
     private String name;
@@ -24,23 +25,22 @@ public class CrewMember implements Serializable {
     private int trader;
     private int hitPoints;
 
-
-
-    public CrewMember()  {
+    public CrewMember() {
 
     }
+
     public ArrayList<CrewMember> getCrewList() {
         return crew;
     }
-    
+
     public void addCrew(CrewMember crewM, String name) {
         crew.add(crewM);
     }
-    
+
     public void removeCrew(CrewMember crewM) {
         crew.remove(crewM);
     }
-    
+
     /**
      * @return the name
      */

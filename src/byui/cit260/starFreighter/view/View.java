@@ -5,10 +5,13 @@
  */
 package byui.cit260.starFreighter.view;
 
-import static java.lang.System.in;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import static java.lang.System.out;
-import java.util.Scanner;
-import static jdk.nashorn.internal.objects.NativeString.toUpperCase;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import starfreighter.StarFreighter;
 
 /**
  *
@@ -16,7 +19,9 @@ import static jdk.nashorn.internal.objects.NativeString.toUpperCase;
  */
 public abstract class View implements ViewInterface {
 
-    Scanner keyboard = new Scanner(in);
+    protected final BufferedReader keyboard = StarFreighter.getInFile();
+    protected final PrintWriter console = StarFreighter.getOutFile();
+
     protected String displayMessage;
 
     public View(String message) {
@@ -29,7 +34,7 @@ public abstract class View implements ViewInterface {
         boolean done = false;
 
         do {
-            out.println(this.displayMessage);
+            this.console.println(this.displayMessage);
             value = this.getInput();
             done = this.doAction(value);
 
@@ -40,17 +45,21 @@ public abstract class View implements ViewInterface {
     public String getInput() {
         boolean valid = false;
         String value = null;
-        
+
         while (!valid) {
 
-            value = keyboard.nextLine();
-            value = value.trim();
+            try {
+                value = this.keyboard.readLine();
+                value = value.trim();
 
-            if (value.length() < 1) {
-                out.println("Invalid input - Please select an option from the menu");
-                continue;
+                if (value.length() < 1) {
+                    out.println("Invalid input - Please select an option from the menu");
+                    continue;
+                }
+                break;
+            } catch (IOException ex) {
+                Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
             }
-            break;
         }
         return value.toUpperCase();
     }

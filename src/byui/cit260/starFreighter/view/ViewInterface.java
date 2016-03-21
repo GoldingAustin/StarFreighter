@@ -10,9 +10,11 @@ package byui.cit260.starFreighter.view;
  * @author austingolding
  */
 public interface ViewInterface {
-    
+
     public void display();
+
     public String getInput();
+
     public boolean doAction(Object obj);
-    
+
 }

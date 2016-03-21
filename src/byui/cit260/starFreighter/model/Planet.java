@@ -7,12 +7,10 @@ package byui.cit260.starFreighter.model;
 
 import java.io.Serializable;
 
-
 /**
  *
  * @author Connor
  */
-
 public enum Planet implements Serializable {
     /* The size of the map is defined in GameMap on a per-instance basis. If you
     receive an array out of bounds error, it's because one of the planets
@@ -35,15 +33,15 @@ public enum Planet implements Serializable {
         this.coords = new Coordinates(x, y);
         this.symbol = symbol;
     }
-    
+
     public String getDescription() {
         return description;
     }
-    
+
     public Coordinates getCoordinates() {
         return coords;
     }
-    
+
     public char getSymbol() {
         return symbol;
     }
@@ -52,8 +50,8 @@ public enum Planet implements Serializable {
         for (Planet planet : values()) {
             /* Comparing objects was being wonky here- comparing values instead,
                for now. */
-            if (planet.getCoordinates().getX() == coords.getX() &&
-                planet.getCoordinates().getY() == coords.getY()) {
+            if (planet.getCoordinates().getX() == coords.getX()
+                    && planet.getCoordinates().getY() == coords.getY()) {
                 return planet;
             }
         }
@@ -63,5 +61,5 @@ public enum Planet implements Serializable {
     @Override
     public String toString() {
         return "Planet{" + "name= " + name() + ", description= " + description + '}';
-    }    
+    }
 }

@@ -91,8 +91,8 @@ class AssignPosView {
                 displayPos(crew);
                 break;
             case 'E':
-            ShipMenuView shipMenu = new ShipMenuView();
-            shipMenu.display();
+                ShipMenuView shipMenu = new ShipMenuView();
+                shipMenu.display();
             default:
                 out.println("\n*** Invalid selection *** Try again");
                 break;

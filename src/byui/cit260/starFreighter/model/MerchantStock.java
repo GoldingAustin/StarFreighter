@@ -14,26 +14,31 @@ import java.util.Objects;
  * @author austingolding
  */
 public class MerchantStock implements Serializable {
+
     Game game = new Game();
     ArrayList<Item> itemList = new ArrayList<>();
     private int currency;
-    
+
     public MerchantStock() {
 
     }
+
     public ArrayList<Item> getItemList() {
         return itemList;
     }
-    
+
     public boolean hasItem(Item item) {
         return itemList.contains(item);
     }
+
     public ArrayList<Item> getItems() {
         return itemList;
     }
+
     public void addItem(Item item) {
         itemList.add(item);
-    }  
+    }
+
     public void removeItem(Item item) {
         itemList.remove(item);
     }
@@ -45,7 +50,7 @@ public class MerchantStock implements Serializable {
     public void setCurrency(int currency) {
         this.currency = currency;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -78,5 +83,5 @@ public class MerchantStock implements Serializable {
     @Override
     public String toString() {
         return "Inventory{" + "currency=" + currency + ", itemList=" + itemList + '}';
-    }     
+    }
 }

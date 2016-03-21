@@ -19,26 +19,27 @@ public class MapController {
     static GameMap createGameMap(int i, int i0) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
     /**
      * Does nothin' much, really.
      */
     public MapController() {
     }
-    
-    
+
     /**
      * Creates and returns a new game map object.
+     *
      * @param x
      * @param y
-     * @return 
+     * @return
      */
     public static GameMap createMap(int x, int y) {
         return new GameMap(x, y);
     }
-    
 
     /**
      * Calculates the distance between two planets using the distance formula
+     *
      * @param current
      * @param desired
      * @return {double} the distance between the two planets

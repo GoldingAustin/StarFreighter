@@ -131,14 +131,14 @@ public class EncounterController implements Serializable {
                             out.println(ANSI_GREEN + crew.get(a).getName() + ": " + ANSI_CYAN + crew.get(a).getHitPoints() + ANSI_RESET);
                             out.println(" ");
                             if (crew.get(a).getHitPoints() <= 0) {
-                            out.println(ANSI_RED + enemies.get(r).getName() + ANSI_RESET + " has defeated " + ANSI_GREEN + crew.get(a).getName());
-                            allies.get(a).setAlive(false);
+                                out.println(ANSI_RED + enemies.get(r).getName() + ANSI_RESET + " has defeated " + ANSI_GREEN + crew.get(a).getName());
+                                allies.get(a).setAlive(false);
                             }
                             if (a == (allies.size() - 1)) {
                                 a = 0;
                             }
                             a++;
-                            
+
                         }
                         r++;
                     }
@@ -151,46 +151,6 @@ public class EncounterController implements Serializable {
 
     }
 
-//    public static void battleboard() throws InterruptedException {
-//        Thread th = new Thread() {
-//                Console.Write("\r" + "Battle Live Feed");
-//                System.out.write(     "\r" +  "Enemies");
-//                 System.out.write(    "\r" +  enemies.get(0).getName() + "---" + enemies.get(0).getHitPoints());
-//                 System.out.write(    "\r" +  enemies.get(1).getName() + "---" + enemies.get(1).getHitPoints() );
-//                 out.println(    "\r" +  enemies.get(2).getName() + "---" + enemies.get(2).getHitPoints() );
-//                 out.println(    "\r" +  enemies.get(3).getName() + "---" + enemies.get(3).getHitPoints()); 
-//                 out.println(    "\r" +  "----------------------------"  ); 
-//                 out.println(    "\r" +  "Allies" );
-//                 out.println(    "\r" +  crew.get(0).getName() + "---" + crew.get(0).getHitPoints());
-//                 out.println(    "\r" +  crew.get(1).getName() + "---" + crew.get(1).getHitPoints() );
-//                 out.println(    "\r" +  crew.get(2).getName() + "---" + crew.get(2).getHitPoints() );
-//                 out.println(   "\r" +  crew.get(3).getName() + "---" + crew.get(3).getHitPoints() );
-//                 out.println(    "\r" +  crew.get(4).getName() + "---" + crew.get(4).getHitPoints() );
-//                  out.println(   "\r" +  crew.get(5).getName() + "---" + crew.get(5).getHitPoints() );
-//        try {
-//            Thread.sleep(500);
-//        } 
-//        };
-//        th.start();
-//    }
-//        if (enemy.isAlive() == true && player.getDamage() > 0 && player.isAlive()) {
-//            enemy.setHitPoints(enemy.getHitPoints() - player.getDamage());
-//
-//            if (enemy.getHitPoints() <= 0) {
-//                enemy.setAlive(false);
-//                return enemy.getHitPoints();
-//            }
-//            return enemy.getHitPoints();
-//        }
-//        if (enemy.isAlive() == false) {
-//            out.println("Your Enemy is Dead");
-//            return enemy.getHitPoints();
-//        }
-//        if (player.getDamage() <= 0) {
-//            out.println("You did 0 Damage");
-//            return enemy.getHitPoints();
-//        }
-//
     /**
      *
      * @return

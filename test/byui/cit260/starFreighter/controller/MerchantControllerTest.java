@@ -16,13 +16,14 @@ import static org.junit.Assert.*;
  * @author Connor
  */
 public class MerchantControllerTest {
+
     private final MerchantController totalTest = new MerchantController();
     private final MerchantController resaleTest = new MerchantController();
     private final MerchantController sortTest = new MerchantController();
     private final Item testItem = new Item("Testing", 100);
     private final Item spaceCheese = new Item("Amazing Space Cheese", 250);
     private final Item negative = new Item("Negative", -500);
-    
+
     public MerchantControllerTest() {
 
     }
@@ -73,7 +74,7 @@ public class MerchantControllerTest {
         out.println("\tTest Case #1");
         int expResult1 = 0;
         int result1 = resaleTest.calculateTotalResaleValue();
-        assertEquals(expResult1, result1);        
+        assertEquals(expResult1, result1);
 
         // Test case #1
         out.println("\tTest Case #2");
@@ -110,7 +111,7 @@ public class MerchantControllerTest {
         sorted = sortTest.sortByValue(sortTest.itemList());
         int expResult1 = 0;
         int result1 = sorted.size();
-        assertEquals(expResult1, result1);        
+        assertEquals(expResult1, result1);
 
         // Test case #1
         out.println("\tTest Case #2");
@@ -145,5 +146,5 @@ public class MerchantControllerTest {
         int result4a = sorted.get(0).getValue();
         assertEquals(expResult4a, result4a);
     }
-    
+
 }

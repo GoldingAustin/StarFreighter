@@ -20,8 +20,10 @@ import org.junit.Test;
  * @author austingolding
  */
 public class EncounterControllerTest {
+
     CombatEncounter player = new CombatEncounter();
     CombatEncounter enemy = new CombatEncounter();
+
     /**
      *
      */
@@ -244,7 +246,6 @@ public class EncounterControllerTest {
 //        assertEquals(expResult, result, 0.0001);
 //
 //    }
-
     /**
      * Test of run method, of class EncounterController.
      */

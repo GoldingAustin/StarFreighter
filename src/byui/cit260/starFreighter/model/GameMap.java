@@ -12,6 +12,7 @@ import java.io.Serializable;
  * @author Connor
  */
 public class GameMap implements Serializable {
+
     // Class constants
     private final int ROWS; // number of horizontal rows in the map
     private final int COLS; // number of vertical columns in the map
@@ -24,11 +25,11 @@ public class GameMap implements Serializable {
     public int getRows() {
         return this.ROWS;
     }
-    
+
     public int getColumns() {
         return this.COLS;
     }
-    
+
     public int getHorizontalSpace() {
         return this.MAP_HSPACE;
     }
@@ -36,13 +37,14 @@ public class GameMap implements Serializable {
     public int getVerticalSpace() {
         return this.MAP_VSPACE;
     }
-    
+
     public char[][] getContents() {
         return this.displayMap;
     }
-    
+
     /**
      * Populates the map array with character data.
+     *
      * @param rows
      * @param cols
      */

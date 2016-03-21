@@ -12,15 +12,19 @@ import java.io.Serializable;
  * @author Connor
  */
 public class Coordinates implements Serializable {
+
     private final int x;
     private final int y;
+
     public Coordinates(int xCoord, int yCoord) {
         x = xCoord;
         y = yCoord;
     }
+
     public int getX() {
         return x;
     }
+
     public int getY() {
         return y;
     }

@@ -18,7 +18,6 @@ import static jdk.nashorn.internal.objects.NativeString.toUpperCase;
  */
 public final class StartProgramView {
 
-
     private boolean doAction;
 
     public void StartProgramView() {
@@ -38,17 +37,17 @@ public final class StartProgramView {
 
     public void displayBanner() {
         TextBox.displayText(
-            "You are a newly dubbed captain.",
-            "A deep space phenomenon has been observed which could be the key" +
-                " to finding an ancient alien treasure. You're not the first" +
-                " captain to hear about it, you have to hurry! There's no" +
-                " chance your ship can get there first with the state it's in.",
-            "You're in luck that jobs are popping up all over the galaxy." +
-                " Travel to distant planets completing jobs and fighting" +
-                " enemies so you can upgrade your ship. There's no time to" +
-                " wait, the other captains are on their way to the treasure!",
-            "Riches await you out there, it's your chance to become a legend." +
-                " Do you have what it takes?"
+                "You are a newly dubbed captain.",
+                "A deep space phenomenon has been observed which could be the key"
+                + " to finding an ancient alien treasure. You're not the first"
+                + " captain to hear about it, you have to hurry! There's no"
+                + " chance your ship can get there first with the state it's in.",
+                "You're in luck that jobs are popping up all over the galaxy."
+                + " Travel to distant planets completing jobs and fighting"
+                + " enemies so you can upgrade your ship. There's no time to"
+                + " wait, the other captains are on their way to the treasure!",
+                "Riches await you out there, it's your chance to become a legend."
+                + " Do you have what it takes?"
         );
     }
 

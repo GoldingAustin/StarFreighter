@@ -17,22 +17,22 @@ import static org.junit.Assert.*;
  * @author austingolding
  */
 public class MapMenuViewTest {
-    
+
     public MapMenuViewTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -62,5 +62,5 @@ public class MapMenuViewTest {
         // TODO review the generated test code and remove the default call to fail.
 
     }
-    
+
 }

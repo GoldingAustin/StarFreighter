@@ -10,32 +10,31 @@ import byui.cit260.starFreighter.model.Ship;
 import java.util.ArrayList;
 import starfreighter.StarFreighter;
 
-
-
 /**
  *
  * @author austingolding
  */
 class ShipMenuView extends View {
+
     static ArrayList<CrewMember> crew = StarFreighter.getCurrentGame().getCrewCon();
     Ship ship = new Ship();
+
     public ShipMenuView() {
-       super("\n"
+        super("\n"
                 + "\n--------------------------------"
                 + "\n| Ship Menu                    |"
                 + "\n--------------------------------"
-                + "\nS - Display Ship Overview" 
-                + "\nC - Assign " + crew.get(0).getName() + "'s Position " 
-                + "\nN - Assign " + crew.get(1).getName() + "'s Position " 
-                + "\nG - Assign " + crew.get(2).getName() + "'s Position " 
-                + "\nD - Assign " + crew.get(3).getName() + "'s Position " 
-                + "\nM - Assign " + crew.get(4).getName() + "'s Position " 
-                + "\nF - Refuel Ship " 
+                + "\nS - Display Ship Overview"
+                + "\nC - Assign " + crew.get(0).getName() + "'s Position "
+                + "\nN - Assign " + crew.get(1).getName() + "'s Position "
+                + "\nG - Assign " + crew.get(2).getName() + "'s Position "
+                + "\nD - Assign " + crew.get(3).getName() + "'s Position "
+                + "\nM - Assign " + crew.get(4).getName() + "'s Position "
+                + "\nF - Refuel Ship "
                 + "\nR - Repair Ship"
                 + "\nE - Exit"
                 + "\n--------------------------------");
 
- 
     }
 
     @Override
@@ -46,13 +45,13 @@ class ShipMenuView extends View {
 
         switch (choice) {
             case 'S':
-             System.out.println("\n"
-                     + "Captain" + ship.getCaptain()
-                     + "Engineer" + ship.getEngineer()
-                     + "Gunner" + ship.getGunner()
-                     + "Doctor" + ship.getDoctor()
-                     + "Communications" + ship.getComms()
-                     + "Fuel" + ship.getFuel());
+                System.out.println("\n"
+                        + "Captain" + ship.getCaptain()
+                        + "Engineer" + ship.getEngineer()
+                        + "Gunner" + ship.getGunner()
+                        + "Doctor" + ship.getDoctor()
+                        + "Communications" + ship.getComms()
+                        + "Fuel" + ship.getFuel());
                 break;
             case 'C':
                 this.assignPos(crew.get(0));
@@ -83,7 +82,7 @@ class ShipMenuView extends View {
 
         }
         return false;
-    }   
+    }
 
     private void assignPos(CrewMember crew) {
         AssignPosView assignP = new AssignPosView(crew);
@@ -91,7 +90,3 @@ class ShipMenuView extends View {
     }
 
 }
-
-
-
-

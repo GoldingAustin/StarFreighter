@@ -13,12 +13,14 @@ import byui.cit260.starFreighter.model.Ship;
  * @author Connor
  */
 public class ShipController {
+
     public ShipController() {
-        
+
     }
-    
+
     /**
      * Removes the specified crew member from their current assignment.
+     *
      * @param ship
      * @param crew
      */
@@ -39,7 +41,7 @@ public class ShipController {
             ship.setComms(null);
         }
     }
-    
+
     /* Java error shenanigans, can't be bothered to make changes
     public CrewMember getCrewMemberAtPosition(Ship ship, Positions position) {
         CrewMember crewMemberAtPosition;
@@ -89,7 +91,7 @@ public class ShipController {
                 break;
         }
     }
-    
+
     public static enum Positions {
         CAPTAIN, ENGINEER, GUNNER, DOCTOR, COMMS
     }

@@ -7,21 +7,24 @@ package byui.cit260.starFreighter.model;
 
 import java.io.Serializable;
 import java.util.Objects;
+
 /**
  *
  * @author Connor
  */
 public class CombatEncounter implements Serializable {
+
     private int hitPoints;
     private int damage;
     private int damageModifiers;
     private int defenseModifiers;
     private boolean alive;
     private String name;
-    
+
     public CombatEncounter() {
-        
+
     }
+
     /**
      * @return the hitPoints
      */
@@ -80,7 +83,6 @@ public class CombatEncounter implements Serializable {
         this.name = name;
     }
 
-    
     /**
      * @return the alive
      */
@@ -144,8 +146,5 @@ public class CombatEncounter implements Serializable {
     public String toString() {
         return "CombatEncounter{" + "hitPoints=" + hitPoints + ", damage=" + damage + ", damageModifiers=" + damageModifiers + ", defenseModifiers=" + defenseModifiers + ", alive=" + alive + ", name=" + name + '}';
     }
-
-   
-
 
 }
