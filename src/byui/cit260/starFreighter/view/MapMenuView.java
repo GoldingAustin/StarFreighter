@@ -9,12 +9,15 @@ import byui.cit260.starFreighter.controller.EncounterController;
 import byui.cit260.starFreighter.controller.MapController;
 import byui.cit260.starFreighter.model.Coordinates;
 import byui.cit260.starFreighter.model.GameMap;
+import byui.cit260.starFreighter.model.JobBoard;
 import byui.cit260.starFreighter.model.Planet;
 import static java.lang.Character.toChars;
 import static java.lang.Character.toUpperCase;
 import static java.lang.System.in;
 import static java.lang.System.out;
+import java.util.ArrayList;
 import java.util.Scanner;
+import starfreighter.StarFreighter;
 
 /**
  *
@@ -25,6 +28,7 @@ public class MapMenuView extends View {
     // Class members
     private final MapController mapController;
     private final GameMap map;
+    private static final ArrayList<JobBoard> jobs = StarFreighter.getCurrentGame().getJobs();
 
     /**
      * Initialize the controller and populate the map.
@@ -36,14 +40,12 @@ public class MapMenuView extends View {
                 + "\n--------------------------------"
                 + "\nM - Display map"
                 + "\nT - Travel"
+                + "\nJ - Jobs Board"
                 + "\nE - Exit"
                 + "\n--------------------------------");
 
         mapController = new MapController();
-        // For local testing.
-        // I assume there's a way to access the game object's map instance, but
-        // I won't have time to figure it out tonight! Sorry!
-        map = new GameMap(11, 11);
+        map = StarFreighter.getCurrentGame().getMap();
     }
 
     /**
@@ -64,6 +66,9 @@ public class MapMenuView extends View {
                 break;
             case 'T':
                 this.travel();
+                break;
+            case 'J':
+                this.displayBoard();
                 break;
             case 'E':
                 return true;
@@ -89,6 +94,15 @@ public class MapMenuView extends View {
         for (int i = 0; i < map.getHorizontalSpace(); i++) {
             out.print(' ');
         }
+    }
+
+    private void displayBoard() {
+
+        TextBox.displayText("Job          " + "         Planet       " + "         Reward      "
+                + "  " + jobs.get(0).getJob() + "         " + jobs.get(0).getLocName() + "                  " + jobs.get(0).getReward() + "       "
+                + "  " + jobs.get(1).getJob() + "              " + jobs.get(1).getLocName() + "                  " + jobs.get(1).getReward() + "       "
+                + "  " + jobs.get(2).getJob() + "            " + jobs.get(2).getLocName() + "                  " + jobs.get(2).getReward() + "       "
+                + "  " + jobs.get(3).getJob() + "     " + jobs.get(3).getLocName() + "                  " + jobs.get(3).getReward() + "       ");
     }
 
     /**

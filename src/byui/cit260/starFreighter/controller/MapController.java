@@ -16,10 +16,6 @@ import static java.lang.Math.sqrt;
  */
 public class MapController {
 
-    static GameMap createGameMap(int i, int i0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     /**
      * Does nothin' much, really.
      */

@@ -18,7 +18,7 @@ public class Game implements Serializable {
     private Coordinates coorD;
     private Item[] item;
     private ArrayList<CrewMember> crewC;
-    private JobBoard jobs;
+    private ArrayList<JobBoard> jobs;
     private Location[] location;
     private Planet[] planet;
     private MerchantStock merch;
@@ -60,11 +60,11 @@ public class Game implements Serializable {
         this.item = item;
     }
 
-    public JobBoard getJobs() {
+    public ArrayList<JobBoard> getJobs() {
         return jobs;
     }
 
-    public void setJobs(JobBoard jobs) {
+    public void setJobs(ArrayList<JobBoard> jobs) {
         this.jobs = jobs;
     }
 

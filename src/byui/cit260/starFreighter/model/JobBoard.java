@@ -15,11 +15,15 @@ import java.util.Objects;
 public class JobBoard implements Serializable {
 
     private String job;
-    private String location;
+    private Planet planet;
+    private String locName;
     private int reward;
-
-    public JobBoard() {
-
+    
+    public JobBoard(String job, Planet planet, String locName, int reward) {
+        this.job = job;
+        this.planet = planet;
+        this.reward = reward;
+        this.locName = locName;
     }
 
     public String getJob() {
@@ -30,12 +34,12 @@ public class JobBoard implements Serializable {
         this.job = job;
     }
 
-    public String getLocation() {
-        return location;
+    public Planet getLocation() {
+        return planet;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setLocation(Planet planet) {
+        this.planet = planet;
     }
 
     public int getReward() {
@@ -46,12 +50,20 @@ public class JobBoard implements Serializable {
         this.reward = reward;
     }
 
+    public String getLocName() {
+        return locName;
+    }
+
+    public void setLocName(String locName) {
+        this.locName = locName;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 37 * hash + Objects.hashCode(this.job);
-        hash = 37 * hash + Objects.hashCode(this.location);
-        hash = 37 * hash + this.reward;
+        hash = 83 * hash + Objects.hashCode(this.job);
+        hash = 83 * hash + Objects.hashCode(this.planet);
+        hash = 83 * hash + this.reward;
         return hash;
     }
 
@@ -73,15 +85,16 @@ public class JobBoard implements Serializable {
         if (!Objects.equals(this.job, other.job)) {
             return false;
         }
-        if (!Objects.equals(this.location, other.location)) {
+        if (!Objects.equals(this.planet, other.planet)) {
             return false;
         }
         return true;
     }
 
+    
     @Override
     public String toString() {
-        return "JobBoard{" + "job=" + job + ", location=" + location + ", reward=" + reward + '}';
+        return "JobBoard{" + "job=" + job + ", location=" + planet + ", reward=" + reward + '}';
     }
 
 }

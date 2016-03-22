@@ -20,6 +20,7 @@ import byui.cit260.starFreighter.model.Item;
 import byui.cit260.starFreighter.model.JobBoard;
 import byui.cit260.starFreighter.model.Location;
 import byui.cit260.starFreighter.model.MerchantStock;
+import static byui.cit260.starFreighter.model.Planet.Kryta;
 import byui.cit260.starFreighter.model.Player;
 import byui.cit260.starFreighter.model.Ship;
 import enums.InventoryItem;
@@ -69,7 +70,7 @@ public class GameControl {
         Item[] item = GameControl.createItemList();
         game.setItem(item);
 
-        JobBoard jobs = new JobBoard();
+        ArrayList<JobBoard> jobs = GameControl.createJobsBoard();
         game.setJobs(jobs);
 
         Location[] location = GameControl.createLocationList();
@@ -92,7 +93,6 @@ public class GameControl {
     }
 
     public static class Constant {
-
         public final static int NUMBER_OF_ITEMS_INVENTORY = 11;
 
         public enum Item {
@@ -108,6 +108,7 @@ public class GameControl {
             armor,
             coins;
         }
+
     }
 
     public static void saveGame(Game game, String file) throws GameControlExceptions {
@@ -218,6 +219,31 @@ public class GameControl {
         // stub so this will run!
         return new Location[1];
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private static ArrayList<JobBoard> createJobsBoard() {
+        
+        ArrayList<JobBoard> jobs = new ArrayList<>();
+
+        JobBoard fight = new JobBoard("Fight Pirates", Kryta, "Kryta", 250);
+        
+
+        JobBoard mine = new JobBoard("Mine Ore", Kryta, "Kryta", 150);
+        
+
+        JobBoard find = new JobBoard("Find Parts", Kryta, "Kryta", 200);
+       
+
+        JobBoard trade = new JobBoard("Trade 3 Space Ore", Kryta, "Kryta", 100);
+        
+        jobs.add(0, fight);
+        jobs.add(1, mine);
+        jobs.add(2, find);
+        jobs.add(3, trade);
+        
+        
+        
+        return jobs;
     }
 
     public boolean gameControl() {
