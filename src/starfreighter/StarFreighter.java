@@ -20,6 +20,7 @@ public class StarFreighter {
 
     private static Game currentGame = null;
     private static Player player = null;
+    
     private static PrintWriter outFile = null;
     private static BufferedReader inFile = null;
     private static PrintWriter logFile = null;
@@ -34,6 +35,8 @@ public class StarFreighter {
             
             StarFreighter.inFile = new BufferedReader(new InputStreamReader(System.in));
             StarFreighter.outFile = new PrintWriter(System.out, true);
+            String logPath = "logfile.txt";
+            StarFreighter.logFile = new PrintWriter(logPath);
             StartProgramView startProgram = new StartProgramView();
             startProgram.StartProgramView();
             
@@ -56,7 +59,7 @@ public class StarFreighter {
                 }
 
                 if (StarFreighter.logFile != null) {
-                    StarFreighter.outFile.close();
+                    StarFreighter.logFile.close();
                 }
 
             } 
