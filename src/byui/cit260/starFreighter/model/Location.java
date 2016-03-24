@@ -16,7 +16,7 @@ import java.util.Objects;
 public class Location implements Serializable {
 
     private String name;
-    private ArrayList<JobBoard> jobList;
+    private final ArrayList<JobBoard> jobList;
 
     public Location() {
         jobList = new ArrayList<>();

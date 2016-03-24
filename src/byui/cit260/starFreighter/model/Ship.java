@@ -23,9 +23,18 @@ public class Ship implements Serializable {
     private CrewMember gunner;
     private CrewMember doctor;
     private CrewMember comms;
+    private Planet currentLocation;
 
     public Ship() {
 
+    }
+
+    public void setCurrentLocation(Planet newLocation) {
+        this.currentLocation = newLocation;
+    }
+    
+    public Planet getCurrentLocation() {
+        return currentLocation;
     }
 
     /**
@@ -156,16 +165,17 @@ public class Ship implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 67 * hash + Objects.hashCode(this.name);
-        hash = 67 * hash + this.upgrade;
-        hash = 67 * hash + this.repair;
-        hash = 67 * hash + this.fuel;
-        hash = 67 * hash + Objects.hashCode(this.captain);
-        hash = 67 * hash + Objects.hashCode(this.engineer);
-        hash = 67 * hash + Objects.hashCode(this.gunner);
-        hash = 67 * hash + Objects.hashCode(this.doctor);
-        hash = 67 * hash + Objects.hashCode(this.comms);
+        int hash = 7;
+        hash = 31 * hash + Objects.hashCode(this.name);
+        hash = 31 * hash + this.upgrade;
+        hash = 31 * hash + this.repair;
+        hash = 31 * hash + this.fuel;
+        hash = 31 * hash + Objects.hashCode(this.captain);
+        hash = 31 * hash + Objects.hashCode(this.engineer);
+        hash = 31 * hash + Objects.hashCode(this.gunner);
+        hash = 31 * hash + Objects.hashCode(this.doctor);
+        hash = 31 * hash + Objects.hashCode(this.comms);
+        hash = 31 * hash + Objects.hashCode(this.currentLocation);
         return hash;
     }
 
@@ -208,12 +218,15 @@ public class Ship implements Serializable {
         if (!Objects.equals(this.comms, other.comms)) {
             return false;
         }
+        if (this.currentLocation != other.currentLocation) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Ship{" + "name=" + name + ", upgrade=" + upgrade + ", repair=" + repair + ", fuel=" + fuel + ", captain=" + captain + ", engineer=" + engineer + ", gunner=" + gunner + ", doctor=" + doctor + ", comms=" + comms + '}';
+        return "Ship{" + "name=" + name + ", upgrade=" + upgrade + ", repair=" + repair + ", fuel=" + fuel + ", captain=" + captain + ", engineer=" + engineer + ", gunner=" + gunner + ", doctor=" + doctor + ", comms=" + comms + ", currentLocation=" + currentLocation + '}';
     }
 
 }

@@ -5,11 +5,14 @@
  */
 package byui.cit260.starFreighter.view;
 
+import byui.cit260.starFreighter.controller.GameControl;
 import byui.cit260.starFreighter.controller.MerchantController;
 import byui.cit260.starFreighter.model.Item;
+import byui.cit260.starFreighter.model.MerchantStock;
 import static java.lang.System.in;
 import static java.lang.System.out;
 import java.util.Scanner;
+import starfreighter.StarFreighter;
 
 /**
  *
@@ -78,6 +81,14 @@ class InventoryMenuView extends View {
 
     // From who?
     private void buyItem() {
+        MerchantStock store = StarFreighter.getCurrentGame().getShip().getCurrentLocation().shop();
+        out.println("Which item do you want to buy?");
+        for (Item current : store.getItems()) {
+            this.printItemNumber(current);
+            this.printItem(current);
+        }
+        int itemToSellIndex = this.promptInteger() - 1;
+        Item itemToSell = store.getItems().get(itemToSellIndex);
         // not done at all. sorry...
     }
 

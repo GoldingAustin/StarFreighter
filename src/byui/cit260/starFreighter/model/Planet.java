@@ -27,11 +27,15 @@ public enum Planet implements Serializable {
     private final String description;
     private final Coordinates coords;
     private final char symbol;
+    private final MerchantStock shop;
 
     Planet(String description, int x, int y, char symbol) {
         this.description = description;
         this.coords = new Coordinates(x, y);
         this.symbol = symbol;
+        this.shop = new MerchantStock();
+        this.shop.setCurrency(1000);
+        this.shop.addItem(new Item("hey", 100));
     }
 
     public String getDescription() {
@@ -44,6 +48,10 @@ public enum Planet implements Serializable {
 
     public char getSymbol() {
         return symbol;
+    }
+    
+    public MerchantStock shop() {
+        return shop;
     }
 
     public static Planet atCoordinates(Coordinates coords) {

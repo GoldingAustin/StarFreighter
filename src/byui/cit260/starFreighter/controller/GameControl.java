@@ -20,6 +20,7 @@ import byui.cit260.starFreighter.model.Item;
 import byui.cit260.starFreighter.model.JobBoard;
 import byui.cit260.starFreighter.model.Location;
 import byui.cit260.starFreighter.model.MerchantStock;
+import byui.cit260.starFreighter.model.Planet;
 import static byui.cit260.starFreighter.model.Planet.Kryta;
 import byui.cit260.starFreighter.model.Player;
 import byui.cit260.starFreighter.model.Ship;
@@ -82,6 +83,7 @@ public class GameControl {
         game.setMerch(merch);
 
         Ship ship = new Ship();
+        ship.setCurrentLocation(Planet.Kryta);
         game.setShip(ship);
     }
 

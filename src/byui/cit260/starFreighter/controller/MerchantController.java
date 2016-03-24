@@ -136,7 +136,7 @@ public class MerchantController {
      * @param item
      * @return
      */
-    public boolean buyItem(Item item) {
+    public boolean buyItem(Item item, MerchantStock from) {
         if (inventory.getCurrency() >= item.getValue()) {
             inventory.setCurrency(inventory.getCurrency() - item.getValue());
             inventory.addItem(item);
