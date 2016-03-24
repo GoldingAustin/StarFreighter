@@ -207,9 +207,7 @@ public class MapMenuView extends View {
         int chance = (int) (Math.random() * 100);
 
         if (chance >= 50) {
-
             encounter.run();
-
         }
 
     }

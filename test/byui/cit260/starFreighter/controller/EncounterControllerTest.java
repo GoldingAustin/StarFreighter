@@ -6,7 +6,6 @@
 package byui.cit260.starFreighter.controller;
 
 import byui.cit260.starFreighter.model.CombatEncounter;
-import static java.lang.System.out;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -304,7 +303,6 @@ public class EncounterControllerTest {
         System.out.println("setEnemies");
         ArrayList<CombatEncounter> enemies = null;
         EncounterController instance = new EncounterController();
-        instance.setEnemies(enemies);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

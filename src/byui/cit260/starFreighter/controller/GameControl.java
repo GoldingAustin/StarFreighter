@@ -24,6 +24,7 @@ import static byui.cit260.starFreighter.model.Planet.Kryta;
 import byui.cit260.starFreighter.model.Player;
 import byui.cit260.starFreighter.model.Ship;
 import enums.InventoryItem;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -40,6 +41,7 @@ import starfreighter.StarFreighter;
 public class GameControl {
 
     public static Game game;
+    public static String save = "";
 
     public static Player createPlayer(String playersName) {
 
@@ -93,6 +95,7 @@ public class GameControl {
     }
 
     public static class Constant {
+
         public final static int NUMBER_OF_ITEMS_INVENTORY = 11;
 
         public enum Item {
@@ -111,22 +114,32 @@ public class GameControl {
 
     }
 
-    public static void saveGame(Game game, String file) throws GameControlExceptions {
-        try (FileOutputStream fop = new FileOutputStream(file + "/StarFreighterSave.data")) {
-            ObjectOutputStream output = new ObjectOutputStream(fop);
+    public static void saveGame(Game game) throws GameControlExceptions, IOException {
 
+        try {
+            new File(System.getProperty("user.home") + File.separator + "StarFreighter").mkdir();
+            save = System.getProperty("user.home") + File.separator + "StarFreighter" + File.separator + "save.data";
+        } catch (SecurityException ex) {
+            System.out.println("Error while creating directory in Java:" + ex);
+        }
+
+        try (FileOutputStream fop = new FileOutputStream(save)) {
+            ObjectOutputStream output = new ObjectOutputStream(fop);
             output.writeObject(game);
+
         } catch (IOException ex) {
             throw new GameControlExceptions(ex.getMessage());
         }
+
     }
 
-    public static void loadGame(String file) throws GameControlExceptions, ClassNotFoundException, IOException {
+    public static void loadGame() throws GameControlExceptions, ClassNotFoundException, IOException {
         Game load = new Game();
-        try (FileInputStream fip = new FileInputStream(file + "/StarFreighterSave.data")) {
+        save = System.getProperty("user.home") + File.separator + "StarFreighter" + File.separator + "save.data";
+        try (FileInputStream fip = new FileInputStream(save)) {
             ObjectInputStream output = new ObjectInputStream(fip);
-
             load = (Game) output.readObject();
+            
         } catch (FileNotFoundException ex) {
             throw new GameControlExceptions(ex.getMessage());
         }
@@ -182,7 +195,7 @@ public class GameControl {
         Item cheese = new Item("Amazing Space Cheese", 5);
         item[InventoryItem.cheese.ordinal()] = cheese;
 
-        Item bandages = new Item("Super Bandages", 10);
+        Item bandages = new Item("Super Bandages", 12);
         item[InventoryItem.bandages.ordinal()] = bandages;
 
         Item oldparts = new Item("Old Parts", 3);
@@ -222,27 +235,22 @@ public class GameControl {
     }
 
     private static ArrayList<JobBoard> createJobsBoard() {
-        
+
         ArrayList<JobBoard> jobs = new ArrayList<>();
 
         JobBoard fight = new JobBoard("Fight Pirates", Kryta, "Kryta", 250);
-        
 
         JobBoard mine = new JobBoard("Mine Ore", Kryta, "Kryta", 150);
-        
 
         JobBoard find = new JobBoard("Find Parts", Kryta, "Kryta", 200);
-       
 
         JobBoard trade = new JobBoard("Trade 3 Space Ore", Kryta, "Kryta", 100);
-        
+
         jobs.add(0, fight);
         jobs.add(1, mine);
         jobs.add(2, find);
         jobs.add(3, trade);
-        
-        
-        
+
         return jobs;
     }
 

@@ -58,6 +58,8 @@ public class MerchantController {
     public ArrayList<Item> itemList() {
         return inventory.getItemList();
     }
+    
+
 
     /**
      * Calculates the total value of the inventory.

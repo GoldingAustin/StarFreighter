@@ -6,9 +6,12 @@
 package byui.cit260.starFreighter.view;
 
 import byui.cit260.starFreighter.controller.GameControl;
+import static byui.cit260.starFreighter.controller.GameControl.save;
 import byui.cit260.starFreighter.exceptions.GameControlExceptions;
 import java.io.IOException;
 import static java.lang.System.out;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import starfreighter.StarFreighter;
 import static starfreighter.StarFreighter.getPlayer;
 
@@ -67,11 +70,9 @@ public class MainMenuView extends View {
     }
 
     private void startExistingGame() {
-        out.println("\nPlease enter the file path in which you'd like to load your game");
-        String file = this.getInput();
-
         try {
-            GameControl.loadGame(file);
+            GameControl.loadGame();
+            out.println("File successfully loaded from " + save);
             GameMenuView gameMenu = new GameMenuView();
             gameMenu.display();
         } catch (GameControlExceptions | IOException | ClassNotFoundException ex) {
@@ -87,18 +88,16 @@ public class MainMenuView extends View {
     }
 
     private void saveGame() {
-        out.println("\nPlease enter the file path in which you'd like to save your game");
-        String file = this.getInput();
-
         try {
-            GameControl.saveGame(StarFreighter.getCurrentGame(), file);
-            out.println("File saved successfully at: " + file + "/StarFreighterSave.data");
+            GameControl.saveGame(StarFreighter.getCurrentGame());
+            out.println("File successfully saved at " + save);
             GameMenuView gameMenu = new GameMenuView();
             gameMenu.display();
         } catch (GameControlExceptions ex) {
             out.println(ex.getMessage());
+        } catch (IOException ex) {
+            Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
         }
-        out.println("File saved successfully at: " + file + "/StarFreighterSave.data");
 
     }
 
