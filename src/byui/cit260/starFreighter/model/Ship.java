@@ -1,181 +1,138 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package byui.cit260.starFreighter.model;
 
 import java.io.Serializable;
 import java.util.Objects;
 
 /**
- *
- * @author Connor
+ * A class representing a ship. The player has one. Space pirates have them, too.
  */
 public class Ship implements Serializable {
-
+    /**
+     * Class properties.
+     */
     private String name;
-    private int upgrade;
-    private int repair;
+    // Max health/fuel.
+    private int fuelCapacity;
+    private int hullIntegrity;
+    // Current health/fuel.
     private int fuel;
-    private CrewMember captain;
-    private CrewMember engineer;
-    private CrewMember gunner;
-    private CrewMember doctor;
-    private CrewMember comms;
-    private Planet currentLocation;
+    private int hull;
+    // The planetary location of this particular ship.
+    private Planet location;
 
-    public Ship() {
-
-    }
-
-    public void setCurrentLocation(Planet newLocation) {
-        this.currentLocation = newLocation;
-    }
-    
-    public Planet getCurrentLocation() {
-        return currentLocation;
+    /**
+     * Class constructor. Sets default values.
+     * @param name 
+     */
+    public Ship(String name) {
+        this.name = name;
     }
 
     /**
-     * @return the name
+     * Gets the Ship's name.
+     * @return 
      */
     public String getName() {
         return name;
     }
 
     /**
-     * @param name the name to set
+     * Renames the Ship.
+     * @param newName 
      */
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String newName) {
+        this.name = newName;
     }
 
     /**
-     * @return the upgrade
+     * Gets the Ship's fuel capacity.
+     * @return 
      */
-    public int getUpgrade() {
-        return upgrade;
+    public int getFuelCapacity() {
+        return fuelCapacity;
     }
 
     /**
-     * @param upgrade the upgrade to set
+     * Sets the Ship's fuel capacity.
+     * @param newCapacity 
      */
-    public void setUpgrade(int upgrade) {
-        this.upgrade = upgrade;
+    public void setFuelCapacity(int newCapacity) {
+        this.fuelCapacity = newCapacity;
     }
 
     /**
-     * @return the repair
+     * Gets the Ship's hull integrity.
+     * @return 
      */
-    public int getRepair() {
-        return repair;
+    public int getHullIntegrity() {
+        return hullIntegrity;
     }
 
     /**
-     * @param repair the repair to set
+     * Sets the Ship's hull integrity.
+     * @param newIntegrity 
      */
-    public void setRepair(int repair) {
-        this.repair = repair;
+    public void setHullIntegrity(int newIntegrity) {
+        this.hullIntegrity = newIntegrity;
     }
 
     /**
-     * @return the fuel
+     * Gets the Ship's fuel.
+     * @return
      */
     public int getFuel() {
         return fuel;
     }
 
     /**
-     * @param fuel the fuel to set
+     * Sets the Ship's fuel.
+     * @param amount 
      */
-    public void setFuel(int fuel) {
-        this.fuel = fuel;
+    public void setFuel(int amount) {
+        this.fuel = amount;
     }
 
     /**
-     * @return the captain
+     * Gets the Ship's hull status.
+     * @return
      */
-    public CrewMember getCaptain() {
-        return captain;
+    public int getHull() {
+        return hull;
     }
 
     /**
-     * @param captain the captain to set
+     * Sets the Ship's hull status.
+     * @param amount 
      */
-    public void setCaptain(CrewMember captain) {
-        this.captain = captain;
+    public void setHull(int amount) {
+        this.hull = amount;
     }
-
+    
     /**
-     * @return the engineer
+     * Gets the Ship's current location.
+     * @return 
      */
-    public CrewMember getEngineer() {
-        return engineer;
+    public Planet getLocation() {
+        return location;
     }
-
+    
     /**
-     * @param engineer the engineer to set
+     * Sets the Ship's current location.
+     * @param location 
      */
-    public void setEngineer(CrewMember engineer) {
-        this.engineer = engineer;
-    }
-
-    /**
-     * @return the gunner
-     */
-    public CrewMember getGunner() {
-        return gunner;
-    }
-
-    /**
-     * @param gunner the gunner to set
-     */
-    public void setGunner(CrewMember gunner) {
-        this.gunner = gunner;
-    }
-
-    /**
-     * @return the doctor
-     */
-    public CrewMember getDoctor() {
-        return doctor;
-    }
-
-    /**
-     * @param doctor the doctor to set
-     */
-    public void setDoctor(CrewMember doctor) {
-        this.doctor = doctor;
-    }
-
-    /**
-     * @return the comms
-     */
-    public CrewMember getComms() {
-        return comms;
-    }
-
-    /**
-     * @param comms the comms to set
-     */
-    public void setComms(CrewMember comms) {
-        this.comms = comms;
+    public void setLocation(Planet location) {
+        this.location = location;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 31 * hash + Objects.hashCode(this.name);
-        hash = 31 * hash + this.upgrade;
-        hash = 31 * hash + this.repair;
-        hash = 31 * hash + this.fuel;
-        hash = 31 * hash + Objects.hashCode(this.captain);
-        hash = 31 * hash + Objects.hashCode(this.engineer);
-        hash = 31 * hash + Objects.hashCode(this.gunner);
-        hash = 31 * hash + Objects.hashCode(this.doctor);
-        hash = 31 * hash + Objects.hashCode(this.comms);
-        hash = 31 * hash + Objects.hashCode(this.currentLocation);
+        hash = 83 * hash + Objects.hashCode(this.name);
+        hash = 83 * hash + this.fuelCapacity;
+        hash = 83 * hash + this.hullIntegrity;
+        hash = 83 * hash + this.fuel;
+        hash = 83 * hash + this.hull;
+        hash = 83 * hash + Objects.hashCode(this.location);
         return hash;
     }
 
@@ -191,42 +148,26 @@ public class Ship implements Serializable {
             return false;
         }
         final Ship other = (Ship) obj;
-        if (this.upgrade != other.upgrade) {
+        if (this.fuelCapacity != other.fuelCapacity) {
             return false;
         }
-        if (this.repair != other.repair) {
+        if (this.hullIntegrity != other.hullIntegrity) {
             return false;
         }
         if (this.fuel != other.fuel) {
             return false;
         }
+        if (this.hull != other.hull) {
+            return false;
+        }
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }
-        if (!Objects.equals(this.captain, other.captain)) {
-            return false;
-        }
-        if (!Objects.equals(this.engineer, other.engineer)) {
-            return false;
-        }
-        if (!Objects.equals(this.gunner, other.gunner)) {
-            return false;
-        }
-        if (!Objects.equals(this.doctor, other.doctor)) {
-            return false;
-        }
-        if (!Objects.equals(this.comms, other.comms)) {
-            return false;
-        }
-        if (this.currentLocation != other.currentLocation) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.location, other.location);
     }
 
     @Override
     public String toString() {
-        return "Ship{" + "name=" + name + ", upgrade=" + upgrade + ", repair=" + repair + ", fuel=" + fuel + ", captain=" + captain + ", engineer=" + engineer + ", gunner=" + gunner + ", doctor=" + doctor + ", comms=" + comms + ", currentLocation=" + currentLocation + '}';
+        return "Ship{" + "name=" + name + ", fuelCapacity=" + fuelCapacity + ", hullIntegrity=" + hullIntegrity + ", fuel=" + fuel + ", hull=" + hull + ", location=" + location + '}';
     }
-
 }

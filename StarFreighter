@@ -1,7 +1,0 @@
-tree 7c6dc8953f248a6116edc6abc51ddd508b0abdf5
-parent 54795334e33a398e4359f14258e38c4ec5b6542b
-author Connor Wiseman <wiseman.connor@gmail.com> 1454554066 -0700
-committer Connor Wiseman <wiseman.connor@gmail.com> 1454554066 -0700
-
-Refactored the Item, Inventory, and Shop-related classes.
-Original program is still around in the comments.

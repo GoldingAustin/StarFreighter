@@ -1,73 +1,117 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package byui.cit260.starFreighter.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
- *
- * @author Connor
+ * Represents a planet.
  */
-public enum Planet implements Serializable {
-    /* The size of the map is defined in GameMap on a per-instance basis. If you
-    receive an array out of bounds error, it's because one of the planets
-    defined below falls outside the bounds of the map size.
-    
-    With the current setup, coordinates must also be positive. Sorry!
-    Still working on figuring out that four-quadrant plane.
+public final class Planet implements Serializable {
+    /**
+     * Class members.
      */
-    Kryta("A barren desert planet with a few secrets", 1, 1, 'K'),
-    Qualufe("Oceans as far as the eye can see", 3, 4, 'Q'),
-    Mezopan("Green forests and tall trees", 5, 4, 'M'),
-    Redecent("Galaxy capital", 7, 8, 'R');
-
-    private final String description;
-    private final Coordinates coords;
+    private final String name;
+    private final String desc;
+    private final Point coords;
     private final char symbol;
-    private final MerchantStock shop;
+    private final Inventory shop;
 
-    Planet(String description, int x, int y, char symbol) {
-        this.description = description;
-        this.coords = new Coordinates(x, y);
+    /**
+     * Class constructor.
+     * @param name
+     * @param desc
+     * @param coords
+     * @param symbol 
+     */
+    public Planet(String name, String desc, Point coords, char symbol) {
+        this.name = name;
+        this.desc = desc;
+        this.coords = coords;
         this.symbol = symbol;
-        this.shop = new MerchantStock();
-        this.shop.setCurrency(1000);
-        this.shop.addItem(new Item("hey", 100));
+        this.shop = new Inventory();
+        this.shop.setCurrency(10000);
     }
-
-    public String getDescription() {
-        return description;
+    
+    /**
+     * Gets the planet's name.
+     * @return 
+     */
+    public String getName() {
+        return name;
     }
-
-    public Coordinates getCoordinates() {
+    
+    /**
+     * Gets the planet's description.
+     * @return 
+     */
+    public String getDesc() {
+        return desc;
+    }
+    
+    /**
+     * Gets the planet's coordinates.
+     * @return 
+     */
+    public Point getCoords() {
         return coords;
     }
-
+    
+    /**
+     * Gets the planet's map symbol.
+     * @return 
+     */
     public char getSymbol() {
         return symbol;
     }
     
-    public MerchantStock shop() {
+    /**
+     * Gets the planet's shop.
+     * @return 
+     */
+    public Inventory getShop() {
         return shop;
     }
 
-    public static Planet atCoordinates(Coordinates coords) {
-        for (Planet planet : values()) {
-            /* Comparing objects was being wonky here- comparing values instead,
-               for now. */
-            if (planet.getCoordinates().getX() == coords.getX()
-                    && planet.getCoordinates().getY() == coords.getY()) {
-                return planet;
-            }
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 71 * hash + Objects.hashCode(this.name);
+        hash = 71 * hash + Objects.hashCode(this.desc);
+        hash = 71 * hash + Objects.hashCode(this.coords);
+        hash = 71 * hash + this.symbol;
+        hash = 71 * hash + Objects.hashCode(this.shop);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
         }
-        return null;
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Planet other = (Planet) obj;
+        if (this.symbol != other.symbol) {
+            return false;
+        }
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.desc, other.desc)) {
+            return false;
+        }
+        if (!Objects.equals(this.coords, other.coords)) {
+            return false;
+        }
+        return Objects.equals(this.shop, other.shop);
     }
 
     @Override
     public String toString() {
-        return "Planet{" + "name= " + name() + ", description= " + description + '}';
+        return "Planet{" + "name=" + name + ", desc=" + desc + ", coords=" + coords + ", symbol=" + symbol + ", shop=" + shop + '}';
     }
 }

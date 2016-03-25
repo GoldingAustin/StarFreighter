@@ -1,154 +1,111 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package byui.cit260.starFreighter.model;
 
+import byui.cit260.starFreighter.constants.Role;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Objects;
 
 /**
- *
- * @author Connor
+ * A class representing a crew member. Used by both player crew and those
+ * dastardly space pirates.
  */
 public class CrewMember implements Serializable {
+    /**
+     * Class members.
+     */
+    private final CrewStatistics stats;
+    private final String name;
+    private int hitPoints = 30;
+    private final int maxHitPoints = 30;
+    private boolean alive = true;
 
-    ArrayList<CrewMember> crew = new ArrayList<>();
-
-    private String name;
-    private int pilot;
-    private int mechanic;
-    private int fighter;
-    private int doctor;
-    private int trader;
-    private int hitPoints;
-
-    public CrewMember() {
-
-    }
-
-    public ArrayList<CrewMember> getCrewList() {
-        return crew;
-    }
-
-    public void addCrew(CrewMember crewM, String name) {
-        crew.add(crewM);
-    }
-
-    public void removeCrew(CrewMember crewM) {
-        crew.remove(crewM);
+    /**
+     * Constructor
+     * @param name
+     * @param stats 
+     */
+    public CrewMember(String name, CrewStatistics stats) {
+        this.name = name;
+        this.stats = stats;
     }
 
     /**
-     * @return the name
+     * Gets the crew member's name.
+     * @return 
      */
     public String getName() {
         return name;
     }
-
+    
     /**
-     * @param name the name to set
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * @return the pilot
-     */
-    public int getPilot() {
-        return pilot;
-    }
-
-    /**
-     * @param pilot the pilot to set
-     */
-    public void setPilot(int pilot) {
-        this.pilot = pilot;
-    }
-
-    /**
-     * @return the mechanic
-     */
-    public int getMechanic() {
-        return mechanic;
-    }
-
-    /**
-     * @param mechanic the mechanic to set
-     */
-    public void setMechanic(int mechanic) {
-        this.mechanic = mechanic;
-    }
-
-    /**
-     * @return the fighter
-     */
-    public int getFighter() {
-        return fighter;
-    }
-
-    /**
-     * @param fighter the fighter to set
-     */
-    public void setFighter(int fighter) {
-        this.fighter = fighter;
-    }
-
-    /**
-     * @return the doctor
-     */
-    public int getDoctor() {
-        return doctor;
-    }
-
-    /**
-     * @param doctor the doctor to set
-     */
-    public void setDoctor(int doctor) {
-        this.doctor = doctor;
-    }
-
-    /**
-     * @return the trader
-     */
-    public int getTrader() {
-        return trader;
-    }
-
-    /**
-     * @param trader the trader to set
-     */
-    public void setTrader(int trader) {
-        this.trader = trader;
-    }
-
-    /**
-     * @return the hitPoints
+     * Gets the crew member's hit points.
+     * @return 
      */
     public int getHitPoints() {
         return hitPoints;
     }
+    
+    /**
+     * Sets the crew member's hit points.
+     * @param value 
+     */
+    public void setHitPoints(int value) {
+        hitPoints = value;
+    }
 
     /**
-     * @param hitPoints the hitPoints to set
+     * Gets the crew member's max hit points.
+     * @return 
      */
-    public void setHitPoints(int hitPoints) {
-        this.hitPoints = hitPoints;
+    public int getMaxHitPoints() {
+        return maxHitPoints;
+    }
+
+    /**
+     * Gets a specified stat from the crew member.
+     * @param index
+     * @return 
+     */
+    public int getStat(Role index) {
+        if (alive) {
+            return stats.get(index.ordinal()).value();
+        }
+        // If the crew member is dead, their stats are all effectively zero.
+        return 0;
+    }
+
+    /**
+     * Sets the crew member's specified stat.
+     * @param index
+     * @param value 
+     */
+    public void setStat(Role index, int value) {
+        stats.get(index.ordinal()).setValue(value);
+    }
+    
+    /**
+     * Gets the crew member's living status.
+     * @return 
+     */
+    public boolean getAlive() {
+        return alive;
+    }
+    
+    /**
+     * Sets the crew member's living status.
+     * @param status 
+     */
+    public void setAlive(boolean status) {
+        alive = status;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + Objects.hashCode(this.name);
-        hash = 97 * hash + this.pilot;
-        hash = 97 * hash + this.mechanic;
-        hash = 97 * hash + this.fighter;
-        hash = 97 * hash + this.doctor;
-        hash = 97 * hash + this.trader;
-        hash = 97 * hash + this.hitPoints;
+        int hash = 3;
+        hash = 17 * hash + Objects.hashCode(this.stats);
+        hash = 17 * hash + Objects.hashCode(this.name);
+        hash = 17 * hash + this.hitPoints;
+        hash = 17 * hash + this.maxHitPoints;
+        hash = 17 * hash + (this.alive ? 1 : 0);
         return hash;
     }
 
@@ -164,25 +121,19 @@ public class CrewMember implements Serializable {
             return false;
         }
         final CrewMember other = (CrewMember) obj;
-        if (this.pilot != other.pilot) {
-            return false;
-        }
-        if (this.mechanic != other.mechanic) {
-            return false;
-        }
-        if (this.fighter != other.fighter) {
-            return false;
-        }
-        if (this.doctor != other.doctor) {
-            return false;
-        }
-        if (this.trader != other.trader) {
-            return false;
-        }
         if (this.hitPoints != other.hitPoints) {
             return false;
         }
+        if (this.maxHitPoints != other.maxHitPoints) {
+            return false;
+        }
+        if (this.alive != other.alive) {
+            return false;
+        }
         if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.stats, other.stats)) {
             return false;
         }
         return true;
@@ -190,7 +141,6 @@ public class CrewMember implements Serializable {
 
     @Override
     public String toString() {
-        return "GameCharacter{" + "name=" + name + ", pilot=" + pilot + ", mechanic=" + mechanic + ", fighter=" + fighter + ", doctor=" + doctor + ", trader=" + trader + ", hitPoints=" + hitPoints + '}';
+        return "CrewMember{" + "stats=" + stats + ", name=" + name + ", hitPoints=" + hitPoints + ", maxHitPoints=" + maxHitPoints + ", alive=" + alive + '}';
     }
-
 }
