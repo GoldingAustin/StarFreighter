@@ -14,7 +14,6 @@ import byui.cit260.starFreighter.model.Planet;
 import static java.lang.Character.toChars;
 import static java.lang.Character.toUpperCase;
 import static java.lang.System.in;
-import static java.lang.System.out;
 import java.util.ArrayList;
 import java.util.Scanner;
 import starfreighter.StarFreighter;
@@ -73,7 +72,7 @@ public class MapMenuView extends View {
             case 'E':
                 return true;
             default:
-                out.println("\n*** Invalid selection *** Try again");
+                console.println("\n*** Invalid selection *** Try again");
                 break;
         }
         return false;
@@ -92,7 +91,7 @@ public class MapMenuView extends View {
      */
     private void displayHorizontalSpace() {
         for (int i = 0; i < map.getHorizontalSpace(); i++) {
-            out.print(' ');
+            console.print(' ');
         }
     }
 
@@ -109,9 +108,9 @@ public class MapMenuView extends View {
      * Displays vertical spacing using '\n'
      */
     private void displayVerticalSpace() {
-        out.print('\n');
+        console.print('\n');
         for (int i = 0; i < map.getVerticalSpace(); i++) {
-            out.print('\n');
+            console.print('\n');
         }
     }
 
@@ -120,7 +119,7 @@ public class MapMenuView extends View {
      */
     private void displayTopLegend() {
         // print a single empty space to offset the legend
-        out.print(' ');
+        console.print(' ');
 
         this.displayHorizontalSpace();
 
@@ -129,12 +128,12 @@ public class MapMenuView extends View {
                make the map really ugly when it's large */
             // offset character by 65, the ASCII value of 'A'
             char colIdentifier = toChars(65 + col)[0];
-            out.print(colIdentifier);
+            console.print(colIdentifier);
             this.displayHorizontalSpace();
         }
 
         // print a single newline to end the legend
-        out.print('\n');
+        console.print('\n');
     }
 
     /**
@@ -146,7 +145,7 @@ public class MapMenuView extends View {
                make the map really ugly when it's large */
             // offset character by 65, the ASCII value of 'A'
             char rowIdentifier = toChars(65 + row)[0];
-            out.print(rowIdentifier);
+            console.print(rowIdentifier);
 
             this.displayHorizontalSpace();
             this.displayCells(row);
@@ -161,7 +160,7 @@ public class MapMenuView extends View {
      */
     private void displayCells(int row) {
         for (int col = 0; col < map.getColumns(); col++) {
-            out.print(map.getContents()[row][col]);
+            console.print(map.getContents()[row][col]);
             this.displayHorizontalSpace();
         }
     }
@@ -175,8 +174,8 @@ public class MapMenuView extends View {
         Planet current = Planet.Redecent;
         // todo: get the player's current location on the map instead
         double distance = mapController.calculateDistance(current, destination);
-        out.println(destination.name() + ": " + destination.getDescription());
-        out.println("Your destination is " + distance + " light years away.");
+        console.println(destination.name() + ": " + destination.getDescription());
+        console.println("Your destination is " + distance + " light years away.");
         // do something to calculate fuel cost, then update the player's position
         // let's not forget random encounters, either...
         // this is as far as I got on my work on the views
@@ -195,7 +194,7 @@ public class MapMenuView extends View {
             Coordinates coords = this.promptForCoordinates();
             destination = Planet.atCoordinates(coords);
             if (destination == null) {
-                out.println("There's no planet at the specified coordinates!");
+                console.println("There's no planet at the specified coordinates!");
             }
         }
         EncounterChance();
@@ -228,12 +227,12 @@ public class MapMenuView extends View {
 
         // view #2, while loop
         while (!finished) {
-            out.print("Select " + desc + " coordinate: ");
+            console.print("Select " + desc + " coordinate: ");
             // view #2, two String functions
             String value = keyboard.nextLine().trim();
 
             if (value.length() != 1) {
-                out.println("Invalid input - The coordinate must be one letter");
+                console.println("Invalid input - The coordinate must be one letter");
                 continue;
             }
 
@@ -247,7 +246,7 @@ public class MapMenuView extends View {
                     && (coordinate - upperLimit <= 90)) {
                 finished = true;
             } else {
-                out.println("Invalid " + desc + " coordinate.");
+                console.println("Invalid " + desc + " coordinate.");
             }
         }
 

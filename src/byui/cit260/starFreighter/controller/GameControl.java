@@ -24,6 +24,7 @@ import byui.cit260.starFreighter.model.Planet;
 import static byui.cit260.starFreighter.model.Planet.Kryta;
 import byui.cit260.starFreighter.model.Player;
 import byui.cit260.starFreighter.model.Ship;
+import byui.cit260.starFreighter.view.ErrorView;
 import enums.InventoryItem;
 import java.io.File;
 import java.io.FileInputStream;
@@ -122,7 +123,7 @@ public class GameControl {
             new File(System.getProperty("user.home") + File.separator + "StarFreighter").mkdir();
             save = System.getProperty("user.home") + File.separator + "StarFreighter" + File.separator + "save.data";
         } catch (SecurityException ex) {
-            System.out.println("Error while creating directory in Java:" + ex);
+            ErrorView.display(GameControl.class.getName(), ex.getMessage());
         }
 
         try (FileOutputStream fop = new FileOutputStream(save)) {

@@ -53,7 +53,7 @@ public abstract class View implements ViewInterface {
                 value = value.trim();
 
                 if (value.length() < 1) {
-                    out.println("Invalid input - Please select an option from the menu");
+                    console.println("Invalid input - Please select an option from the menu");
                     continue;
                 }
                 break;

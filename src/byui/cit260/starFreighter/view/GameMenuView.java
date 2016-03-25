@@ -55,7 +55,7 @@ class GameMenuView extends View {
             case 'E':
                 return true;
             default:
-                out.println("\n*** Invalid selection *** Try again");
+                console.println("\n*** Invalid selection *** Try again");
                 break;
 
         }

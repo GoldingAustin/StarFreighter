@@ -65,15 +65,15 @@ class InventoryMenuView extends View {
             case 'E':
                 return true;
             default:
-                out.println("\n*** Invalid selection *** Try again");
+                console.println("\n*** Invalid selection *** Try again");
                 break;
         }
         return false;
     }
 
     private void displayContents() {
-        out.println("You have " + playerInventory.currency() + " " + this.CURRENCY);
-        out.println("[Item name]\t[Value]");
+        console.println("You have " + playerInventory.currency() + " " + this.CURRENCY);
+        console.println("[Item name]\t[Value]");
         for (Item current : playerInventory.itemList()) {
             this.printItem(current);
         }
@@ -82,7 +82,7 @@ class InventoryMenuView extends View {
     // From who?
     private void buyItem() {
         MerchantStock store = StarFreighter.getCurrentGame().getShip().getCurrentLocation().shop();
-        out.println("Which item do you want to buy?");
+        console.println("Which item do you want to buy?");
         for (Item current : store.getItems()) {
             this.printItemNumber(current);
             this.printItem(current);
@@ -97,7 +97,7 @@ class InventoryMenuView extends View {
     // Maybe if a player wants to buy back something they sold...
     // oh well for now
     private void sellItem() {
-        out.println("Which item do you want to sell?");
+        console.println("Which item do you want to sell?");
         for (Item current : playerInventory.itemList()) {
             this.printItemNumber(current);
             this.printItem(current);
@@ -108,9 +108,9 @@ class InventoryMenuView extends View {
         int itemValue = itemToSell.getResaleValue();
         int previousCurrency = playerInventory.currency();
         playerInventory.sellItem(itemToSell);
-        out.println("Sold " + itemName + " for " + itemValue + " " + this.CURRENCY);
-        out.println("You had " + previousCurrency + " " + this.CURRENCY + ".");
-        out.println("You now have " + playerInventory.currency() + " " + this.CURRENCY);
+        console.println("Sold " + itemName + " for " + itemValue + " " + this.CURRENCY);
+        console.println("You had " + previousCurrency + " " + this.CURRENCY + ".");
+        console.println("You now have " + playerInventory.currency() + " " + this.CURRENCY);
     }
 
     private int promptInteger() {
@@ -120,7 +120,7 @@ class InventoryMenuView extends View {
         int number;
         do {
             while (!intPrompt.hasNextInt()) {
-                out.println("Please enter a number.");
+                console.println("Please enter a number.");
             }
             number = intPrompt.nextInt();
         } while (number <= 0);
@@ -129,28 +129,28 @@ class InventoryMenuView extends View {
 
     private void printItemNumber(Item item) {
         int index = playerInventory.itemList().indexOf(item) + 1;
-        out.print("[");
+        console.print("[");
         if (index < 10) {
-            out.print("0");
+            console.print("0");
         }
-        out.print(index + "] ");
+        console.print(index + "] ");
     }
 
     private void printItem(Item item) {
-        out.print(item.getName());
-        out.print("\t");
-        out.print(item.getResaleValue() + " " + playerInventory.currencyUnit() + "\n");
+        console.print(item.getName());
+        console.print("\t");
+        console.print(item.getResaleValue() + " " + playerInventory.currencyUnit() + "\n");
     }
 
     private void totalValue() {
         int totalValue = playerInventory.calculateTotalValue();
         int resaleValue = playerInventory.calculateTotalResaleValue();
 
-        out.println("The items in your inventory are worth "
+        console.println("The items in your inventory are worth "
                 + totalValue + " "
                 + playerInventory.currencyUnit()
                 + ".");
-        out.println("You can resell them for " + resaleValue
+        console.println("You can resell them for " + resaleValue
                 + " " + playerInventory.currencyUnit() + ".");
     }
 }

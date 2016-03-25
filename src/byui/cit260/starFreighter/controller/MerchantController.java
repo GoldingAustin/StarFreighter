@@ -7,7 +7,7 @@ package byui.cit260.starFreighter.controller;
 
 import byui.cit260.starFreighter.model.Item;
 import byui.cit260.starFreighter.model.MerchantStock;
-import static java.lang.System.out;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import starfreighter.StarFreighter;
@@ -17,7 +17,7 @@ import starfreighter.StarFreighter;
  * @author Connor
  */
 public class MerchantController {
-
+    private final PrintWriter console = StarFreighter.getOutFile();
     private final String CURRENCY = "credits";
 
     /**
@@ -44,7 +44,7 @@ public class MerchantController {
      *
      */
     public void displayCurrency() {
-        out.println("Currency: " + inventory.getCurrency() + " " + this.CURRENCY);
+        console.println("Currency: " + inventory.getCurrency() + " " + this.CURRENCY);
     }
 
     public int currency() {

@@ -63,7 +63,7 @@ class CrewMenuView extends View {
             case 'E':
                 return true;
             default:
-                out.println("\n*** Invalid selection *** Try again");
+                console.println("\n*** Invalid selection *** Try again");
                 break;
 
         }
@@ -71,7 +71,7 @@ class CrewMenuView extends View {
     }
 
     private void startExistingGame() {
-        out.println("\n*** startExistingGame() stub function called ***");
+        console.println("\n*** startExistingGame() stub function called ***");
     }
 
     private void displayStatMenu(CrewMember crew) {

@@ -45,7 +45,7 @@ class ShipMenuView extends View {
 
         switch (choice) {
             case 'S':
-                System.out.println("\n"
+                console.println("\n"
                         + "Captain" + ship.getCaptain()
                         + "Engineer" + ship.getEngineer()
                         + "Gunner" + ship.getGunner()
@@ -77,7 +77,7 @@ class ShipMenuView extends View {
             case 'E':
                 return true;
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
+                console.println("\n*** Invalid selection *** Try again");
                 break;
 
         }

@@ -7,6 +7,7 @@ package byui.cit260.starFreighter.controller;
 
 import byui.cit260.starFreighter.model.CombatEncounter;
 import byui.cit260.starFreighter.model.CrewMember;
+import java.io.PrintWriter;
 import java.io.Serializable;
 import static java.lang.System.out;
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class EncounterController implements Serializable {
     public static final String ANSI_BLUE = "\u001B[34m";
     public static final String ANSI_PURPLE = "\u001B[35;1m";
     public static final String ANSI_CYAN = "\u001B[36m";
+    protected static final PrintWriter console = StarFreighter.getOutFile();
     
     private static final ArrayList<CrewMember> crew = StarFreighter.getCurrentGame().getCrewCon();
 
@@ -52,7 +54,7 @@ public class EncounterController implements Serializable {
             calculateDamage();
             damageEnemy();
         }
-        out.println("You've defeated " + ANSI_YELLOW + y + ANSI_RED + " Space Pirates!");
+        console.println("You've defeated " + ANSI_YELLOW + y + ANSI_RED + " Space Pirates!");
     }
 
     /**
@@ -98,29 +100,29 @@ public class EncounterController implements Serializable {
      *
      */
     public void damageEnemy() {
-        out.println(" ");
+        console.println(" ");
         while (z < enemies.size()) {
 
             if (enemies.get(z).getHitPoints() <= 0) {
-                out.println("You have defeated " + ANSI_RED + enemies.get(z).getName() + ANSI_RESET);
+                console.println("You have defeated " + ANSI_RED + enemies.get(z).getName() + ANSI_RESET);
                 enemies.get(z).setAlive(false);
-                out.println(" ");
-                out.println("------------------ ");
+                console.println(" ");
+                console.println("------------------ ");
                 z++;
                 y++;
 
             } 
             
             else {
-                out.println(" ");
+                console.println(" ");
                 enemies.get(z).setHitPoints(enemies.get(z).getHitPoints() - allies.get(h).getDamage());
-                out.println(ANSI_GREEN + crew.get(h).getName() + ANSI_RESET + " Did " + ANSI_BLUE + allies.get(h).getDamage() + ANSI_RESET + " damage! to " + ANSI_RED + enemies.get(z).getName() + ANSI_RESET);
-                out.println(ANSI_RED + enemies.get(z).getName() + ANSI_RESET + ": " + ANSI_PURPLE + enemies.get(z).getHitPoints() + ANSI_RESET);
-                out.println(" ");
+                console.println(ANSI_GREEN + crew.get(h).getName() + ANSI_RESET + " Did " + ANSI_BLUE + allies.get(h).getDamage() + ANSI_RESET + " damage! to " + ANSI_RED + enemies.get(z).getName() + ANSI_RESET);
+                console.println(ANSI_RED + enemies.get(z).getName() + ANSI_RESET + ": " + ANSI_PURPLE + enemies.get(z).getHitPoints() + ANSI_RESET);
+                console.println(" ");
                 h++;
                 
                 if (h == (allies.size() - 1)) {
-                    out.println(" ");
+                    console.println(" ");
                     
                     while (r < enemies.size()) {
                         
@@ -129,12 +131,12 @@ public class EncounterController implements Serializable {
                             int damage = rand.nextInt(10 - 1) + 1;
                             allies.get(a).setHitPoints(allies.get(a).getHitPoints() - damage);
                             crew.get(a).setHitPoints(crew.get(a).getHitPoints() - damage);
-                            out.println(ANSI_RED + enemies.get(r).getName() + ANSI_RESET + " Did " + damage + " damage! to " + ANSI_GREEN + (crew.get(a).getName()) + ANSI_RESET);
-                            out.println(ANSI_GREEN + crew.get(a).getName() + ": " + ANSI_CYAN + crew.get(a).getHitPoints() + ANSI_RESET);
-                            out.println(" ");
+                            console.println(ANSI_RED + enemies.get(r).getName() + ANSI_RESET + " Did " + damage + " damage! to " + ANSI_GREEN + (crew.get(a).getName()) + ANSI_RESET);
+                            console.println(ANSI_GREEN + crew.get(a).getName() + ": " + ANSI_CYAN + crew.get(a).getHitPoints() + ANSI_RESET);
+                            console.println(" ");
                             
                             if (crew.get(a).getHitPoints() <= 0) {
-                                out.println(ANSI_RED + enemies.get(r).getName() + ANSI_RESET + " has defeated " + ANSI_GREEN + crew.get(a).getName());
+                                console.println(ANSI_RED + enemies.get(r).getName() + ANSI_RESET + " has defeated " + ANSI_GREEN + crew.get(a).getName());
                                 allies.get(a).setAlive(false);
                             }
                             

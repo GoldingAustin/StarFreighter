@@ -9,7 +9,6 @@ import byui.cit260.starFreighter.controller.GameControl;
 import static byui.cit260.starFreighter.controller.GameControl.save;
 import byui.cit260.starFreighter.exceptions.GameControlExceptions;
 import java.io.IOException;
-import static java.lang.System.out;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import starfreighter.StarFreighter;
@@ -56,7 +55,7 @@ public class MainMenuView extends View {
             case 'E':
                 return true;
             default:
-                out.println("\n*** Invalid selection *** Try again");
+                console.println("\n*** Invalid selection *** Try again");
                 break;
 
         }
@@ -72,11 +71,11 @@ public class MainMenuView extends View {
     private void startExistingGame() {
         try {
             GameControl.loadGame();
-            out.println("File successfully loaded from " + save);
+            console.println("File successfully loaded from " + save);
             GameMenuView gameMenu = new GameMenuView();
             gameMenu.display();
         } catch (GameControlExceptions | IOException | ClassNotFoundException ex) {
-            System.out.println(ex.getMessage());
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
             MainMenuView mainMenu = new MainMenuView();
             mainMenu.display();
         }
@@ -90,15 +89,13 @@ public class MainMenuView extends View {
     private void saveGame() {
         try {
             GameControl.saveGame(StarFreighter.getCurrentGame());
-            out.println("File successfully saved at " + save);
+            console.println("File successfully saved at " + save);
             GameMenuView gameMenu = new GameMenuView();
             gameMenu.display();
         } catch (GameControlExceptions ex) {
-            out.println(ex.getMessage());
+            console.println(ex.getMessage());
         } catch (IOException ex) {
             Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
-
 }

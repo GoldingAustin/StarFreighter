@@ -35,7 +35,7 @@ class HelpMenuView extends View {
 
         switch (choice) {
             case 'G':
-                out.println("\nYou are a spaceship captain desiring to be "
+                console.println("\nYou are a spaceship captain desiring to be "
                         + "\nThe best and wealthiest in the galaxy. A deep-space"
                         + "\nphenomena has occurred which could lead you to an "
                         + "\nancient alien treasure. You need to earn money "
@@ -43,7 +43,7 @@ class HelpMenuView extends View {
                         + "\nship.");
                 break;
             case 'C':
-                out.println("\nThere are five roles on your ship"
+                console.println("\nThere are five roles on your ship"
                         + "\n"
                         + "\n*Pilot: The better they are the faster you travel"
                         + "\nand the less fuel you use"
@@ -64,20 +64,20 @@ class HelpMenuView extends View {
                         + "\n");
                 break;
             case 'I':
-                out.println("\nYou can access the jobs boards on any planet."
+                console.println("\nYou can access the jobs boards on any planet."
                         + "\nYou'll be given a task to complete and rewarded on"
                         + "\ncompletion. You may receive parts you need for your"
                         + "\nship, money, or items you can sell. Merchants can be "
                         + "\naccessed any time from the game menu.");
                 break;
             case 'T':
-                out.println("\nYou can access the map anytime in the game"
+                console.println("\nYou can access the map anytime in the game"
                         + "\nmenu. Each location has a specific distance and fuel"
                         + "\ncost. You don't want to run out of fuel on your way"
                         + "\nto a planet.");
                 break;
             case 'R':
-                out.println("\nMerchants can be accessed in the game menu."
+                console.println("\nMerchants can be accessed in the game menu."
                         + "\nYou can sell items you don't need or buy what you "
                         + "\nneed. You need to upgrade your ship to be able to "
                         + "\nmake it to the phenomena. You can earn parts from"
@@ -89,7 +89,7 @@ class HelpMenuView extends View {
             case 'E':
                 return true;
             default:
-                out.println("\n*** Invalid selection *** Try again");
+                console.println("\n*** Invalid selection *** Try again");
                 break;
 
         }

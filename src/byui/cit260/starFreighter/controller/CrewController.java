@@ -6,14 +6,16 @@
 package byui.cit260.starFreighter.controller;
 
 import byui.cit260.starFreighter.model.CrewMember;
+import java.io.PrintWriter;
 import java.io.Serializable;
-import static java.lang.System.out;
+import starfreighter.StarFreighter;
 
 /**
  *
  * @author Connor
  */
 public class CrewController implements Serializable {
+    protected static final PrintWriter console = StarFreighter.getOutFile();
 
     public CrewController() {
 
@@ -40,35 +42,35 @@ public class CrewController implements Serializable {
                 if (crew.getPilot() < 10) {
                     crew.setPilot(value);
                 } else {
-                    out.println("Congrats! You have reached the max Pilot level with: " + crew.getName());
+                    console.println("Congrats! You have reached the max Pilot level with: " + crew.getName());
                 }
                 break;
             case MECHANIC:
                 if (crew.getMechanic() < 10) {
                     crew.setMechanic(value);
                 } else {
-                    out.println("Congrats! You have reached the max Mechanic level with: " + crew.getName());
+                    console.println("Congrats! You have reached the max Mechanic level with: " + crew.getName());
                 }
                 break;
             case FIGHTER:
                 if (crew.getFighter() < 10) {
                     crew.setFighter(value);
                 } else {
-                    out.println("Congrats! You have reached the max Fighter level with: " + crew.getName());
+                    console.println("Congrats! You have reached the max Fighter level with: " + crew.getName());
                 }
                 break;
             case DOCTOR:
                 if (crew.getDoctor() < 10) {
                     crew.setDoctor(value);
                 } else {
-                    out.println("Congrats! You have reached the max Doctor level with: " + crew.getName());
+                    console.println("Congrats! You have reached the max Doctor level with: " + crew.getName());
                 }
                 break;
             case TRADER:
                 if (crew.getTrader() < 10) {
                     crew.setTrader(value);
                 } else {
-                    out.println("Congrats! You have reached the max Trader level with: " + crew.getName());
+                    console.println("Congrats! You have reached the max Trader level with: " + crew.getName());
                 }
                 break;
         }

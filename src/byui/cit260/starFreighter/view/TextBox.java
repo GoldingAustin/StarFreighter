@@ -1,7 +1,8 @@
 package byui.cit260.starFreighter.view;
 
-import static java.lang.System.out;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import starfreighter.StarFreighter;
 
 /**
  * A convenient formatter for printing text inside a box. Don't need to struggle
@@ -10,6 +11,7 @@ import java.util.ArrayList;
  * @author Connor
  */
 public class TextBox {
+    private final static PrintWriter console = StarFreighter.getOutFile();
 
     /**
      * Class constants.
@@ -36,7 +38,7 @@ public class TextBox {
      * Utility function. Displays a horizontal separator.
      */
     private static void displaySeparator() {
-        out.println(fillString(MAX_WIDTH + 3, BORDER_SYMBOL));
+        console.println(fillString(MAX_WIDTH + 3, BORDER_SYMBOL));
     }
 
     /**
@@ -44,7 +46,7 @@ public class TextBox {
      */
     private static void displaySeparatorSpacing() {
         String repeated = fillString(MAX_WIDTH + 1, " ");
-        out.println(BORDER_SYMBOL + repeated + BORDER_SYMBOL);
+        console.println(BORDER_SYMBOL + repeated + BORDER_SYMBOL);
     }
 
     /**
@@ -62,7 +64,7 @@ public class TextBox {
         // Add the empty space and a right border after the contents.
         finalLine += emptySpace + BORDER_SYMBOL;
         // Print the line.
-        out.println(finalLine);
+        console.println(finalLine);
     }
 
     /**

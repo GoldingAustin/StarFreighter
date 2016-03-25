@@ -58,7 +58,7 @@ public final class StartProgramView {
 
         boolean valid = false;
         while (!valid) {
-            System.out.println("\nPlease enter your name: ");
+            out.println("\nPlease enter your name: ");
 
             value = keyboard.nextLine();
             value = toUpperCase(value);
