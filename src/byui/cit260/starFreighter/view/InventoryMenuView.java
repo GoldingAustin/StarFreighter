@@ -9,9 +9,15 @@ import byui.cit260.starFreighter.controller.GameControl;
 import byui.cit260.starFreighter.controller.MerchantController;
 import byui.cit260.starFreighter.model.Item;
 import byui.cit260.starFreighter.model.MerchantStock;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import static java.lang.System.in;
 import static java.lang.System.out;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import starfreighter.StarFreighter;
 
 /**
@@ -32,6 +38,7 @@ class InventoryMenuView extends View {
                 + "\nC - Contents"
                 + "\nB - Buy"
                 + "\nS - Sell"
+                + "\nR - Inventory Report"
                 + "\nT - Total Value"
                 + "\nE - Exit"
                 + "\n--------------------------------");
@@ -58,6 +65,9 @@ class InventoryMenuView extends View {
                 break;
             case 'S':
                 this.sellItem();
+                break;
+            case 'R':
+                this.inventoryReport();
                 break;
             case 'T':
                 this.totalValue();
@@ -152,5 +162,36 @@ class InventoryMenuView extends View {
                 + ".");
         console.println("You can resell them for " + resaleValue
                 + " " + playerInventory.currencyUnit() + ".");
+    }
+    
+    private void inventoryReport() {
+        console.println("Filepath to save report to:");
+        String filePath = promptFilePath();
+        writeReportToFile(filePath);
+    }
+    
+    private String promptFilePath() {
+        String value = null;
+        try {
+            value = this.keyboard.readLine();
+            value = value.trim();
+        } catch (IOException ex) {
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
+        }
+        return value;
+    }
+    
+    private void writeReportToFile(String filePath) {
+        try(PrintWriter out = new PrintWriter(filePath)) {
+            out.println("\n\n       Inventory Report");
+            out.printf("%n%-20s%10s", "Name", "Value");
+            out.printf("%n%-20s%10s", "--------------------", "-----");
+            for (Item current : playerInventory.itemList()) {
+                out.printf("%n%-20s%10s", current.getName(),
+                                          current.getValue());
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(InventoryMenuView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
