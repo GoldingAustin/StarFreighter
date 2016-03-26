@@ -168,6 +168,7 @@ class InventoryMenuView extends View {
         console.println("Filepath to save report to:");
         String filePath = promptFilePath();
         writeReportToFile(filePath);
+        console.println("Inventory report printed at " + filePath + ".");
     }
     
     private String promptFilePath() {
