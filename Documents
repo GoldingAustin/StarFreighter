@@ -1,0 +1,12 @@
+
+
+      Crew Report
+
+Name                     Value
+--------------------     -----
+GameCharacter{name=ASDADSADS, pilot=0, mechanic=0, fighter=0, doctor=0, trader=0, hitPoints=30} ASDADSADS
+GameCharacter{name=Spock, pilot=0, mechanic=0, fighter=0, doctor=0, trader=4, hitPoints=30}     Spock
+GameCharacter{name=Kirk, pilot=0, mechanic=0, fighter=4, doctor=0, trader=0, hitPoints=30}      Kirk
+GameCharacter{name=Bones, pilot=0, mechanic=0, fighter=0, doctor=4, trader=0, hitPoints=30}     Bones
+GameCharacter{name=McCoy, pilot=0, mechanic=4, fighter=0, doctor=0, trader=0, hitPoints=30}     McCoy
+GameCharacter{name=Sulu, pilot=4, mechanic=0, fighter=0, doctor=0, trader=0, hitPoints=30}      Sulu

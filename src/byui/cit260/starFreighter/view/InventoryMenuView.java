@@ -5,16 +5,12 @@
  */
 package byui.cit260.starFreighter.view;
 
-import byui.cit260.starFreighter.controller.GameControl;
 import byui.cit260.starFreighter.controller.MerchantController;
 import byui.cit260.starFreighter.model.Item;
 import byui.cit260.starFreighter.model.MerchantStock;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.in;
-import static java.lang.System.out;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
