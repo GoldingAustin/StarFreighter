@@ -1,6 +1,10 @@
 package byui.cit260.starFreighter.control;
 
+import byui.cit260.starFreighter.constants.FetchJobList;
+import byui.cit260.starFreighter.model.FetchJob;
+import byui.cit260.starFreighter.model.Job;
 import byui.cit260.starFreighter.model.JobRegistry;
+import byui.cit260.starFreighter.model.Planet;
 import starfreighter.StarFreighter;
 
 /**
@@ -24,10 +28,37 @@ public class JobController {
     }
     
     /**
+     * Adds a job to a specific planet's job registry.
+     * @param job
+     * @param planet 
+     */
+    public static void addJobToPlanet(Job job, Planet planet) {
+        planet.getJobRegistry().add(job);
+    }
+    
+    /**
+     * Creates a new fetch job.
+     * @param job
+     * @return 
+     */
+    public static FetchJob createFetchJob(FetchJobList job) {
+        return new FetchJob(job);
+    }
+    
+    /**
      * Gets the player's job list.
      * @return 
      */
-    public JobRegistry getJobList() {
+    public static JobRegistry getJobList() {
         return StarFreighter.getCurrentGame().getJobRegistry();
+    }
+    
+    /**
+     * Gets the job list at the player's current location.
+     * @return 
+     */
+    public static JobRegistry getAvailableJobs() {
+        Planet current = StarFreighter.getCurrentGame().getShip().getLocation();
+        return current.getJobRegistry();
     }
 }

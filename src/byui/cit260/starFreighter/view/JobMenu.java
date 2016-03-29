@@ -1,5 +1,7 @@
 package byui.cit260.starFreighter.view;
 
+import byui.cit260.starFreighter.control.JobController;
+import byui.cit260.starFreighter.model.JobRegistry;
 import byui.cit260.starFreighter.model.MenuItem;
 
 /**
@@ -22,6 +24,8 @@ public final class JobMenu extends MenuView {
         switch (action) {
             case 'A': {
                 // something
+                JobRegistry available = JobController.getAvailableJobs();
+                CONSOLE.println(available);
                 break;
             }
             case 'C': {

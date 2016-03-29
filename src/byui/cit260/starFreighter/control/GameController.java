@@ -1,6 +1,8 @@
 package byui.cit260.starFreighter.control;
 
+import byui.cit260.starFreighter.constants.FetchJobList;
 import byui.cit260.starFreighter.constants.ItemList;
+import static byui.cit260.starFreighter.control.PlanetSystemController.planetNamed;
 import byui.cit260.starFreighter.exceptions.GameControlException;
 import byui.cit260.starFreighter.model.CrewRoster;
 import byui.cit260.starFreighter.model.GameInstance;
@@ -72,6 +74,13 @@ public class GameController {
         /* Pass the new GameInstance up to the main program so it can be
            accessed from within the various game views. */
         StarFreighter.setCurrentGame(newGame);
+        
+        
+        // Assign some jobs. There's probably a better way to do this...
+        // I don't like including job related stuff in here, it feels out of
+        // place. Any suggestions?
+        JobRegistry kryta = planetNamed("Kryta").getJobRegistry();
+        kryta.add(JobController.createFetchJob(FetchJobList.TRADE_NEW_PARTS));
         
         // Set the ship's starting point. We have to do this, 'cause they're
         // generated randomly. We also have to do this here, because the controller

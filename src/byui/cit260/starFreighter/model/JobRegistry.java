@@ -1,5 +1,6 @@
 package byui.cit260.starFreighter.model;
 
+import byui.cit260.starFreighter.constants.FetchJobList;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -25,6 +26,14 @@ public class JobRegistry implements Serializable {
      * @param job 
      */
     public void add(Job job) {
+        jobs.add(job);
+    }
+    
+    /**
+     * Adds a fetch job to the job list.
+     * @param job 
+     */
+    public void add(FetchJob job) {
         jobs.add(job);
     }
     
