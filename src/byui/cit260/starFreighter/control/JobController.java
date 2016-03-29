@@ -54,6 +54,28 @@ public class JobController {
     }
     
     /**
+     * Accepts a specified job.
+     * @param job 
+     */
+    public static void acceptJob(Job job) {
+        // add job to player's job list
+        // remove job from planet's job list
+    }
+    
+    /**
+     * Progresses the player through each of their jobs. Called after acquiring
+     * items to increment the number of items obtained for "fetch" jobs.
+     * 
+     * Might possibly see use in pirate huntin' jobs too, but dunno if there'll
+     * be time.
+     */
+    public static void progressAllJobs() {
+        // get player's job list
+        // iterate through each job
+        // call the job's "progress" method
+    }
+    
+    /**
      * Gets the job list at the player's current location.
      * @return 
      */

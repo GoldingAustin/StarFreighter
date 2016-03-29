@@ -10,6 +10,10 @@ import java.util.ArrayList;
 public enum RewardList {
     TRADE_NEW_PARTS(100, new ArrayList<InventoryItem>() {{
         add(new InventoryItem(ItemList.JUNK));
+    }}),
+    TRADE_OLD_PARTS(50, new ArrayList<InventoryItem>() {{
+        add(new InventoryItem(ItemList.JUNK));
+        add(new InventoryItem(ItemList.JUNK));
     }});
     
     /**

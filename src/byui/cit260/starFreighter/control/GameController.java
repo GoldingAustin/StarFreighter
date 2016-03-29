@@ -81,6 +81,7 @@ public class GameController {
         // place. Any suggestions?
         JobRegistry kryta = planetNamed("Kryta").getJobRegistry();
         kryta.add(JobController.createFetchJob(FetchJobList.TRADE_NEW_PARTS));
+        kryta.add(JobController.createFetchJob(FetchJobList.TRADE_OLD_PARTS));
         
         // Set the ship's starting point. We have to do this, 'cause they're
         // generated randomly. We also have to do this here, because the controller

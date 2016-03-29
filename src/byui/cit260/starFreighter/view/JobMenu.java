@@ -1,8 +1,10 @@
 package byui.cit260.starFreighter.view;
 
 import byui.cit260.starFreighter.control.JobController;
+import byui.cit260.starFreighter.model.Job;
 import byui.cit260.starFreighter.model.JobRegistry;
 import byui.cit260.starFreighter.model.MenuItem;
+import java.util.ArrayList;
 
 /**
  *
@@ -19,13 +21,22 @@ public final class JobMenu extends MenuView {
         menuItems.add(new MenuItem('E', "Exit"));
     }
     
+    /**
+     * Displays the jobs available at the player's current location.
+     * @todo Pretty up this display some.
+     */
+    private void displayAvailableJobs() {
+        ArrayList<Job> available = JobController.getAvailableJobs().get();
+        available.stream().forEach((current) -> {
+            CONSOLE.println(current.getName() + " - " + current.getDesc());
+        });
+    }
+    
     @Override
     public boolean doAction(char action) {
         switch (action) {
             case 'A': {
-                // something
-                JobRegistry available = JobController.getAvailableJobs();
-                CONSOLE.println(available);
+                displayAvailableJobs();
                 break;
             }
             case 'C': {
