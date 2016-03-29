@@ -59,7 +59,7 @@ public class GameController {
         PlanetSystem planets = PlanetSystemController.createSystem();
         
         // Create a JobRegistry for this game instance.
-        JobRegistry jobs = JobController.createJobList();
+        JobRegistry jobs = JobController.createJobRegistry();
 
         // Add the created objects to the new GameInstance.
         newGame.setPlayer(newPlayer);
@@ -67,7 +67,7 @@ public class GameController {
         newGame.setInventory(newInventory);
         newGame.setCrew(newRoster);
         newGame.setPlanetSystem(planets);
-        newGame.setJobList(jobs);
+        newGame.setJobRegistry(jobs);
 
         /* Pass the new GameInstance up to the main program so it can be
            accessed from within the various game views. */

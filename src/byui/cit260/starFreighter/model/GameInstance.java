@@ -100,7 +100,7 @@ public class GameInstance implements Serializable {
      * Gets the job list.
      * @return 
      */
-    public JobRegistry getJobList() {
+    public JobRegistry getJobRegistry() {
         return jobs;
     }
     
@@ -108,7 +108,7 @@ public class GameInstance implements Serializable {
      * Sets the job list.
      * @param jobs 
      */
-    public void setJobList(JobRegistry jobs) {
+    public void setJobRegistry(JobRegistry jobs) {
         this.jobs = jobs;
     }
 
