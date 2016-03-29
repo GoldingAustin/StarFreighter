@@ -12,26 +12,24 @@ public final class Planet implements Serializable {
      */
     private final String name;
     private final String desc;
-    private final char symbol;
     private final Point coords;
+    private final char symbol;
     private final Inventory shop;
-    private final JobList jobs;
 
     /**
      * Class constructor.
      * @param name
      * @param desc
-     * @param symbol
      * @param coords
+     * @param symbol 
      */
-    public Planet(String name, String desc, char symbol, Point coords) {
+    public Planet(String name, String desc, Point coords, char symbol) {
         this.name = name;
         this.desc = desc;
-        this.symbol = symbol;
         this.coords = coords;
+        this.symbol = symbol;
         this.shop = new Inventory();
         this.shop.setCurrency(10000);
-        this.jobs = new JobList();
     }
     
     /**

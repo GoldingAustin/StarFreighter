@@ -1,6 +1,5 @@
 package byui.cit260.starFreighter.control;
 
-import byui.cit260.starFreighter.constants.PlanetList;
 import byui.cit260.starFreighter.model.Planet;
 import byui.cit260.starFreighter.model.PlanetSystem;
 import byui.cit260.starFreighter.model.Point;
@@ -32,10 +31,27 @@ public final class PlanetSystemController {
         
         // Create each planet using some random numbers, and add it to the
         // system. Sorry, we gotta do it manually.
-        system.addPlanet(PlanetList.KRYTA);
-        system.addPlanet(PlanetList.QUALUFE);
-        system.addPlanet(PlanetList.MEZOPAN);
-        system.addPlanet(PlanetList.REDECENT);
+        system.addPlanet(new Planet(
+                "Kryta", 
+                "A barren desert planet with a few secrets", 
+                // Kryta, as the starting planet, should always be in column 1
+                new Point(1, RandomNumbers.range(2, 8)), 
+                'K'));
+        system.addPlanet(new Planet(
+                "Qualufe",
+                "Oceans as far as the eye can see",
+                new Point(RandomNumbers.range(5, 6), RandomNumbers.range(0, 9)),
+                'Q'));
+        system.addPlanet(new Planet(
+                "Mezopan",
+                "Green forests and tall trees",
+                new Point(RandomNumbers.range(8, 10), RandomNumbers.range(3, 7)),
+                'M'));
+        system.addPlanet(new Planet(
+                "Redecent",
+                "The galaxy's capital",
+                new Point(RandomNumbers.range(14, 15), RandomNumbers.range(4, 6)),
+                'R'));
         
         // Return the system.
         return system;

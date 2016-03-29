@@ -108,12 +108,6 @@ public class GameController {
      * @throws IOException 
      */
     public static void saveGame() throws GameControlException, IOException {
-        // This check avoids saving if no game has been started.
-        GameInstance currentGame = StarFreighter.getCurrentGame();
-        if (currentGame == null) {
-            return;
-        }
-        
         String saveFilePath = System.getProperty("user.home") +
                     File.separator + "StarFreighter" + File.separator + 
                     "save.data";
@@ -128,7 +122,7 @@ public class GameController {
         // Save the current game instance to the directory.
         try (FileOutputStream fop = new FileOutputStream(saveFilePath)) {
             ObjectOutputStream output = new ObjectOutputStream(fop);
-            output.writeObject(currentGame);
+            output.writeObject(StarFreighter.getCurrentGame());
         } catch (IOException error) {
             throw new GameControlException(error.getMessage());
         }
