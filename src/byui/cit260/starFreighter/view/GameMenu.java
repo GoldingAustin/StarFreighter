@@ -13,6 +13,7 @@ public final class GameMenu extends MenuView {
     private final ShipMenu shipMenu = new ShipMenu();
     private final CrewMenu crewMenu = new CrewMenu();
     private final InventoryMenu inventoryMenu = new InventoryMenu();
+    private final JobMenu jobMenu = new JobMenu();
     private final HelpMenu helpMenu = new HelpMenu();
     
     /**
@@ -24,6 +25,7 @@ public final class GameMenu extends MenuView {
         menuItems.add(new MenuItem('C', "Crew"));
         menuItems.add(new MenuItem('T', "Travel"));
         menuItems.add(new MenuItem('I', "Inventory"));
+        menuItems.add(new MenuItem('J', "Jobs"));
         menuItems.add(new MenuItem('H', "Help"));
         menuItems.add(new MenuItem('E', "Exit to main menu"));
     }
@@ -63,6 +65,10 @@ public final class GameMenu extends MenuView {
             }
             case 'I': {
                 inventoryMenu.display();
+                break;
+            }
+            case 'J': {
+                jobMenu.display();
                 break;
             }
             case 'H': {
