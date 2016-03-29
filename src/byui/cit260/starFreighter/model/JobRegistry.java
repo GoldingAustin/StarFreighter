@@ -9,14 +9,14 @@ import java.util.Objects;
  * the player's jobs; available jobs are stored in job lists at locations in the
  * game itself.
  */
-public class JobList implements Serializable {
+public class JobRegistry implements Serializable {
     // Class constants.
     private final ArrayList<Job> jobs = new ArrayList<>();
 
     /**
      * Class constructor.
      */
-    public JobList() {
+    public JobRegistry() {
         
     }
     
@@ -69,7 +69,7 @@ public class JobList implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final JobList other = (JobList) obj;
+        final JobRegistry other = (JobRegistry) obj;
         return Objects.equals(this.jobs, other.jobs);
     }
 

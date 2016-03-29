@@ -15,7 +15,7 @@ public final class Planet implements Serializable {
     private final char symbol;
     private final Point coords;
     private final Inventory shop;
-    private final JobList jobs;
+    private final JobRegistry jobs;
 
     /**
      * Class constructor.
@@ -31,7 +31,7 @@ public final class Planet implements Serializable {
         this.coords = coords;
         this.shop = new Inventory();
         this.shop.setCurrency(10000);
-        this.jobs = new JobList();
+        this.jobs = new JobRegistry();
     }
     
     /**

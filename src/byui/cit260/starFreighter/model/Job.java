@@ -1,5 +1,6 @@
 package byui.cit260.starFreighter.model;
 
+import byui.cit260.starFreighter.constants.FetchJobList;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -10,16 +11,19 @@ public class Job implements Serializable {
     /**
      * Class members.
      */
-    private String name;
-    private String description;
-    private Inventory rewards;
-    private boolean complete;
+    protected String name;
+    protected String description;
+    protected Inventory rewards;
+    protected boolean complete = false;
     
     /**
      * Class constructor.
+     * @param job
      */
-    public Job() {
-        
+    public Job(FetchJobList job) {
+        this.name = job.getName();
+        this.description = job.getDesc();
+        this.rewards = job.getRewards();
     }
     
     /**

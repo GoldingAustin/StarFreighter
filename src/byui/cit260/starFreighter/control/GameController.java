@@ -5,6 +5,7 @@ import byui.cit260.starFreighter.exceptions.GameControlException;
 import byui.cit260.starFreighter.model.CrewRoster;
 import byui.cit260.starFreighter.model.GameInstance;
 import byui.cit260.starFreighter.model.Inventory;
+import byui.cit260.starFreighter.model.JobRegistry;
 import byui.cit260.starFreighter.model.Planet;
 import byui.cit260.starFreighter.model.PlanetSystem;
 import byui.cit260.starFreighter.model.Player;
@@ -56,6 +57,9 @@ public class GameController {
         
         // Create a PlanetSystem for this game instance.
         PlanetSystem planets = PlanetSystemController.createSystem();
+        
+        // Create a JobRegistry for this game instance.
+        JobRegistry jobs = JobController.createJobList();
 
         // Add the created objects to the new GameInstance.
         newGame.setPlayer(newPlayer);
@@ -63,6 +67,7 @@ public class GameController {
         newGame.setInventory(newInventory);
         newGame.setCrew(newRoster);
         newGame.setPlanetSystem(planets);
+        newGame.setJobList(jobs);
 
         /* Pass the new GameInstance up to the main program so it can be
            accessed from within the various game views. */

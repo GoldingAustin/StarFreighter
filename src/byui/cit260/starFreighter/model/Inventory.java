@@ -12,7 +12,7 @@ public class Inventory implements Serializable {
     /**
      * Class members.
      */
-    private final ArrayList<InventoryItem> contents;
+    private ArrayList<InventoryItem> contents;
     private int currency;
     
     /**
@@ -61,6 +61,14 @@ public class Inventory implements Serializable {
      */
     public ArrayList<InventoryItem> getContents() {
         return contents;
+    }
+    
+    /**
+     * Sets the inventory's contents.
+     * @param contents 
+     */
+    public void setContents(ArrayList<InventoryItem> contents) {
+        this.contents = contents;
     }
     
     /**

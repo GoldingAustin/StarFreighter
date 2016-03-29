@@ -4,7 +4,7 @@ import byui.cit260.starFreighter.control.RandomNumbers;
 import byui.cit260.starFreighter.model.Point;
 
 /**
- *
+ * A basic list of all the planets in the game.
  */
 public enum PlanetList {
     KRYTA("Kryta",
