@@ -6,45 +6,62 @@ import java.io.Serializable;
 /**
  * A basic data model for jobs that involve acquiring or trading something.
  */
-public class FetchJob extends Job implements JobInterface, Serializable {
-    /**
-     * Class constants.
-     */
+public final class FetchJob extends Job implements JobInterface, Serializable {
+
+
+
+
     private final int quantity;
-    
     /**
      * Class members.
      */
     private int acquired;
-    
+
     /**
      * Class constructor.
-     * @param job 
+     *
+     * @param job
      */
     public FetchJob(FetchJobList job) {
-       super(job);
-       this.quantity = job.getQuantity();
+        super(job);
+        this.quantity = job.getQuantity();
+
     }
-    
+
     /**
      * Gets the number of items fetched for this job.
-     * @return 
+     *
+     * @return
      */
     public int getAcquired() {
         return acquired;
     }
-    
+
     /**
      * Sets the number of items fetched for this job.
-     * @param value 
+     *
+     * @param value
      */
     public void setAcquired(int value) {
         acquired = value;
     }
-    
+
     @Override
-    public void progress() {
+    public boolean progress(FetchJob job, Inventory otherInventory) {
+        //runs through inventory of merchant
+        for (InventoryItem current : otherInventory.getContents()) {
+            //If the names of item and job item match 
+            if (current.getName().equals(job.getName())) {
+                //if quantity match, return true
+                if (current.getQuantity() == job.quantity) {
+                    return true;
+                }
+            }
+            //Set acquired to the quantity sold so far
+            setAcquired(current.getQuantity());
+        }
         
+        return false;
     }
 
     @Override

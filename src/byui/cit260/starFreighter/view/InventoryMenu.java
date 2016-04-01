@@ -7,8 +7,6 @@ import byui.cit260.starFreighter.model.InventoryItem;
 import byui.cit260.starFreighter.model.MenuItem;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.function.Consumer;
-
 /**
  * The player inventory menu.
  */
@@ -33,8 +31,8 @@ public final class InventoryMenu extends MenuView {
         Inventory playerInventory = InventoryController.getPlayerInventory();
         CONSOLE.println("You have " + playerInventory.getCurrency() + " " + InventoryController.CURRENCY);
         CONSOLE.println("[Item name]\t[Value]");
-        playerInventory.getContents().stream().forEach((InventoryItem current) -> {
-            CONSOLE.println(" " + current.getName() + "\t" + current.getValue());
+        playerInventory.getContents().stream().forEach((current) -> {
+            CONSOLE.println(current);
         });
         CONSOLE.println("Your cargo is worth a combined " +
                 InventoryController.calculateTotalValue(playerInventory) +

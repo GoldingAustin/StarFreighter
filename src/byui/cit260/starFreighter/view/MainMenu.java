@@ -2,10 +2,9 @@ package byui.cit260.starFreighter.view;
 
 import byui.cit260.starFreighter.control.GameController;
 import byui.cit260.starFreighter.exceptions.GameControlException;
-import byui.cit260.starFreighter.model.GameInstance;
 import byui.cit260.starFreighter.model.MenuItem;
+import static byui.cit260.starFreighter.view.TextFormat.console;
 import java.io.IOException;
-import starfreighter.StarFreighter;
 
 /**
  * The game's main menu view.
@@ -84,18 +83,12 @@ public final class MainMenu extends MenuView {
      * Saves the current game.
      */
     private void saveGame() {
-        GameInstance currentGame = StarFreighter.getCurrentGame();
-        if (currentGame == null) {
-           CONSOLE.println("No file available to save, start a game first!");
-        }
-        else {
         try {
             GameController.saveGame();
-            CONSOLE.println("File successfully saved.");
+            console.println("File successfully saved.");
             gameMenu.display();
         } catch (GameControlException | IOException saveError) {
             ErrorView.display(this.getClass().getName(), saveError.getMessage());
-        }
         }
     }
 

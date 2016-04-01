@@ -22,7 +22,7 @@ public class StarFreighter {
     /**
      * Class properties.
      */
-    private static GameInstance CURRENT_GAME = null;
+    private static GameInstance CURRENT_GAME;
 
     /**
      * Launches the game.
