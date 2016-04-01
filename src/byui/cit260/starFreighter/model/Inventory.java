@@ -76,6 +76,9 @@ public class Inventory implements Serializable {
      * @param item 
      */
     public void addItem(InventoryItem item) {
+        contents.stream().filter((current) -> (current.getName().equals(item.getName()))).forEach((current) -> {
+            current.setQuantity(current.getQuantity() + 1);
+        });
         contents.add(item);
     }
     
@@ -84,7 +87,7 @@ public class Inventory implements Serializable {
      * @param item 
      */
     public void addItem(ItemList item) {
-        InventoryItem newItem = new InventoryItem(item.getName(), item.getValue());
+        InventoryItem newItem = new InventoryItem(item.getName(), item.getValue(), item.getQuantity());
         contents.add(newItem);
     }
     
