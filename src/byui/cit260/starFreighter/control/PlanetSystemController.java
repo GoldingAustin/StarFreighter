@@ -1,8 +1,6 @@
 package byui.cit260.starFreighter.control;
 
-import byui.cit260.starFreighter.constants.FetchJobList;
 import byui.cit260.starFreighter.constants.PlanetList;
-import byui.cit260.starFreighter.model.JobRegistry;
 import byui.cit260.starFreighter.model.Planet;
 import byui.cit260.starFreighter.model.PlanetSystem;
 import byui.cit260.starFreighter.model.Point;
@@ -38,6 +36,7 @@ public final class PlanetSystemController {
         system.addPlanet(PlanetList.QUALUFE);
         system.addPlanet(PlanetList.MEZOPAN);
         system.addPlanet(PlanetList.REDECENT);
+        system.addPlanet(PlanetList.GOAL);
         
         // Return the system.
         return system;

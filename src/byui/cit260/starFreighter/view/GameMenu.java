@@ -40,6 +40,18 @@ public final class GameMenu extends MenuView {
             "GAME OVER"
         );
     }
+    
+    /**
+     * Displays a game over message.
+     */
+    private void displayYouWin() {
+        TextBox.displayText(
+            "Congratulations! You are the first brave adventurer to make it" +
+                    " to the deep-space phenomenon and so its many treasures" +
+                " are now yours.",
+            "YOU WIN"
+        );
+    }
 
     @Override
     public boolean doAction(char action) {
@@ -59,6 +71,11 @@ public final class GameMenu extends MenuView {
                 // Did the player die?
                 if (ShipController.getShip().getHull() <= 0) {
                     displayGameOver();
+                    return true;
+                }
+                
+                if (ShipController.getShip().getLocation().getName() == "Endgame") {
+                    displayYouWin();
                     return true;
                 }
                 break;

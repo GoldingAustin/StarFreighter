@@ -58,8 +58,11 @@ public class JobController {
      * @param job 
      */
     public static void acceptJob(Job job) {
-        // add job to player's job list
-        // remove job from planet's job list
+        JobRegistry playerJobList = getJobList();
+        JobRegistry planetJobList = getAvailableJobs();
+        
+        planetJobList.remove(job);
+        playerJobList.add(job);
     }
     
     /**

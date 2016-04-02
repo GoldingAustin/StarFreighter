@@ -18,11 +18,15 @@ public enum PlanetList {
     MEZOPAN("Mezopan",
             "Green forests and tall trees",
             'M',
-            new Point(RandomNumbers.range(8, 10), RandomNumbers.range(3, 7))),
+            new Point(RandomNumbers.range(8, 10), RandomNumbers.range(2, 8))),
     REDECENT("Redecent",
             "The galaxy's capital",
             'R',
-            new Point(RandomNumbers.range(14, 15), RandomNumbers.range(4, 6)));
+            new Point(RandomNumbers.range(13, 14), RandomNumbers.range(3, 7))),
+    GOAL("Endgame",
+            "Riches beyond imagining!",
+            'E',
+            new Point(RandomNumbers.range(16, 17), RandomNumbers.range(4, 6)));
     
     /**
      * Constants.

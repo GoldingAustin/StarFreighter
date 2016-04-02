@@ -22,6 +22,7 @@ public final class JobMenu extends MenuView {
     public JobMenu() {
         menuTitle = "Job Menu";
         menuItems.add(new MenuItem('A', "Available jobs"));
+        menuItems.add(new MenuItem('J', "Accept job"));
         menuItems.add(new MenuItem('T', "Turn in job"));
         menuItems.add(new MenuItem('E', "Exit"));
     }
@@ -41,14 +42,14 @@ public final class JobMenu extends MenuView {
     }
 
     private void turnIn() {
-        ArrayList<Job> available = JobController.getAvailableJobs().get();
+        ArrayList<Job> activeJobs = JobController.getJobList().get();
         Planet currentLocation = ShipController.getShip().getLocation();
         Inventory otherInventory = currentLocation.getShop();
         Inventory playerInventory = InventoryController.getPlayerInventory();
         
         try {
             int index = 1;
-            for (Job current : available) {
+            for (Job current : activeJobs) {
                 if (!current.isComplete()) {
                 // Pad the index with a leading zero for readability's sake.
                 CONSOLE.write("[");
@@ -64,10 +65,10 @@ public final class JobMenu extends MenuView {
             }
 
             // Offset the selection by minus one to make it "computer-readable."
-            int selection = Input.getIntSameLine("Choose a Job turn in: ") - 1;
+            int selection = Input.getIntSameLine("Choose a Job to turn in: ") - 1;
 
             // Get the job to turn in.
-            FetchJob turnIn = (FetchJob) available.get(selection);
+            FetchJob turnIn = (FetchJob) activeJobs.get(selection);
 
             // If the user got smart and gave us a number that doesn't exist
             // in the job ArrayList indices, we need to catch the
@@ -92,11 +93,63 @@ public final class JobMenu extends MenuView {
         }
     }
 
+    private void acceptJob() {
+        // Get the available jobs.
+        ArrayList<Job> available = JobController.getAvailableJobs().get();
+
+        // Ensure there are items to sell.
+        if (!(available.size() > 0)) {
+            TextBox.displayText("There are no jobs to accept!");
+            return;
+        }
+
+        try {
+            // Display the list of jobs.
+            int index = 1;
+            for (Job current : available) {
+                // Pad the index with a leading zero for readability's sake.
+                CONSOLE.write("[");
+                if (index < 10) {
+                    CONSOLE.write("0");
+                }
+                CONSOLE.write(index + "] - " + current.getName() + "\n");
+                CONSOLE.flush();
+                // Increment the index.
+                index++;
+            }
+
+            // Offset the selection by minus one to make it "computer-readable."
+            int selection = Input.getIntSameLine("Choose a job to accept: ") - 1;
+
+            // Get the job to accept.
+            Job accepted = available.get(selection);
+
+            // If the user got smart and gave us a number that doesn't exist
+            // in the job ArrayList indices, we need to catch the impending
+            // error in addition to the IO exception potentially thrown by
+            // Input class's methods.
+            JobController.acceptJob(accepted);
+
+            // Display an explanatory message.
+            TextBox.displayText(
+                    "You accepted the "
+                    + accepted.getName()
+                    + " job. Good luck and godspeed!"
+            );
+        } catch (IOException | IndexOutOfBoundsException error) {
+            ErrorView.display(this.getClass().getName(), error.getMessage());
+        }
+    }
+    
     @Override
     public boolean doAction(char action) {
         switch (action) {
             case 'A': {
                 displayAvailableJobs();
+                break;
+            }
+            case 'J': {
+                acceptJob();
                 break;
             }
             case 'T': {
