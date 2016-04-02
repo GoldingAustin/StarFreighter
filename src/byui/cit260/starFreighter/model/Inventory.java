@@ -87,6 +87,7 @@ public class Inventory implements Serializable {
      * @param item 
      */
     public void addItem(ItemList item) {
+
         InventoryItem newItem = new InventoryItem(item.getName(), item.getValue(), item.getQuantity());
         contents.add(newItem);
     }

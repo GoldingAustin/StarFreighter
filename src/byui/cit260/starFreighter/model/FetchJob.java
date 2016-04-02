@@ -54,7 +54,8 @@ public final class FetchJob extends Job implements JobInterface, Serializable {
             if (current.getName().equals(job.getName())) {
                 //if quantity match, return true
                 if (current.getQuantity() == job.quantity) {
-                    return true;
+                    job.setComplete(true);
+                    return true; 
                 }
             }
             //Set acquired to the quantity sold so far

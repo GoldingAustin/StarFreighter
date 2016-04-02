@@ -34,7 +34,9 @@ public final class JobMenu extends MenuView {
     private void displayAvailableJobs() {
         ArrayList<Job> available = JobController.getAvailableJobs().get();
         available.stream().forEach((current) -> {
+            if (!current.isComplete()) {
             CONSOLE.println(current.getName() + " - " + current.getDesc());
+            }
         });
     }
 
@@ -47,6 +49,7 @@ public final class JobMenu extends MenuView {
         try {
             int index = 1;
             for (Job current : available) {
+                if (!current.isComplete()) {
                 // Pad the index with a leading zero for readability's sake.
                 CONSOLE.write("[");
                 if (index < 10) {
@@ -57,6 +60,7 @@ public final class JobMenu extends MenuView {
                 CONSOLE.flush();
                 // Increment the index.
                 index++;
+                }
             }
 
             // Offset the selection by minus one to make it "computer-readable."

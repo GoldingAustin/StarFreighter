@@ -50,8 +50,11 @@ public class GameController {
         // Create the player's inventory and give them a little cash.
         Inventory newInventory = InventoryController.createInventory();
         newInventory.addItem(ItemList.NEW_PARTS);
+        newInventory.addItem(ItemList.JUNK);
         newInventory.addItem(ItemList.NEW_PARTS);
+        newInventory.addItem(ItemList.JUNK);
         newInventory.addItem(ItemList.NEW_PARTS);
+        newInventory.addItem(ItemList.JUNK);
         newInventory.setCurrency(100);
 
         // Create a CrewRoster for the Ship.
