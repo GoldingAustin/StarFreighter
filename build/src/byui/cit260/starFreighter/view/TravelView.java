@@ -131,7 +131,7 @@ public class TravelView extends Display {
                 ShipController.getShip().getName() +
                 " embarks into the cold reaches of space...");
         
-        int selection = RandomNumbers.range(1, 5);
+        int selection = RandomNumbers.range(1, 4);
         switch(selection) {
             case 1: {
                 TextBox.displayText("... and arrives at its detination without incident.");
@@ -154,10 +154,6 @@ public class TravelView extends Display {
                     " salvage everything you can find."
                 );
                 InventoryController.salvageDebris();
-                break;
-            }
-            case 5: {
-                TextBox.displayText("... and explodes into a million pieces!");
                 break;
             }
         }
