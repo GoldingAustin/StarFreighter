@@ -7,9 +7,6 @@ import byui.cit260.starFreighter.model.Inventory;
 import byui.cit260.starFreighter.model.InventoryItem;
 import byui.cit260.starFreighter.model.Planet;
 import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
 import starfreighter.StarFreighter;
 
 /**
