@@ -86,6 +86,9 @@ public class GameController {
         kryta.add(JobController.createFetchJob(FetchJobList.TRADE_NEW_PARTS));
         kryta.add(JobController.createFetchJob(FetchJobList.TRADE_OLD_PARTS));
         
+                JobRegistry qualufe = planetNamed("Qualufe").getJobRegistry();
+        kryta.add(JobController.createFetchJob(FetchJobList.TRADE_BIO_SEDIMENTS));
+        kryta.add(JobController.createFetchJob(FetchJobList.TRADE_PEARL));
         // Set the ship's starting point. We have to do this, 'cause they're
         // generated randomly. We also have to do this here, because the controller
         // reads from the game instance- without an instance set, we'll get

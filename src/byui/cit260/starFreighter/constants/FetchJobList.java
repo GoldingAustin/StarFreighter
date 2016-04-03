@@ -13,7 +13,15 @@ public enum FetchJobList {
     TRADE_OLD_PARTS("Old Parts",
             "Trade 2 Old Parts.",
             2,
-            RewardList.TRADE_OLD_PARTS.cloneReward());
+            RewardList.TRADE_OLD_PARTS.cloneReward()),
+    TRADE_BIO_SEDIMENTS("Bio Sediments", 
+            "Trade 3 Bio Sediments ", 
+            3, 
+            RewardList.TRADE_BIO_SEDIMENTS.cloneReward()),
+    TRADE_PEARL("Pearls", 
+            "Trade 2 Pearls ", 
+            2, 
+            RewardList.TRADE_PEARL.cloneReward());
     
     /**
      * Constants.

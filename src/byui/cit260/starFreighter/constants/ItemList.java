@@ -6,7 +6,9 @@ package byui.cit260.starFreighter.constants;
 public enum ItemList {
     JUNK("Junk", 5, 1),
     OLD_PARTS("Old Parts", 20, 1),
-    NEW_PARTS("New Parts", 50, 1);
+    NEW_PARTS("New Parts", 50, 1),
+    BIO_SEDIMENTS("Bio Sediments", 30, 1),
+    PEARL("Pearl", 75, 1);
     
     /**
      * Constants.

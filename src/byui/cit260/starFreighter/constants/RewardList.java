@@ -8,10 +8,18 @@ import java.util.ArrayList;
  * A list of the jobs in the game.
  */
 public enum RewardList {
-    TRADE_NEW_PARTS(100, new ArrayList<InventoryItem>() {{
+    TRADE_NEW_PARTS(50, new ArrayList<InventoryItem>() {{
         add(new InventoryItem(ItemList.JUNK));
     }}),
-    TRADE_OLD_PARTS(50, new ArrayList<InventoryItem>() {{
+    TRADE_OLD_PARTS(25, new ArrayList<InventoryItem>() {{
+        add(new InventoryItem(ItemList.JUNK));
+        add(new InventoryItem(ItemList.JUNK));
+    }}),
+    TRADE_BIO_SEDIMENTS(35, new ArrayList<InventoryItem>() {{
+        add(new InventoryItem(ItemList.JUNK));
+        add(new InventoryItem(ItemList.JUNK));
+    }}),
+        TRADE_PEARL(75, new ArrayList<InventoryItem>() {{
         add(new InventoryItem(ItemList.JUNK));
         add(new InventoryItem(ItemList.JUNK));
     }});
