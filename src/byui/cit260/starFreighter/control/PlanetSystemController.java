@@ -110,8 +110,8 @@ public final class PlanetSystemController {
         int coordY = (desired.getCoords().y - current.getCoords().y);
 
         // Square the result
-        double coordXSquared = Math.pow(coordX, 2);
-        double coordYSquared = Math.pow(coordY, 2);
+        double coordXSquared = Math.pow(coordX, 3);
+        double coordYSquared = Math.pow(coordY, 3);
 
         // Add the squares
         double coordSum = coordXSquared + coordYSquared;

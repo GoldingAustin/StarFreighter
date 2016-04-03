@@ -22,11 +22,11 @@ public enum PlanetList {
     REDECENT("Redecent",
             "The galaxy's capital",
             'R',
-            new Point(RandomNumbers.range(13, 14), RandomNumbers.range(3, 7))),
+            new Point(RandomNumbers.range(13, 15), RandomNumbers.range(3, 7))),
     GOAL("Endgame",
             "Riches beyond imagining!",
             'E',
-            new Point(RandomNumbers.range(16, 17), RandomNumbers.range(4, 6)));
+            new Point(RandomNumbers.range(23, 26), RandomNumbers.range(4, 6)));
     
     /**
      * Constants.
