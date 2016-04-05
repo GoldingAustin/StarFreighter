@@ -141,7 +141,7 @@ public class CombatMenu extends MenuView {
             // Display the outcome.
             TextBox.displayText(
                 "You destroy the space pirates' vessel and " +
-                "seize their cargo.",
+                "seize their cargo, arriving at your destination triumphantly!",
                 playerShip.getName() + "'s current hull integrity: " + playerShip.getHull()    
             );
             return true;
