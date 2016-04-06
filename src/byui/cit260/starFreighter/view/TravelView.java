@@ -48,7 +48,7 @@ public class TravelView extends Display {
                     // Set the destination.
                     destination = PlanetSystemController.planetAtSymbol(selection);
                 }
-                
+
                 // Calculate the distance.
                 distance = PlanetSystemController.calculateDistance(destination);
                 

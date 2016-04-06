@@ -110,8 +110,15 @@ public final class PlanetSystemController {
         int coordY = (desired.getCoords().y - current.getCoords().y);
 
         // Square the result
-        double coordXSquared = Math.pow(coordX, 3);
-        double coordYSquared = Math.pow(coordY, 3);
+        double coordXSquared = Math.pow(coordX, 2);
+        double coordYSquared = Math.pow(coordY, 2);
+        // Cubing the result created some weird situations in which coordSum
+        // became negative. You can't get the square root of a negative number,
+        // so TravelView would print NaN as the distance to a planet "behind"
+        // the player's position.
+        // If you can change this function to fix that before tonight, be my
+        // guest! Until then though, this needs to go back to squaring the
+        // result, as per the distance forumla.
 
         // Add the squares
         double coordSum = coordXSquared + coordYSquared;
