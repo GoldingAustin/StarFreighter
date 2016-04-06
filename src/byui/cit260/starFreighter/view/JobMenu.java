@@ -51,16 +51,16 @@ public final class JobMenu extends MenuView {
             int index = 1;
             for (Job current : activeJobs) {
                 if (!current.isComplete()) {
-                // Pad the index with a leading zero for readability's sake.
-                CONSOLE.write("[");
-                if (index < 10) {
-                    CONSOLE.write("0");
-                }
-                CONSOLE.write(index + "] - " + current.getName() + "\t");
-                CONSOLE.write(current.getDesc() + "\n");
-                CONSOLE.flush();
-                // Increment the index.
-                index++;
+                    // Pad the index with a leading zero for readability's sake.
+                    CONSOLE.write("[");
+                    if (index < 10) {
+                        CONSOLE.write("0");
+                    }
+                    CONSOLE.write(index + "] - " + current.getName() + "\t");
+                    CONSOLE.write(current.getDesc() + "\n");
+                    CONSOLE.flush();
+                    // Increment the index.
+                    index++;
                 }
             }
 
@@ -84,6 +84,7 @@ public final class JobMenu extends MenuView {
                         + " "
                 );
                 playerInventory.addCurrency(turnIn.getRewards().getCurrency());
+                activeJobs.remove(turnIn);
             } else {
                 TextBox.displayText("Not enough " + turnIn.getName() + "'s sold, you "
                         + "have sold " + turnIn.getAcquired() + " so far.");
