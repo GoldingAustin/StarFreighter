@@ -5,8 +5,12 @@ import byui.cit260.starFreighter.control.ShipController;
 import byui.cit260.starFreighter.model.Inventory;
 import byui.cit260.starFreighter.model.InventoryItem;
 import byui.cit260.starFreighter.model.MenuItem;
+import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * The player inventory menu.
@@ -22,6 +26,7 @@ public final class InventoryMenu extends MenuView {
         menuItems.add(new MenuItem('S', "Sell"));
         menuItems.add(new MenuItem('A', "Sell All"));
         menuItems.add(new MenuItem('B', "Buy"));
+        menuItems.add(new MenuItem('R', "Print Report"));
         menuItems.add(new MenuItem('E', "Exit"));
     }
 
@@ -193,6 +198,33 @@ public final class InventoryMenu extends MenuView {
             ErrorView.display(this.getClass().getName(), error.getMessage());
         }
     }
+    
+    private void printInventoryReport() {
+        String filePath;
+        try {
+            filePath = Input.getString("Filepath to save report to:");
+            writeReportToFile(filePath);
+            CONSOLE.println("Inventory report printed at " + filePath + ".");
+        } catch (IOException ex) {
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
+        }
+    }
+    
+    
+    private void writeReportToFile(String filePath) {
+        try(PrintWriter out = new PrintWriter(filePath + File.separator + "inventoryreport.txt")) {
+            Inventory playerInventory = InventoryController.getPlayerInventory();
+            out.println("\n\n       Inventory Report");
+            out.printf("%n%-20s%10s", "Name", "Value");
+            out.printf("%n%-20s%10s", "--------------------", "-----");
+            for (InventoryItem current : playerInventory.getContents()) {
+                out.printf("%n%-20s%10s", current.getName(),
+                                          current.getValue());
+            }
+        } catch (IOException ex) {
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
+        }
+    }
 
     @Override
     public boolean doAction(char action) {
@@ -211,6 +243,10 @@ public final class InventoryMenu extends MenuView {
             }
             case 'B': {
                 buyItem();
+                break;
+            }
+            case 'R': {
+                printInventoryReport();
                 break;
             }
             case 'E': {
