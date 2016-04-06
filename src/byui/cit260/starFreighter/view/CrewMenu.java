@@ -40,7 +40,6 @@ public final class CrewMenu extends MenuView {
         try {
             filePath = Input.getString("Filepath to save report to:");
             writeReportToFile(filePath);
-            CONSOLE.println("Crew report printed at " + filePath + ".");
         } catch (IOException ex) {
             ErrorView.display(this.getClass().getName(), ex.getMessage());
         }
@@ -56,6 +55,7 @@ public final class CrewMenu extends MenuView {
             for (CrewMember current : crew.getContents()) {
                 out.printf("%n%-20s%20s%20s%20s%20s%20s%20s", current.getName(), current.getHitPoints(), current.getStat(Role.PILOT), current.getStat(Role.FIGHTER), current.getStat(Role.DOCTOR), current.getStat(Role.MECHANIC), current.getStat(Role.TRADER));
             }
+            CONSOLE.println("Crew report printed at " + filePath + ".");
         } catch (IOException ex) {
             ErrorView.display(this.getClass().getName(), ex.getMessage());
         }

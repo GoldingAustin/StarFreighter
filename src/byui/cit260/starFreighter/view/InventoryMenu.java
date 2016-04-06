@@ -204,7 +204,6 @@ public final class InventoryMenu extends MenuView {
         try {
             filePath = Input.getString("Filepath to save report to:");
             writeReportToFile(filePath);
-            CONSOLE.println("Inventory report printed at " + filePath + ".");
         } catch (IOException ex) {
             ErrorView.display(this.getClass().getName(), ex.getMessage());
         }
@@ -221,6 +220,7 @@ public final class InventoryMenu extends MenuView {
                 out.printf("%n%-20s%10s", current.getName(),
                                           current.getValue());
             }
+            CONSOLE.println("Inventory report printed at " + filePath + ".");
         } catch (IOException ex) {
             ErrorView.display(this.getClass().getName(), ex.getMessage());
         }
